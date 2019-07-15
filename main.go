@@ -6,36 +6,14 @@ import (
 	"image"
 	"image/png"
 	"io/ioutil"
+	"log"
+	"math"
 	"os"
 	"path/filepath"
 	"strings"
-)
 
-// "__type__": "cc.SpriteFrame",
-//         "content": {
-//             "name": "miniProgromBg",
-//             "texture": "e6TVwdn1pOD6zuLODWyU7i",
-//             "rect": [
-//                 550,
-//                 807,
-//                 78,
-//                 78
-//             ],
-//             "offset": [
-//                 0,
-//                 0
-//             ],
-//             "originalSize": [
-//                 78,
-//                 78
-//             ],
-//             "capInsets": [
-//                 30,
-//                 30,
-//                 30,
-//                 30
-//             ]
-//         }
+	"github.com/BurntSushi/graphics-go/graphics"
+)
 
 type Content struct {
 	Name         string    `json:"Name"`
@@ -87,6 +65,20 @@ func getFilelist(path string) []string {
 	}
 
 	return files
+}
+
+// 保存Png图片
+func saveImage(path string, img image.Image) (err error) {
+	// 需要保存的文件
+	imgfile, err := os.Create(path)
+	defer imgfile.Close()
+
+	// 以PNG格式保存文件
+	err = png.Encode(imgfile, img)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return
 }
 
 func main() {
@@ -161,8 +153,6 @@ func main() {
 		}
 	}
 
-	fmt.Println(FileMap)
-
 	ImageMap := make(map[string]image.Image)
 
 	for keyStr, imgItem := range FileMap {
@@ -187,13 +177,20 @@ func main() {
 			for _, info := range itemAry {
 				subImg := grgbImg.SubImage(image.Rect(info.Rect[0], info.Rect[1], info.Rect[0]+info.Rect[2], info.Rect[1]+info.Rect[3]))
 
-				file1, err := os.Create("./images/" + info.Name + ".png")
-				if err != nil {
-					fmt.Println(err)
-				}
-				defer file1.Close()
+				if info.Rotated == 1 {
+					dst := image.NewRGBA(image.Rect(0, 0, info.Rect[3], info.Rect[2]))
+					err := graphics.Rotate(dst, subImg, &graphics.RotateOptions{3 * math.Pi / 2})
+					if err != nil {
+						fmt.Println(err)
+					} else {
+						fmt.Println("./images/" + info.Name + ".png")
+						saveImage("./images/"+info.Name+".png", dst)
+					}
 
-				png.Encode(file1, subImg)
+				} else {
+					saveImage("./images/"+info.Name+".png", subImg)
+				}
+
 			}
 
 		case *image.Paletted:
@@ -201,67 +198,20 @@ func main() {
 			for _, info := range itemAry {
 				subImg := grgbImg.SubImage(image.Rect(info.Rect[0], info.Rect[1], info.Rect[0]+info.Rect[2], info.Rect[1]+info.Rect[3]))
 
-				file1, err := os.Create("./images/" + info.Name + ".png")
-				if err != nil {
-					fmt.Println(err)
-				}
-				defer file1.Close()
+				if info.Rotated == 1 {
+					dst := image.NewRGBA(image.Rect(0, 0, info.Rect[3], info.Rect[2]))
+					err := graphics.Rotate(dst, subImg, &graphics.RotateOptions{3 * math.Pi / 2})
+					if err != nil {
+						fmt.Println(err)
+					} else {
+						fmt.Println("./images/" + info.Name + ".png")
+						saveImage("./images/"+info.Name+".png", dst)
+					}
 
-				png.Encode(file1, subImg)
+				} else {
+					saveImage("./images/"+info.Name+".png", subImg)
+				}
 			}
 		}
 	}
-
-	// img, _, err := image.Decode(file) //解码
-	// if err != nil {
-	// 	fmt.Println(err)
-	// }
-
-	// rgbImg := img.(*image.Paletted)
-	// grgbImg := gameImg.(*image.NRGBA)
-
-	// for _, info := range m {
-	// 	if info["__type__"] == "cc.SpriteFrame" {
-	// 		mp := info["content"].(map[string]interface{})
-	// 		//fmt.Println(mp["rect"])
-
-	// 		var rect [4]int
-	// 		rotated := mp["rotated"] != nil && mp["rotated"].(float64) == 1
-
-	// 		ary := mp["rect"].([]interface{})
-	// 		for i := 0; i < 4; i++ {
-	// 			if rotated && i == 2 {
-	// 				rect[2] = int(ary[3].(float64))
-	// 			} else if rotated && i == 3 {
-	// 				rect[3] = int(ary[2].(float64))
-	// 			} else {
-	// 				rect[i] = int(ary[i].(float64))
-	// 			}
-	// 		}
-
-	// 		if mp["texture"].(string) == "e6TVwdn1pOD6zuLODWyU7i" {
-	// 			subImg := rgbImg.SubImage(image.Rect(rect[0], rect[1], rect[0]+rect[2], rect[1]+rect[3])) //图片裁剪x0 y0 x1 y1
-
-	// 			file1, err := os.Create("./images/" + mp["name"].(string) + ".png")
-	// 			if err != nil {
-	// 				fmt.Println(err)
-	// 			}
-	// 			defer file1.Close()
-
-	// 			png.Encode(file1, subImg)
-	// 		} else {
-	// 			subImg := grgbImg.SubImage(image.Rect(rect[0], rect[1], rect[0]+rect[2], rect[1]+rect[3])) //图片裁剪x0 y0 x1 y1
-
-	// 			file1, err := os.Create("./images/" + mp["name"].(string) + ".png")
-	// 			if err != nil {
-	// 				fmt.Println(err)
-	// 			}
-	// 			defer file1.Close()
-
-	// 			png.Encode(file1, subImg)
-	// 		}
-	// 	}
-	// }
-
-	//jpeg.Encode(file1, img, &jpeg.Options{5})
 }
