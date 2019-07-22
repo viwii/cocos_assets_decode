@@ -13,6 +13,7 @@ import (
 	"strings"
 
 	"github.com/BurntSushi/graphics-go/graphics"
+	simplejson "github.com/bitly/go-simplejson"
 )
 
 type Content struct {
@@ -81,7 +82,7 @@ func saveImage(path string, img image.Image) (err error) {
 	return
 }
 
-func main() {
+func getImage() {
 
 	//end := strings.Trim(, unicode.IsSpace)
 
@@ -220,5 +221,28 @@ func main() {
 				}
 			}
 		}
+	}
+}
+
+func main() {
+	strbytes, _ := ReadAll("json/04af748fa.json")
+	root, err := simplejson.NewJson(strbytes)
+
+	if err != nil {
+		fmt.Printf("%v\n", err)
+		return
+	}
+
+	arr, err := root.Array()
+	for _, item := range arr {
+		switch item.(type){
+		case []interface{}:
+			//fmt.Println(item)
+		case map[string]interface{}:
+			fmt.Println(item)
+			mp := item.(map[string]interface{})
+			fmt.Println(mp["__type__"])
+		}
+		
 	}
 }
