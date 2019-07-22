@@ -224,25 +224,80 @@ func getImage() {
 	}
 }
 
-func main() {
-	strbytes, _ := ReadAll("json/04af748fa.json")
-	root, err := simplejson.NewJson(strbytes)
+func walk(node interface{}, depth int) {
+	switch node.(type) {
+	case []interface{}:
+		ary := node.([]interface{})
+		depth++
+		for _, item := range ary {
+			walk(item, depth)
+		}
+	case map[string]interface{}:
+		mp := node.(map[string]interface{})
 
-	if err != nil {
-		fmt.Printf("%v\n", err)
-		return
+		switch mp["__type__"] {
+		case "cc.JsonAsset":
+			fmt.Println(mp["__type__"], depth)
+		case "cc.SpriteFrame":
+			fmt.Println(mp["__type__"], depth)
+		case "cc.SpriteAtlas":
+			fmt.Println(mp["__type__"], depth)
+		case "cc.AnimationClip":
+			fmt.Println(mp["__type__"], depth)
+		default:
+
+		}
 	}
 
-	arr, err := root.Array()
-	for _, item := range arr {
-		switch item.(type){
-		case []interface{}:
-			//fmt.Println(item)
-		case map[string]interface{}:
-			fmt.Println(item)
-			mp := item.(map[string]interface{})
-			fmt.Println(mp["__type__"])
-		}
-		
+	//fmt.Println("hello")
+}
+
+func main() {
+	// strbytes, _ := ReadAll("json/04ebe9f6d.json")
+	// root, err := simplejson.NewJson(strbytes)
+
+	// if err != nil {
+	// 	fmt.Printf("%v\n", err)
+	// 	return
+	// }
+
+	// fmt.Println(root,root.Array())
+	// fmt.Println()
+
+	// arr, err := root.Array()
+	// for _, item := range arr {
+	// 	walk(item, 1)
+	// }
+
+	// arr, err := root.Array()
+	// for _, item := range arr {
+	// 	switch item.(type) {
+	// 	case []interface{}:
+	// 		//fmt.Println(item)
+	// 	case map[string]interface{}:
+	// 		fmt.Println(item)
+	// 		mp := item.(map[string]interface{})
+	// 		fmt.Println(mp["__type__"])
+	// 	}
+
+	// }
+
+	files := getFilelist("./json")
+	for _, fileName := range files {
+		strbytes, _ := ReadAll(fileName)
+
+		root, _ := simplejson.NewJson(strbytes)
+		walk(root.Interface(), 1)
+		// if err != nil {
+		// 	fmt.Printf("%v\n", err)
+		// 	return
+		// }
+
+		// arr, err := root.
+		// fmt.Println(fileName, reflect.TypeOf(root), root)
+		// break
+		// for _, item := range arr {
+		// 	walk(item, 1)
+		// }
 	}
 }
