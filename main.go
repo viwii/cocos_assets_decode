@@ -113,11 +113,14 @@ func main() {
 	}
 
 	for _, strItem := range jsonStrings {
+
 		var p1 Item
 		err := json.Unmarshal([]byte(strItem), &p1) // 貌似这种解析方法需要提前知道 json 结构
 		if err != nil {
 			fmt.Println("err: ", err)
 		}
+
+		log.Println(p1.ContentData.Name, p1.ContentData.Texture)
 
 		ctd := p1.ContentData
 		if ctd.Rotated == 1 {
@@ -140,6 +143,10 @@ func main() {
 	for _, name := range assets {
 		if len(name) > 4 && (name[len(name)-4:] == ".png") {
 			picFiles = append(picFiles, name)
+		}
+
+		if len(name) > 4 && (name[len(name)-4:] == ".jpg") {
+			log.Println(name)
 		}
 	}
 
