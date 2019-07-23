@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"image"
@@ -66,6 +67,16 @@ func getFilelist(path string) []string {
 	}
 
 	return files
+}
+
+func writeFile(fileName string, data []byte) {
+	f, err := os.OpenFile(fileName, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, 0600)
+	defer f.Close()
+	if err != nil {
+		fmt.Println(err.Error())
+	} else {
+		_, err = f.Write([]byte(data))
+	}
 }
 
 // 保存Png图片
@@ -237,6 +248,13 @@ func walk(node interface{}, depth int) {
 
 		switch mp["__type__"] {
 		case "cc.JsonAsset":
+			data, _ := json.Marshal(mp["json"])
+			var str bytes.Buffer
+			_ = json.Indent(&str, []byte(data), "", "    ")
+			writeFile(mp["_name"].(string)+".json", str.Bytes())
+		case "cc.Sprite":
+			fmt.Println(mp["__type__"], depth)
+		case "cc.ScrollView":
 			fmt.Println(mp["__type__"], depth)
 		case "cc.SpriteFrame":
 			fmt.Println(mp["__type__"], depth)
@@ -244,8 +262,28 @@ func walk(node interface{}, depth int) {
 			fmt.Println(mp["__type__"], depth)
 		case "cc.AnimationClip":
 			fmt.Println(mp["__type__"], depth)
+		case "cc.Node":
+			fmt.Println(mp["__type__"], depth)
+		case "cc.Label":
+			fmt.Println(mp["__type__"], depth)
+		case "cc.Animation":
+			fmt.Println(mp["__type__"], depth)
+		case "cc.SceneAsset":
+			fmt.Println(mp["__type__"], mp["_name"], depth)
+		case "cc.Scene":
+			fmt.Println(mp["__type__"], depth)
+		case "cc.PrivateNode":
+			//引擎內部
+		case "cc.Prefab":
+			fmt.Println(mp["__type__"], mp["_name"], depth)
+		case "cc.AudioClip":
+			fmt.Println(mp["__type__"], depth)
+		case "cc.ProgressBar":
+			fmt.Println(mp["__type__"], depth)
+		case "cc.RichText":
+			fmt.Println(mp["__type__"], depth)
 		default:
-
+			fmt.Println("unhandle", mp["__type__"], depth)
 		}
 	}
 
