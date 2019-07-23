@@ -11,6 +11,7 @@ import (
 	"math"
 	"os"
 	"path/filepath"
+	"reflect"
 	"strings"
 
 	"github.com/BurntSushi/graphics-go/graphics"
@@ -235,107 +236,137 @@ func getImage() {
 	}
 }
 
-func walk(node interface{}, depth int) {
+func walk(node interface{}, depth int, outAry *[]map[string]interface{}) {
 	switch node.(type) {
 	case []interface{}:
 		ary := node.([]interface{})
-		depth++
 		for _, item := range ary {
-			walk(item, depth)
+			walk(item, depth+1, outAry)
 		}
 	case map[string]interface{}:
 		mp := node.(map[string]interface{})
-
+		(*outAry) = append((*outAry), mp)
 		switch mp["__type__"] {
 		case "cc.JsonAsset":
 			data, _ := json.Marshal(mp["json"])
 			var str bytes.Buffer
 			_ = json.Indent(&str, []byte(data), "", "    ")
-			writeFile(mp["_name"].(string)+".json", str.Bytes())
+			writeFile("./out/"+mp["_name"].(string)+".json", str.Bytes())
 		case "cc.Sprite":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		case "cc.ScrollView":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		case "cc.SpriteFrame":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		case "cc.SpriteAtlas":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		case "cc.AnimationClip":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		case "cc.Node":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		case "cc.Label":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		case "cc.Animation":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		case "cc.SceneAsset":
-			fmt.Println(mp["__type__"], mp["_name"], depth)
+			//fmt.Println(mp["__type__"], mp["_name"], depth)
+			//fmt.Println(mp["__type__"], mp["_name"], depth)
 		case "cc.Scene":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], mp["_name"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		case "cc.PrivateNode":
 			//引擎內部
 		case "cc.Prefab":
-			fmt.Println(mp["__type__"], mp["_name"], depth)
+			//fmt.Println(mp["__type__"], mp["_name"], depth)
 		case "cc.AudioClip":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		case "cc.ProgressBar":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		case "cc.RichText":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		default:
-			fmt.Println("unhandle", mp["__type__"], depth)
+			//fmt.Println("unhandle", mp["__type__"], depth)
+		}
+
+		if depth == 3 {
+			if mp["__type__"] == nil {
+				//fmt.Println(mp)
+			} else {
+				//fmt.Println(mp["__type__"], depth)
+			}
+
+		}
+
+	}
+}
+
+func parse_file(data interface{}) {
+	nodeAry := data.([]interface{})
+	for _, dd := range nodeAry {
+		switch dd.(type) {
+		case []interface{}:
+			dAry := dd.([]interface{})
+			if reflect.TypeOf(dAry[0]).String() == "map[string]interface {}" {
+				mp := dAry[0].(map[string]interface{})
+				if mp["__type__"] == "cc.SceneAsset" {
+					// for _, da := range dAry {
+					// 	//fmt.Println(da)
+					// }
+
+					data, _ := json.Marshal(dAry)
+					var str bytes.Buffer
+					_ = json.Indent(&str, []byte(data), "", "    ")
+					//fmt.Println(string(str.Bytes()))
+					writeFile("./out/scene.json", str.Bytes())
+				}
+			}
 		}
 	}
 
-	//fmt.Println("hello")
 }
 
 func main() {
-	// strbytes, _ := ReadAll("json/04ebe9f6d.json")
-	// root, err := simplejson.NewJson(strbytes)
-
-	// if err != nil {
-	// 	fmt.Printf("%v\n", err)
-	// 	return
-	// }
-
-	// fmt.Println(root,root.Array())
-	// fmt.Println()
-
-	// arr, err := root.Array()
-	// for _, item := range arr {
-	// 	walk(item, 1)
-	// }
-
-	// arr, err := root.Array()
-	// for _, item := range arr {
-	// 	switch item.(type) {
-	// 	case []interface{}:
-	// 		//fmt.Println(item)
-	// 	case map[string]interface{}:
-	// 		fmt.Println(item)
-	// 		mp := item.(map[string]interface{})
-	// 		fmt.Println(mp["__type__"])
-	// 	}
-
-	// }
-
+	spritefameMap := make(map[string]map[string]interface{})
+	fileMap := make(map[string][]map[string]interface{})
+	structMap := make(map[string]interface{})
 	files := getFilelist("./json")
 	for _, fileName := range files {
 		strbytes, _ := ReadAll(fileName)
 
 		root, _ := simplejson.NewJson(strbytes)
-		walk(root.Interface(), 1)
-		// if err != nil {
-		// 	fmt.Printf("%v\n", err)
-		// 	return
-		// }
+		var outAry []map[string]interface{}
+		walk(root.Interface(), 1, &outAry)
+		structMap[fileName] = root.Interface()
+		fileMap[fileName] = outAry
+	}
 
-		// arr, err := root.
-		// fmt.Println(fileName, reflect.TypeOf(root), root)
-		// break
-		// for _, item := range arr {
-		// 	walk(item, 1)
-		// }
+	for _, item := range fileMap {
+		for _, mp := range item {
+
+			if mp["__type__"] == "cc.SpriteFrame" {
+				if im, ok := mp["_name"]; ok {
+					spritefameMap[im.(string)] = mp
+				}
+
+				if im, ok := mp["content"]; ok {
+					cm := im.(map[string]interface{})
+					spritefameMap[cm["name"].(string)] = mp
+				}
+			}
+		}
+	}
+
+	//fmt.Println(spritefameMap)
+	for fileName, item := range fileMap {
+		for _, mp := range item {
+			if mp["__type__"] == "cc.SceneAsset" {
+				// for _, mm := range item {
+				// 	//fmt.Println(mm)
+				// }
+				fmt.Println("hello")
+				parse_file(structMap[fileName])
+				break
+			}
+		}
 	}
 }
