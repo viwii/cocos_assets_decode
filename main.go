@@ -261,7 +261,7 @@ func walk(node interface{}, depth int, outAry *[]map[string]interface{}) {
 		case "cc.SpriteAtlas":
 			//fmt.Println(mp["__type__"], depth)
 		case "cc.AnimationClip":
-			//fmt.Println(mp["__type__"], depth)
+			fmt.Println(mp["__type__"], depth)
 		case "cc.Node":
 			//fmt.Println(mp["__type__"], depth)
 		case "cc.Label":
@@ -309,20 +309,25 @@ func parse_file(data interface{}) {
 			if reflect.TypeOf(dAry[0]).String() == "map[string]interface {}" {
 				mp := dAry[0].(map[string]interface{})
 				if mp["__type__"] == "cc.SceneAsset" {
-					// for _, da := range dAry {
-					// 	//fmt.Println(da)
-					// }
-
 					data, _ := json.Marshal(dAry)
 					var str bytes.Buffer
 					_ = json.Indent(&str, []byte(data), "", "    ")
-					//fmt.Println(string(str.Bytes()))
-					writeFile("./out/scene.json", str.Bytes())
+					writeFile("./out/"+mp["_name"].(string)+".fire.json", str.Bytes())
+				} else if mp["__type__"] == "cc.Prefab" {
+					data, _ := json.Marshal(dAry)
+					var str bytes.Buffer
+					_ = json.Indent(&str, []byte(data), "", "    ")
+					writeFile("./out/"+mp["_name"].(string)+".prefab.json", str.Bytes())
 				}
 			}
+		case map[string]interface{}:
+			// mp := dd.(map[string]interface{})
+			// switch mp["__type__"] {
+			// case "cc.SpriteAtlas":
+			// 	fmt.Println(mp["__type__"])
+			// }
 		}
 	}
-
 }
 
 func main() {
@@ -342,7 +347,6 @@ func main() {
 
 	for _, item := range fileMap {
 		for _, mp := range item {
-
 			if mp["__type__"] == "cc.SpriteFrame" {
 				if im, ok := mp["_name"]; ok {
 					spritefameMap[im.(string)] = mp
@@ -356,16 +360,10 @@ func main() {
 		}
 	}
 
-	//fmt.Println(spritefameMap)
 	for fileName, item := range fileMap {
 		for _, mp := range item {
 			if mp["__type__"] == "cc.SceneAsset" {
-				// for _, mm := range item {
-				// 	//fmt.Println(mm)
-				// }
-				fmt.Println("hello")
 				parse_file(structMap[fileName])
-				break
 			}
 		}
 	}
