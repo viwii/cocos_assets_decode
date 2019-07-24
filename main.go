@@ -60,7 +60,11 @@ func getFilelist(path string) []string {
 		if f.IsDir() {
 			return nil
 		}
-		files = append(files, path)
+		strLen := len(path)
+		if strLen > 5 && path[strLen-5:] == ".json" {
+			files = append(files, path)
+		}
+
 		return nil
 	})
 	if err != nil {
@@ -100,7 +104,7 @@ func getImage() {
 
 	StrMap := make(map[string][]Content)
 
-	files := getFilelist("./json")
+	files := getFilelist("./program")
 	var jsonStrings []string
 	for _, fileName := range files {
 		strbytes, _ := ReadAll(fileName)
@@ -236,12 +240,12 @@ func getImage() {
 	}
 }
 
-func walk(node interface{}, depth int, outAry *[]map[string]interface{}) {
+func walk(node interface{}, depth int, outAry *[]map[string]interface{}, altasMap *map[string]string) {
 	switch node.(type) {
 	case []interface{}:
 		ary := node.([]interface{})
 		for _, item := range ary {
-			walk(item, depth+1, outAry)
+			walk(item, depth+1, outAry, altasMap)
 		}
 	case map[string]interface{}:
 		mp := node.(map[string]interface{})
@@ -259,9 +263,14 @@ func walk(node interface{}, depth int, outAry *[]map[string]interface{}) {
 		case "cc.SpriteFrame":
 			//fmt.Println(mp["__type__"], depth)
 		case "cc.SpriteAtlas":
+			altas := mp["_spriteFrames"].(map[string]interface{})
+			for key, item := range altas {
+				itm := item.(map[string]interface{})
+				(*altasMap)[itm["__uuid__"].(string)] = key
+			}
 			//fmt.Println(mp["__type__"], depth)
 		case "cc.AnimationClip":
-			fmt.Println(mp["__type__"], depth)
+			//fmt.Println(mp["__type__"], depth)
 		case "cc.Node":
 			//fmt.Println(mp["__type__"], depth)
 		case "cc.Label":
@@ -334,16 +343,49 @@ func main() {
 	spritefameMap := make(map[string]map[string]interface{})
 	fileMap := make(map[string][]map[string]interface{})
 	structMap := make(map[string]interface{})
-	files := getFilelist("./json")
+	files := getFilelist("./program/res")
+
+	uuidScriptMap := make(map[string]string)
+	altasMap := make(map[string]string)
+
+	strbytes, _ := ReadAll("./program/src/project.js")
+	str := string(strbytes)
+
+	//处理空格Tab,回车
+	str = TrimStringSpace(str)
+	var jsonStrings []string
+	for {
+		idx := strings.Index(str, "cc._RF.push(e")
+		if idx == -1 {
+			break
+		}
+
+		str = str[idx:]
+		index := strings.Index(str, ")")
+		if idx != -1 {
+			jsonStrings = append(jsonStrings, str[:index+2])
+			strs := strings.Split(str[:index+2], "\"")
+			//fmt.Println(strs[1], strs[3])
+			uuidScriptMap[strs[1]] = strs[3]
+		}
+
+		str = str[index+2:]
+	}
+
+	//fmt.Println(jsonStrings)
+
 	for _, fileName := range files {
+		fmt.Println(fileName)
 		strbytes, _ := ReadAll(fileName)
 
 		root, _ := simplejson.NewJson(strbytes)
 		var outAry []map[string]interface{}
-		walk(root.Interface(), 1, &outAry)
+		walk(root.Interface(), 1, &outAry, &altasMap)
 		structMap[fileName] = root.Interface()
 		fileMap[fileName] = outAry
 	}
+
+	fmt.Println(altasMap)
 
 	for _, item := range fileMap {
 		for _, mp := range item {
