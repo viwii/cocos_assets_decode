@@ -352,7 +352,7 @@ func main() {
 	str := string(strbytes)
 
 	//处理空格Tab,回车
-	str = TrimStringSpace(str)
+	//str = TrimStringSpace(str)
 	var jsonStrings []string
 	for {
 		idx := strings.Index(str, "cc._RF.push(e")
@@ -367,6 +367,9 @@ func main() {
 			strs := strings.Split(str[:index+2], "\"")
 			//fmt.Println(strs[1], strs[3])
 			uuidScriptMap[strs[1]] = strs[3]
+
+			indexend := strings.Index(str, "cc._RF.pop();")
+			writeFile("./out/"+strs[3]+".js", ([]byte)(str[index+2:indexend]))
 		}
 
 		str = str[index+2:]
