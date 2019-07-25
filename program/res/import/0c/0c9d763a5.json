@@ -1,1 +1,1342 @@
-[{"__type__":"cc.SpriteFrame","content":{"name":"dailyTitle","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[639,528,187,52],"offset":[0,0],"originalSize":[187,52],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"score","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[202,664,53,49],"offset":[0,0],"originalSize":[53,49],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"getZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[474,695,110,48],"offset":[0,0],"originalSize":[110,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"miniProgromBg","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[550,807,78,78],"offset":[0,0],"originalSize":[78,78],"capInsets":[30,30,30,30]}},{"__type__":"cc.SpriteFrame","content":{"name":"prevZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[136,846,133,48],"offset":[0,0],"originalSize":[133,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"check","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[2,634,31,30],"offset":[0,0],"originalSize":[31,30],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"coin","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[776,864,44,45],"offset":[0,0],"originalSize":[44,45],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"normalAwardZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[572,993,98,23],"offset":[0,0],"originalSize":[98,23],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"moneyBg","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[391,310,61,55],"offset":[0,0],"originalSize":[61,55],"capInsets":[23,30,23,37]}},{"__type__":"cc.SpriteFrame","content":{"name":"iconBg","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[261,651,111,111],"offset":[0,0],"originalSize":[111,111],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteAtlas","_name":"noCompress.plist","_spriteFrames":{"btn1":{"__uuid__":"faPpSJGR5HY7owI8OgeoGt"},"btn2":{"__uuid__":"61pgcbpqFMN48DCSAaasQw"},"btn3":{"__uuid__":"82WohzztlLc7MYCPS+Y4H6"},"frame":{"__uuid__":"22OvPbOGBB14YnqXgl/t8g"},"heroGlowBg":{"__uuid__":"6dO3Rm9nhE+Jp4gA7XGVhW"},"iconMask":{"__uuid__":"3ckAxNRt1AOq/EgWr2dOdz"},"itemFrame":{"__uuid__":"9aQ5b4Jn5BeYcXQzY1t7bf"},"planeTitleBg":{"__uuid__":"70GMNXqKBAnYEg0Bqrz+Z2"},"propItemBg":{"__uuid__":"f1HTOUnEZLlpguW300Zm2o"}}},{"__type__":"cc.SpriteFrame","content":{"name":"cost10","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[142,484,109,45],"offset":[0,0],"originalSize":[109,45],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"friendPlayZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[654,419,189,53],"offset":[0,0],"originalSize":[189,53],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"inviteZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[424,695,110,48],"offset":[0,0],"originalSize":[110,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"secondOpen","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[854,2,166,79],"offset":[0,0],"originalSize":[166,79],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"resultTitleZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[828,564,185,50],"offset":[0,0],"originalSize":[185,50],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"frame","texture":"72HdEaeABGwYbX7zfAQ58H","rect":[152,260,104,107],"offset":[0,0],"originalSize":[104,107],"capInsets":[44,0,44,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"bubble","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[202,715,52,45],"offset":[0,0],"originalSize":[52,45],"capInsets":[29,22,17,12]}},{"__type__":"cc.SpriteFrame","content":{"name":"openBtnZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[450,595,178,48],"offset":[0,0],"originalSize":[178,48],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"rank_name","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[391,144,64,32],"offset":[0,0],"originalSize":[64,32],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"skipZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[167,981,92,32],"offset":[0,0],"originalSize":[92,32],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"iconMask","texture":"72HdEaeABGwYbX7zfAQ58H","rect":[152,369,26,26],"offset":[0,0],"originalSize":[26,26],"capInsets":[9,7,9,7]}},{"__type__":"cc.SpriteFrame","content":{"name":"progressBg","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[378,642,55,48],"offset":[0,0],"originalSize":[55,48],"capInsets":[21,21,21,21]}},{"__type__":"cc.SpriteFrame","content":{"name":"rank_icon","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[391,212,64,32],"offset":[0,0],"originalSize":[64,32],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"openTitleZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[825,616,184,48],"offset":[0,0],"originalSize":[184,48],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"feedIcon","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[79,595,68,88],"offset":[0,0],"originalSize":[68,88],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"rankSelfBg","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[378,570,70,70],"offset":[0,0],"originalSize":[70,70],"capInsets":[27,24,27,24]}},{"__type__":"cc.SpriteFrame","content":{"name":"lunplayIcon","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[676,684,100,103],"offset":[0,0],"originalSize":[100,103],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"useZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[186,919,110,48],"offset":[0,0],"originalSize":[110,48],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"rightDown","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[2,2,454,106],"offset":[0,0],"originalSize":[454,106],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"useR","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[186,846,71,73],"offset":[0,0],"originalSize":[71,73],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"solo","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[458,2,325,394],"offset":[0,0],"originalSize":[325,394],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"SkinTitleZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[654,474,187,52],"offset":[0,0],"originalSize":[187,52],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"addFriend","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[391,246,62,63],"offset":[0,0],"originalSize":[62,63],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"btn2","texture":"72HdEaeABGwYbX7zfAQ58H","rect":[95,410,99,91],"offset":[0,0],"originalSize":[99,91],"rotated":1,"capInsets":[40,0,40,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"confident","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[854,83,164,79],"offset":[0,0],"originalSize":[164,79],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"x","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[42,595,35,36],"offset":[0,0],"originalSize":[35,36],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"invateIcon","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[572,887,100,104],"offset":[0,0],"originalSize":[100,104],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"replayZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[102,666,178,48],"offset":[0,0],"originalSize":[178,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"back","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[391,367,57,53],"offset":[0,0],"originalSize":[57,53],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"quickSkinZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[189,484,178,48],"offset":[0,0],"originalSize":[178,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"heroGlowBg","texture":"72HdEaeABGwYbX7zfAQ58H","rect":[2,2,256,256],"offset":[0,0],"originalSize":[256,256],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"planeTitleBg","texture":"72HdEaeABGwYbX7zfAQ58H","rect":[258,260,95,62],"offset":[0,0],"originalSize":[95,62],"rotated":1,"capInsets":[36,0,36,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"relifeZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[152,666,178,48],"offset":[0,0],"originalSize":[178,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"getAwardTitleZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[638,582,185,50],"offset":[0,0],"originalSize":[185,50],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"pointer","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[2,484,109,138],"offset":[0,0],"originalSize":[109,138],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"inviteCoin","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[454,329,328,45],"offset":[0,0],"originalSize":[328,45],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"commonBg","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[674,879,100,100],"offset":[0,0],"originalSize":[100,100],"capInsets":[23,23,23,23]}},{"__type__":"cc.SpriteFrame","content":{"name":"hadR","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[706,789,71,73],"offset":[0,0],"originalSize":[71,73],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"btn3","texture":"72HdEaeABGwYbX7zfAQ58H","rect":[2,410,99,91],"offset":[0,0],"originalSize":[99,91],"rotated":1,"capInsets":[40,0,40,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"progress","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[202,809,26,22],"offset":[0,0],"originalSize":[26,22],"rotated":1,"capInsets":[12,10,10,9]}},{"__type__":"cc.SpriteFrame","content":{"name":"rank_index","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[391,178,64,32],"offset":[0,0],"originalSize":[64,32],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"moreGame","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[854,315,147,160],"offset":[0,0],"originalSize":[147,160],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"rank_score","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[391,110,64,32],"offset":[0,0],"originalSize":[64,32],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"itemFrame","texture":"72HdEaeABGwYbX7zfAQ58H","rect":[2,260,148,148],"offset":[0,0],"originalSize":[148,148],"capInsets":[60,60,60,60]}},{"__type__":"cc.SpriteFrame","content":{"name":"freeZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[522,905,110,48],"offset":[0,0],"originalSize":[110,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"gameTuijian","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[355,876,95,27],"offset":[0,0],"originalSize":[95,27],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"tv","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[2,595,37,38],"offset":[0,0],"originalSize":[37,38],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"shareZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[298,910,110,48],"offset":[0,0],"originalSize":[110,48],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteAtlas","_name":"ui.plist","_spriteFrames":{"SkinTitleZi":{"__uuid__":"61FHSD239EI5svQ3CQ4SNx"},"add":{"__uuid__":"f6eC57nElDN4eJNkIOC8FL"},"addFriend":{"__uuid__":"61o7IcsWZOfJqTlYz9Kf93"},"back":{"__uuid__":"6caCzY2XZM1JoLVCZ4fDDX"},"backHomeZi":{"__uuid__":"d8AdIfh/9DlZ8Rma0KxlKx"},"bai":{"__uuid__":"b4XsCEoWdL64hRe/+yqXPK"},"bubble":{"__uuid__":"24uxitcQZDv537P6r6AuXJ"},"check":{"__uuid__":"14l8HsdWFOt6LtFGigzQAU"},"circle":{"__uuid__":"bbOAezyWFJ4pgr5Xz4TEpC"},"coin":{"__uuid__":"18px6d8NtFfbGfwhG2bQDD"},"commonBg":{"__uuid__":"75rMF5d5hK3qm/lBVqHntw"},"confident":{"__uuid__":"65M4GZd7dJbY7Xv1tiHkWl"},"continueZi":{"__uuid__":"c34FCm+M1BaoIiyD/NR12k"},"cost10":{"__uuid__":"1di5/0WhNBIL08HKF0w9fd"},"dailyTitle":{"__uuid__":"05YgpqblpLCbNrZhKKx8My"},"diamond":{"__uuid__":"ffjtPNCTVENbU/Bnso0pOh"},"doubleGetAwardZi":{"__uuid__":"dceJSwrQZHs4jaY9Bg8ACM"},"doubleZi":{"__uuid__":"b8BPfHdkNKLYObGoOr6/y6"},"feedIcon":{"__uuid__":"4fRD+CbxlJFKMAbk/Pibyp"},"forever":{"__uuid__":"b9vc0Bem5ESbNNdIv7XpGj"},"foreverZi":{"__uuid__":"ddxi4DA4VN0bIluJjJw7a/"},"forumIcon":{"__uuid__":"b1089ZML9MgoqCYi/91J/i"},"freeZi":{"__uuid__":"9aubkeozRHKIAnrgemvMe2"},"friendPlayZi":{"__uuid__":"1ewj0ao4VJwa1pFLL/6JJK"},"gameOverTitle":{"__uuid__":"fbc3gi8gVJq4xJ/8Q7K5ub"},"gameTuijian":{"__uuid__":"9buZ4r1B9EIZWoQsUVyHDx"},"getAwardTitleZi":{"__uuid__":"72/j04Pu9Nn5vFTqy893mK"},"getAwardZi":{"__uuid__":"dfSGSchydMYptwBDovEVT0"},"getZi":{"__uuid__":"0ca2NE4olA370wgoqWo6T/"},"gift":{"__uuid__":"f51iWdv9VDJZN9r+E93G6N"},"giveUpZi":{"__uuid__":"ectdcg4T1IgZqjGKkNTagy"},"hadR":{"__uuid__":"7cgp1S/BlDe5QKteiHecx0"},"headFrame":{"__uuid__":"a57XNTLGlL1oY2x3+iBe8x"},"iconBg":{"__uuid__":"1bXjN51L1Pha1PVOmmrAoV"},"invateIcon":{"__uuid__":"69EGzTLFFGMaq1btw6gQ0y"},"inviteCoin":{"__uuid__":"75npBDxw5CSJm1pkP4uTGL"},"inviteTitle":{"__uuid__":"d3+AWbevlJxIVcsOO0cOr1"},"inviteZi":{"__uuid__":"20AVAgdZpFJbJxFsanzLEG"},"lunpanLogo":{"__uuid__":"b1EeW9thhMmYpt0N79Re8y"},"lunpanTitle":{"__uuid__":"f8BkxrNYNAjrT6MloWgRFS"},"lunplayIcon":{"__uuid__":"5295FnXsFJ0YTyoBNDljoz"},"miniProgromBg":{"__uuid__":"10WCWpZ9ZOCJUILj3cKQub"},"moneyBg":{"__uuid__":"1asB2lLTdO0p1wwkRMn5/c"},"moreGame":{"__uuid__":"8a4gApB/lBva7qBtEfcJPb"},"nextZi":{"__uuid__":"baBUa1fdZJ8IVH1MOZS0f1"},"normalAwardZi":{"__uuid__":"1aNaEGTJlLMpB8bId+xXte"},"openBtnZi":{"__uuid__":"2as9yulMNGSaW+7QA4kykI"},"openTitleZi":{"__uuid__":"4aM9P1VbxC2b/nE2QOdhz9"},"pointer":{"__uuid__":"74PUTUJz1JCLQ4CW6HUqRF"},"prevZi":{"__uuid__":"12yrr65A5FJbyvHwfDBPtq"},"progress":{"__uuid__":"86Tevvi+VOe6ZUvx9VDuZm"},"progressBg":{"__uuid__":"3cpaDDXbxFr6eTWl1SyHik"},"quickSkinZi":{"__uuid__":"6dCRVK1jdAvJM91YhPRd+H"},"rankIcon":{"__uuid__":"efgTaWdYBP/IvS/lsbeJs4"},"rankSelfBg":{"__uuid__":"52kyfeUyRBXKZQ4u8JcsI3"},"rankTitle":{"__uuid__":"f46K9ZCr5FkYfeYqWETraR"},"rank_icon":{"__uuid__":"467IxXhvZJx7zx6rW5Iylx"},"rank_index":{"__uuid__":"87sC4JglZLja81kpjIob6O"},"rank_name":{"__uuid__":"36fAox0pRBnImA1B3c4Lwy"},"rank_score":{"__uuid__":"955OlBY1xGmoZSVdoAAxCw"},"red":{"__uuid__":"d4xSb/hARMTp5KUyd8fqWo"},"relifeZi":{"__uuid__":"72iIa2uEZLybY/L9vQAWpq"},"replayZi":{"__uuid__":"69PzuRLYdBFLQor6TdR4uB"},"resultTitleZi":{"__uuid__":"208J60Ow9B2KAeDi7S+DJj"},"rightDown":{"__uuid__":"5dM56vHBlNup99/z41h0j0"},"score":{"__uuid__":"07H4+5mTdBhIXJg9zEyKqw"},"secondOpen":{"__uuid__":"20TKFVX75I8oEfPGP1WCUX"},"selectBg":{"__uuid__":"b8H3USxgxP8I782VE/nG5d"},"sets":{"__uuid__":"e8t9zbjwVK7Js3OTlRFOIz"},"setsTitle":{"__uuid__":"daD+9LN6VPLYJieuVLjOFH"},"shareZi":{"__uuid__":"9f3yXbuN5A/qat+hu15YJg"},"signIcon":{"__uuid__":"bfPXW9VFtIk45ThC1oWxT2"},"sign_1":{"__uuid__":"e7rN47cxJI4ayUNCKXsewu"},"skinBg":{"__uuid__":"dcF4JGJRJFSpfFNNAHZBUg"},"skipZi":{"__uuid__":"3bO4jI89VOQ7Zej7Oz8eKc"},"solo":{"__uuid__":"5esOGD3M5NubitxL9gFr7l"},"star_block":{"__uuid__":"ebwFtQDd9BJoSDLzjIFUfG"},"star_glow":{"__uuid__":"ba3Jz2EqFP+oswreIvkgaK"},"startBtnZi":{"__uuid__":"aeIlxw5EBMQrtsFyBjwiC8"},"startGoZi":{"__uuid__":"e4m3jUmxZGV6WBFdj9zyow"},"strongTips":{"__uuid__":"dbRWfUIx5HAqaZKR5Tkv6J"},"strongZi":{"__uuid__":"edgsb/0TNJ3pfRulo/1zpy"},"testZi":{"__uuid__":"eaz40MvLJCw7FHsxZwlK2v"},"toggleBg":{"__uuid__":"b2+sRx8hdBRZFGaKWLq4S1"},"tv":{"__uuid__":"9ehi042VZLr5HEoUGNjRet"},"useR":{"__uuid__":"5dNNkUO3hAkbNnl6fPNcic"},"useZi":{"__uuid__":"57n0dRuIhOKqEzdZ/w5Dv/"},"usedAwardZi":{"__uuid__":"c1NPp9hfhHBaeiv2B95vVf"},"usedZi":{"__uuid__":"f1LcNAqW5AFJO6V7zFbO+2"},"videoZi":{"__uuid__":"f5Z9soTApCJ6d4Mqm1NIoX"},"x":{"__uuid__":"68+yNntrBMV6fMvYbXZp47"}}},{"__type__":"cc.SpriteFrame","content":{"name":"headFrame","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[410,905,110,110],"offset":[0,0],"originalSize":[110,110],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"startBtnZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[52,666,178,48],"offset":[0,0],"originalSize":[178,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"lunpanLogo","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[630,803,74,74],"offset":[0,0],"originalSize":[74,74],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"forumIcon","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[380,480,68,88],"offset":[0,0],"originalSize":[68,88],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"toggleBg","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[776,958,44,44],"offset":[0,0],"originalSize":[44,44],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"bai","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[261,534,115,115],"offset":[0,0],"originalSize":[115,115],"capInsets":[44,44,44,44]}},{"__type__":"cc.SpriteFrame","content":{"name":"doubleZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[845,464,177,48],"offset":[0,0],"originalSize":[177,48],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"selectBg","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[261,764,110,111],"offset":[0,0],"originalSize":[110,111],"rotated":1,"capInsets":[43,43,43,49]}},{"__type__":"cc.SpriteFrame","content":{"name":"forever","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[2,110,318,387],"offset":[0,0],"originalSize":[318,387],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"nextZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[239,484,133,48],"offset":[0,0],"originalSize":[133,48],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"star_glow","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[779,782,45,42],"offset":[0,0],"originalSize":[45,42],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"circle","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[778,684,48,48],"offset":[0,0],"originalSize":[48,48],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"signIcon","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[784,329,68,88],"offset":[0,0],"originalSize":[68,88],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"usedAwardZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[86,846,133,48],"offset":[0,0],"originalSize":[133,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"continueZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[654,376,124,31],"offset":[0,0],"originalSize":[124,31],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"inviteTitle","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[191,430,187,52],"offset":[0,0],"originalSize":[187,52],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"red","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[35,634,30,30],"offset":[0,0],"originalSize":[30,30],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"backHomeZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[374,692,178,48],"offset":[0,0],"originalSize":[178,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"setsTitle","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[36,981,129,32],"offset":[0,0],"originalSize":[129,32],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"strongTips","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[450,376,202,109],"offset":[0,0],"originalSize":[202,109],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"skinBg","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[854,164,161,149],"offset":[0,0],"originalSize":[161,149],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"doubleGetAwardZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[435,645,178,48],"offset":[0,0],"originalSize":[178,48],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"foreverZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[630,634,178,48],"offset":[0,0],"originalSize":[178,48],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"getAwardZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[524,695,110,48],"offset":[0,0],"originalSize":[110,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"startGoZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[2,846,158,32],"offset":[0,0],"originalSize":[158,32],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"sign_1","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[1016,315,6,18],"offset":[0,0],"originalSize":[6,18],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"sets","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[391,422,56,56],"offset":[0,0],"originalSize":[56,56],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"testZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[261,969,110,48],"offset":[0,0],"originalSize":[110,48],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"star_block","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[776,911,45,42],"offset":[0,0],"originalSize":[45,42],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"giveUpZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[261,876,92,32],"offset":[0,0],"originalSize":[92,32],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"strongZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[2,666,178,48],"offset":[0,0],"originalSize":[178,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"rankIcon","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[574,695,100,106],"offset":[0,0],"originalSize":[100,106],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"propItemBg","texture":"72HdEaeABGwYbX7zfAQ58H","rect":[281,357,69,72],"offset":[0,0],"originalSize":[69,72],"capInsets":[31,0,31,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"usedZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[36,846,133,48],"offset":[0,0],"originalSize":[133,48],"rotated":1,"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"rankTitle","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[2,430,187,52],"offset":[0,0],"originalSize":[187,52],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"videoZi","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[843,514,178,48],"offset":[0,0],"originalSize":[178,48],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"gift","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[452,807,96,96],"offset":[0,0],"originalSize":[96,96],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"add","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[778,734,46,46],"offset":[0,0],"originalSize":[46,46],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"lunpanTitle","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[450,541,186,52],"offset":[0,0],"originalSize":[186,52],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"btn1","texture":"72HdEaeABGwYbX7zfAQ58H","rect":[188,369,99,91],"offset":[0,0],"originalSize":[99,91],"rotated":1,"capInsets":[42,0,42,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"gameOverTitle","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[450,487,187,52],"offset":[0,0],"originalSize":[187,52],"capInsets":[0,0,0,0]}},{"__type__":"cc.SpriteFrame","content":{"name":"diamond","texture":"e6TVwdn1pOD6zuLODWyU7i","rect":[202,762,50,45],"offset":[0,0],"originalSize":[50,45],"capInsets":[0,0,0,0]}}]
+[{
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "dailyTitle",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [639, 528, 187, 52],
+		"offset": [0, 0],
+		"originalSize": [187, 52],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "score",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [202, 664, 53, 49],
+		"offset": [0, 0],
+		"originalSize": [53, 49],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "getZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [474, 695, 110, 48],
+		"offset": [0, 0],
+		"originalSize": [110, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "miniProgromBg",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [550, 807, 78, 78],
+		"offset": [0, 0],
+		"originalSize": [78, 78],
+		"capInsets": [30, 30, 30, 30]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "prevZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [136, 846, 133, 48],
+		"offset": [0, 0],
+		"originalSize": [133, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "check",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [2, 634, 31, 30],
+		"offset": [0, 0],
+		"originalSize": [31, 30],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "coin",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [776, 864, 44, 45],
+		"offset": [0, 0],
+		"originalSize": [44, 45],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "normalAwardZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [572, 993, 98, 23],
+		"offset": [0, 0],
+		"originalSize": [98, 23],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "moneyBg",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [391, 310, 61, 55],
+		"offset": [0, 0],
+		"originalSize": [61, 55],
+		"capInsets": [23, 30, 23, 37]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "iconBg",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [261, 651, 111, 111],
+		"offset": [0, 0],
+		"originalSize": [111, 111],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteAtlas",
+	"_name": "noCompress.plist",
+	"_spriteFrames": {
+		"btn1": {
+			"__uuid__": "faPpSJGR5HY7owI8OgeoGt"
+		},
+		"btn2": {
+			"__uuid__": "61pgcbpqFMN48DCSAaasQw"
+		},
+		"btn3": {
+			"__uuid__": "82WohzztlLc7MYCPS+Y4H6"
+		},
+		"frame": {
+			"__uuid__": "22OvPbOGBB14YnqXgl/t8g"
+		},
+		"heroGlowBg": {
+			"__uuid__": "6dO3Rm9nhE+Jp4gA7XGVhW"
+		},
+		"iconMask": {
+			"__uuid__": "3ckAxNRt1AOq/EgWr2dOdz"
+		},
+		"itemFrame": {
+			"__uuid__": "9aQ5b4Jn5BeYcXQzY1t7bf"
+		},
+		"planeTitleBg": {
+			"__uuid__": "70GMNXqKBAnYEg0Bqrz+Z2"
+		},
+		"propItemBg": {
+			"__uuid__": "f1HTOUnEZLlpguW300Zm2o"
+		}
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "cost10",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [142, 484, 109, 45],
+		"offset": [0, 0],
+		"originalSize": [109, 45],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "friendPlayZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [654, 419, 189, 53],
+		"offset": [0, 0],
+		"originalSize": [189, 53],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "inviteZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [424, 695, 110, 48],
+		"offset": [0, 0],
+		"originalSize": [110, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "secondOpen",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [854, 2, 166, 79],
+		"offset": [0, 0],
+		"originalSize": [166, 79],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "resultTitleZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [828, 564, 185, 50],
+		"offset": [0, 0],
+		"originalSize": [185, 50],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "frame",
+		"texture": "72HdEaeABGwYbX7zfAQ58H",
+		"rect": [152, 260, 104, 107],
+		"offset": [0, 0],
+		"originalSize": [104, 107],
+		"capInsets": [44, 0, 44, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "bubble",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [202, 715, 52, 45],
+		"offset": [0, 0],
+		"originalSize": [52, 45],
+		"capInsets": [29, 22, 17, 12]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "openBtnZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [450, 595, 178, 48],
+		"offset": [0, 0],
+		"originalSize": [178, 48],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "rank_name",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [391, 144, 64, 32],
+		"offset": [0, 0],
+		"originalSize": [64, 32],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "skipZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [167, 981, 92, 32],
+		"offset": [0, 0],
+		"originalSize": [92, 32],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "iconMask",
+		"texture": "72HdEaeABGwYbX7zfAQ58H",
+		"rect": [152, 369, 26, 26],
+		"offset": [0, 0],
+		"originalSize": [26, 26],
+		"capInsets": [9, 7, 9, 7]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "progressBg",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [378, 642, 55, 48],
+		"offset": [0, 0],
+		"originalSize": [55, 48],
+		"capInsets": [21, 21, 21, 21]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "rank_icon",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [391, 212, 64, 32],
+		"offset": [0, 0],
+		"originalSize": [64, 32],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "openTitleZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [825, 616, 184, 48],
+		"offset": [0, 0],
+		"originalSize": [184, 48],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "feedIcon",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [79, 595, 68, 88],
+		"offset": [0, 0],
+		"originalSize": [68, 88],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "rankSelfBg",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [378, 570, 70, 70],
+		"offset": [0, 0],
+		"originalSize": [70, 70],
+		"capInsets": [27, 24, 27, 24]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "lunplayIcon",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [676, 684, 100, 103],
+		"offset": [0, 0],
+		"originalSize": [100, 103],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "useZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [186, 919, 110, 48],
+		"offset": [0, 0],
+		"originalSize": [110, 48],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "rightDown",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [2, 2, 454, 106],
+		"offset": [0, 0],
+		"originalSize": [454, 106],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "useR",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [186, 846, 71, 73],
+		"offset": [0, 0],
+		"originalSize": [71, 73],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "solo",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [458, 2, 325, 394],
+		"offset": [0, 0],
+		"originalSize": [325, 394],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "SkinTitleZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [654, 474, 187, 52],
+		"offset": [0, 0],
+		"originalSize": [187, 52],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "addFriend",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [391, 246, 62, 63],
+		"offset": [0, 0],
+		"originalSize": [62, 63],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "btn2",
+		"texture": "72HdEaeABGwYbX7zfAQ58H",
+		"rect": [95, 410, 99, 91],
+		"offset": [0, 0],
+		"originalSize": [99, 91],
+		"rotated": 1,
+		"capInsets": [40, 0, 40, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "confident",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [854, 83, 164, 79],
+		"offset": [0, 0],
+		"originalSize": [164, 79],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "x",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [42, 595, 35, 36],
+		"offset": [0, 0],
+		"originalSize": [35, 36],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "invateIcon",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [572, 887, 100, 104],
+		"offset": [0, 0],
+		"originalSize": [100, 104],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "replayZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [102, 666, 178, 48],
+		"offset": [0, 0],
+		"originalSize": [178, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "back",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [391, 367, 57, 53],
+		"offset": [0, 0],
+		"originalSize": [57, 53],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "quickSkinZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [189, 484, 178, 48],
+		"offset": [0, 0],
+		"originalSize": [178, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "heroGlowBg",
+		"texture": "72HdEaeABGwYbX7zfAQ58H",
+		"rect": [2, 2, 256, 256],
+		"offset": [0, 0],
+		"originalSize": [256, 256],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "planeTitleBg",
+		"texture": "72HdEaeABGwYbX7zfAQ58H",
+		"rect": [258, 260, 95, 62],
+		"offset": [0, 0],
+		"originalSize": [95, 62],
+		"rotated": 1,
+		"capInsets": [36, 0, 36, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "relifeZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [152, 666, 178, 48],
+		"offset": [0, 0],
+		"originalSize": [178, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "getAwardTitleZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [638, 582, 185, 50],
+		"offset": [0, 0],
+		"originalSize": [185, 50],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "pointer",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [2, 484, 109, 138],
+		"offset": [0, 0],
+		"originalSize": [109, 138],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "inviteCoin",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [454, 329, 328, 45],
+		"offset": [0, 0],
+		"originalSize": [328, 45],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "commonBg",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [674, 879, 100, 100],
+		"offset": [0, 0],
+		"originalSize": [100, 100],
+		"capInsets": [23, 23, 23, 23]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "hadR",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [706, 789, 71, 73],
+		"offset": [0, 0],
+		"originalSize": [71, 73],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "btn3",
+		"texture": "72HdEaeABGwYbX7zfAQ58H",
+		"rect": [2, 410, 99, 91],
+		"offset": [0, 0],
+		"originalSize": [99, 91],
+		"rotated": 1,
+		"capInsets": [40, 0, 40, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "progress",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [202, 809, 26, 22],
+		"offset": [0, 0],
+		"originalSize": [26, 22],
+		"rotated": 1,
+		"capInsets": [12, 10, 10, 9]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "rank_index",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [391, 178, 64, 32],
+		"offset": [0, 0],
+		"originalSize": [64, 32],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "moreGame",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [854, 315, 147, 160],
+		"offset": [0, 0],
+		"originalSize": [147, 160],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "rank_score",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [391, 110, 64, 32],
+		"offset": [0, 0],
+		"originalSize": [64, 32],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "itemFrame",
+		"texture": "72HdEaeABGwYbX7zfAQ58H",
+		"rect": [2, 260, 148, 148],
+		"offset": [0, 0],
+		"originalSize": [148, 148],
+		"capInsets": [60, 60, 60, 60]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "freeZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [522, 905, 110, 48],
+		"offset": [0, 0],
+		"originalSize": [110, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "gameTuijian",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [355, 876, 95, 27],
+		"offset": [0, 0],
+		"originalSize": [95, 27],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "tv",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [2, 595, 37, 38],
+		"offset": [0, 0],
+		"originalSize": [37, 38],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "shareZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [298, 910, 110, 48],
+		"offset": [0, 0],
+		"originalSize": [110, 48],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteAtlas",
+	"_name": "ui.plist",
+	"_spriteFrames": {
+		"SkinTitleZi": {
+			"__uuid__": "61FHSD239EI5svQ3CQ4SNx"
+		},
+		"add": {
+			"__uuid__": "f6eC57nElDN4eJNkIOC8FL"
+		},
+		"addFriend": {
+			"__uuid__": "61o7IcsWZOfJqTlYz9Kf93"
+		},
+		"back": {
+			"__uuid__": "6caCzY2XZM1JoLVCZ4fDDX"
+		},
+		"backHomeZi": {
+			"__uuid__": "d8AdIfh/9DlZ8Rma0KxlKx"
+		},
+		"bai": {
+			"__uuid__": "b4XsCEoWdL64hRe/+yqXPK"
+		},
+		"bubble": {
+			"__uuid__": "24uxitcQZDv537P6r6AuXJ"
+		},
+		"check": {
+			"__uuid__": "14l8HsdWFOt6LtFGigzQAU"
+		},
+		"circle": {
+			"__uuid__": "bbOAezyWFJ4pgr5Xz4TEpC"
+		},
+		"coin": {
+			"__uuid__": "18px6d8NtFfbGfwhG2bQDD"
+		},
+		"commonBg": {
+			"__uuid__": "75rMF5d5hK3qm/lBVqHntw"
+		},
+		"confident": {
+			"__uuid__": "65M4GZd7dJbY7Xv1tiHkWl"
+		},
+		"continueZi": {
+			"__uuid__": "c34FCm+M1BaoIiyD/NR12k"
+		},
+		"cost10": {
+			"__uuid__": "1di5/0WhNBIL08HKF0w9fd"
+		},
+		"dailyTitle": {
+			"__uuid__": "05YgpqblpLCbNrZhKKx8My"
+		},
+		"diamond": {
+			"__uuid__": "ffjtPNCTVENbU/Bnso0pOh"
+		},
+		"doubleGetAwardZi": {
+			"__uuid__": "dceJSwrQZHs4jaY9Bg8ACM"
+		},
+		"doubleZi": {
+			"__uuid__": "b8BPfHdkNKLYObGoOr6/y6"
+		},
+		"feedIcon": {
+			"__uuid__": "4fRD+CbxlJFKMAbk/Pibyp"
+		},
+		"forever": {
+			"__uuid__": "b9vc0Bem5ESbNNdIv7XpGj"
+		},
+		"foreverZi": {
+			"__uuid__": "ddxi4DA4VN0bIluJjJw7a/"
+		},
+		"forumIcon": {
+			"__uuid__": "b1089ZML9MgoqCYi/91J/i"
+		},
+		"freeZi": {
+			"__uuid__": "9aubkeozRHKIAnrgemvMe2"
+		},
+		"friendPlayZi": {
+			"__uuid__": "1ewj0ao4VJwa1pFLL/6JJK"
+		},
+		"gameOverTitle": {
+			"__uuid__": "fbc3gi8gVJq4xJ/8Q7K5ub"
+		},
+		"gameTuijian": {
+			"__uuid__": "9buZ4r1B9EIZWoQsUVyHDx"
+		},
+		"getAwardTitleZi": {
+			"__uuid__": "72/j04Pu9Nn5vFTqy893mK"
+		},
+		"getAwardZi": {
+			"__uuid__": "dfSGSchydMYptwBDovEVT0"
+		},
+		"getZi": {
+			"__uuid__": "0ca2NE4olA370wgoqWo6T/"
+		},
+		"gift": {
+			"__uuid__": "f51iWdv9VDJZN9r+E93G6N"
+		},
+		"giveUpZi": {
+			"__uuid__": "ectdcg4T1IgZqjGKkNTagy"
+		},
+		"hadR": {
+			"__uuid__": "7cgp1S/BlDe5QKteiHecx0"
+		},
+		"headFrame": {
+			"__uuid__": "a57XNTLGlL1oY2x3+iBe8x"
+		},
+		"iconBg": {
+			"__uuid__": "1bXjN51L1Pha1PVOmmrAoV"
+		},
+		"invateIcon": {
+			"__uuid__": "69EGzTLFFGMaq1btw6gQ0y"
+		},
+		"inviteCoin": {
+			"__uuid__": "75npBDxw5CSJm1pkP4uTGL"
+		},
+		"inviteTitle": {
+			"__uuid__": "d3+AWbevlJxIVcsOO0cOr1"
+		},
+		"inviteZi": {
+			"__uuid__": "20AVAgdZpFJbJxFsanzLEG"
+		},
+		"lunpanLogo": {
+			"__uuid__": "b1EeW9thhMmYpt0N79Re8y"
+		},
+		"lunpanTitle": {
+			"__uuid__": "f8BkxrNYNAjrT6MloWgRFS"
+		},
+		"lunplayIcon": {
+			"__uuid__": "5295FnXsFJ0YTyoBNDljoz"
+		},
+		"miniProgromBg": {
+			"__uuid__": "10WCWpZ9ZOCJUILj3cKQub"
+		},
+		"moneyBg": {
+			"__uuid__": "1asB2lLTdO0p1wwkRMn5/c"
+		},
+		"moreGame": {
+			"__uuid__": "8a4gApB/lBva7qBtEfcJPb"
+		},
+		"nextZi": {
+			"__uuid__": "baBUa1fdZJ8IVH1MOZS0f1"
+		},
+		"normalAwardZi": {
+			"__uuid__": "1aNaEGTJlLMpB8bId+xXte"
+		},
+		"openBtnZi": {
+			"__uuid__": "2as9yulMNGSaW+7QA4kykI"
+		},
+		"openTitleZi": {
+			"__uuid__": "4aM9P1VbxC2b/nE2QOdhz9"
+		},
+		"pointer": {
+			"__uuid__": "74PUTUJz1JCLQ4CW6HUqRF"
+		},
+		"prevZi": {
+			"__uuid__": "12yrr65A5FJbyvHwfDBPtq"
+		},
+		"progress": {
+			"__uuid__": "86Tevvi+VOe6ZUvx9VDuZm"
+		},
+		"progressBg": {
+			"__uuid__": "3cpaDDXbxFr6eTWl1SyHik"
+		},
+		"quickSkinZi": {
+			"__uuid__": "6dCRVK1jdAvJM91YhPRd+H"
+		},
+		"rankIcon": {
+			"__uuid__": "efgTaWdYBP/IvS/lsbeJs4"
+		},
+		"rankSelfBg": {
+			"__uuid__": "52kyfeUyRBXKZQ4u8JcsI3"
+		},
+		"rankTitle": {
+			"__uuid__": "f46K9ZCr5FkYfeYqWETraR"
+		},
+		"rank_icon": {
+			"__uuid__": "467IxXhvZJx7zx6rW5Iylx"
+		},
+		"rank_index": {
+			"__uuid__": "87sC4JglZLja81kpjIob6O"
+		},
+		"rank_name": {
+			"__uuid__": "36fAox0pRBnImA1B3c4Lwy"
+		},
+		"rank_score": {
+			"__uuid__": "955OlBY1xGmoZSVdoAAxCw"
+		},
+		"red": {
+			"__uuid__": "d4xSb/hARMTp5KUyd8fqWo"
+		},
+		"relifeZi": {
+			"__uuid__": "72iIa2uEZLybY/L9vQAWpq"
+		},
+		"replayZi": {
+			"__uuid__": "69PzuRLYdBFLQor6TdR4uB"
+		},
+		"resultTitleZi": {
+			"__uuid__": "208J60Ow9B2KAeDi7S+DJj"
+		},
+		"rightDown": {
+			"__uuid__": "5dM56vHBlNup99/z41h0j0"
+		},
+		"score": {
+			"__uuid__": "07H4+5mTdBhIXJg9zEyKqw"
+		},
+		"secondOpen": {
+			"__uuid__": "20TKFVX75I8oEfPGP1WCUX"
+		},
+		"selectBg": {
+			"__uuid__": "b8H3USxgxP8I782VE/nG5d"
+		},
+		"sets": {
+			"__uuid__": "e8t9zbjwVK7Js3OTlRFOIz"
+		},
+		"setsTitle": {
+			"__uuid__": "daD+9LN6VPLYJieuVLjOFH"
+		},
+		"shareZi": {
+			"__uuid__": "9f3yXbuN5A/qat+hu15YJg"
+		},
+		"signIcon": {
+			"__uuid__": "bfPXW9VFtIk45ThC1oWxT2"
+		},
+		"sign_1": {
+			"__uuid__": "e7rN47cxJI4ayUNCKXsewu"
+		},
+		"skinBg": {
+			"__uuid__": "dcF4JGJRJFSpfFNNAHZBUg"
+		},
+		"skipZi": {
+			"__uuid__": "3bO4jI89VOQ7Zej7Oz8eKc"
+		},
+		"solo": {
+			"__uuid__": "5esOGD3M5NubitxL9gFr7l"
+		},
+		"star_block": {
+			"__uuid__": "ebwFtQDd9BJoSDLzjIFUfG"
+		},
+		"star_glow": {
+			"__uuid__": "ba3Jz2EqFP+oswreIvkgaK"
+		},
+		"startBtnZi": {
+			"__uuid__": "aeIlxw5EBMQrtsFyBjwiC8"
+		},
+		"startGoZi": {
+			"__uuid__": "e4m3jUmxZGV6WBFdj9zyow"
+		},
+		"strongTips": {
+			"__uuid__": "dbRWfUIx5HAqaZKR5Tkv6J"
+		},
+		"strongZi": {
+			"__uuid__": "edgsb/0TNJ3pfRulo/1zpy"
+		},
+		"testZi": {
+			"__uuid__": "eaz40MvLJCw7FHsxZwlK2v"
+		},
+		"toggleBg": {
+			"__uuid__": "b2+sRx8hdBRZFGaKWLq4S1"
+		},
+		"tv": {
+			"__uuid__": "9ehi042VZLr5HEoUGNjRet"
+		},
+		"useR": {
+			"__uuid__": "5dNNkUO3hAkbNnl6fPNcic"
+		},
+		"useZi": {
+			"__uuid__": "57n0dRuIhOKqEzdZ/w5Dv/"
+		},
+		"usedAwardZi": {
+			"__uuid__": "c1NPp9hfhHBaeiv2B95vVf"
+		},
+		"usedZi": {
+			"__uuid__": "f1LcNAqW5AFJO6V7zFbO+2"
+		},
+		"videoZi": {
+			"__uuid__": "f5Z9soTApCJ6d4Mqm1NIoX"
+		},
+		"x": {
+			"__uuid__": "68+yNntrBMV6fMvYbXZp47"
+		}
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "headFrame",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [410, 905, 110, 110],
+		"offset": [0, 0],
+		"originalSize": [110, 110],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "startBtnZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [52, 666, 178, 48],
+		"offset": [0, 0],
+		"originalSize": [178, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "lunpanLogo",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [630, 803, 74, 74],
+		"offset": [0, 0],
+		"originalSize": [74, 74],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "forumIcon",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [380, 480, 68, 88],
+		"offset": [0, 0],
+		"originalSize": [68, 88],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "toggleBg",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [776, 958, 44, 44],
+		"offset": [0, 0],
+		"originalSize": [44, 44],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "bai",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [261, 534, 115, 115],
+		"offset": [0, 0],
+		"originalSize": [115, 115],
+		"capInsets": [44, 44, 44, 44]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "doubleZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [845, 464, 177, 48],
+		"offset": [0, 0],
+		"originalSize": [177, 48],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "selectBg",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [261, 764, 110, 111],
+		"offset": [0, 0],
+		"originalSize": [110, 111],
+		"rotated": 1,
+		"capInsets": [43, 43, 43, 49]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "forever",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [2, 110, 318, 387],
+		"offset": [0, 0],
+		"originalSize": [318, 387],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "nextZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [239, 484, 133, 48],
+		"offset": [0, 0],
+		"originalSize": [133, 48],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "star_glow",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [779, 782, 45, 42],
+		"offset": [0, 0],
+		"originalSize": [45, 42],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "circle",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [778, 684, 48, 48],
+		"offset": [0, 0],
+		"originalSize": [48, 48],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "signIcon",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [784, 329, 68, 88],
+		"offset": [0, 0],
+		"originalSize": [68, 88],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "usedAwardZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [86, 846, 133, 48],
+		"offset": [0, 0],
+		"originalSize": [133, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "continueZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [654, 376, 124, 31],
+		"offset": [0, 0],
+		"originalSize": [124, 31],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "inviteTitle",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [191, 430, 187, 52],
+		"offset": [0, 0],
+		"originalSize": [187, 52],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "red",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [35, 634, 30, 30],
+		"offset": [0, 0],
+		"originalSize": [30, 30],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "backHomeZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [374, 692, 178, 48],
+		"offset": [0, 0],
+		"originalSize": [178, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "setsTitle",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [36, 981, 129, 32],
+		"offset": [0, 0],
+		"originalSize": [129, 32],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "strongTips",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [450, 376, 202, 109],
+		"offset": [0, 0],
+		"originalSize": [202, 109],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "skinBg",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [854, 164, 161, 149],
+		"offset": [0, 0],
+		"originalSize": [161, 149],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "doubleGetAwardZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [435, 645, 178, 48],
+		"offset": [0, 0],
+		"originalSize": [178, 48],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "foreverZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [630, 634, 178, 48],
+		"offset": [0, 0],
+		"originalSize": [178, 48],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "getAwardZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [524, 695, 110, 48],
+		"offset": [0, 0],
+		"originalSize": [110, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "startGoZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [2, 846, 158, 32],
+		"offset": [0, 0],
+		"originalSize": [158, 32],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "sign_1",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [1016, 315, 6, 18],
+		"offset": [0, 0],
+		"originalSize": [6, 18],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "sets",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [391, 422, 56, 56],
+		"offset": [0, 0],
+		"originalSize": [56, 56],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "testZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [261, 969, 110, 48],
+		"offset": [0, 0],
+		"originalSize": [110, 48],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "star_block",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [776, 911, 45, 42],
+		"offset": [0, 0],
+		"originalSize": [45, 42],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "giveUpZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [261, 876, 92, 32],
+		"offset": [0, 0],
+		"originalSize": [92, 32],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "strongZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [2, 666, 178, 48],
+		"offset": [0, 0],
+		"originalSize": [178, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "rankIcon",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [574, 695, 100, 106],
+		"offset": [0, 0],
+		"originalSize": [100, 106],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "propItemBg",
+		"texture": "72HdEaeABGwYbX7zfAQ58H",
+		"rect": [281, 357, 69, 72],
+		"offset": [0, 0],
+		"originalSize": [69, 72],
+		"capInsets": [31, 0, 31, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "usedZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [36, 846, 133, 48],
+		"offset": [0, 0],
+		"originalSize": [133, 48],
+		"rotated": 1,
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "rankTitle",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [2, 430, 187, 52],
+		"offset": [0, 0],
+		"originalSize": [187, 52],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "videoZi",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [843, 514, 178, 48],
+		"offset": [0, 0],
+		"originalSize": [178, 48],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "gift",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [452, 807, 96, 96],
+		"offset": [0, 0],
+		"originalSize": [96, 96],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "add",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [778, 734, 46, 46],
+		"offset": [0, 0],
+		"originalSize": [46, 46],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "lunpanTitle",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [450, 541, 186, 52],
+		"offset": [0, 0],
+		"originalSize": [186, 52],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "btn1",
+		"texture": "72HdEaeABGwYbX7zfAQ58H",
+		"rect": [188, 369, 99, 91],
+		"offset": [0, 0],
+		"originalSize": [99, 91],
+		"rotated": 1,
+		"capInsets": [42, 0, 42, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "gameOverTitle",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [450, 487, 187, 52],
+		"offset": [0, 0],
+		"originalSize": [187, 52],
+		"capInsets": [0, 0, 0, 0]
+	}
+}, {
+	"__type__": "cc.SpriteFrame",
+	"content": {
+		"name": "diamond",
+		"texture": "e6TVwdn1pOD6zuLODWyU7i",
+		"rect": [202, 762, 50, 45],
+		"offset": [0, 0],
+		"originalSize": [50, 45],
+		"capInsets": [0, 0, 0, 0]
+	}
+}]
