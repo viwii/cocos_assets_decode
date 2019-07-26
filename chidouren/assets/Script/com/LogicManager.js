@@ -16,6 +16,7 @@ f = require("./logic/AssetLogic"),
 v = require("./logic/InviteLogic"), 
 y = require("./logic/AbfunLogic"), 
 w = require("./logic/WeiPaiLogic"), 
+
 lm = function() {};
 
 lm.prototype.initialize = function() {
