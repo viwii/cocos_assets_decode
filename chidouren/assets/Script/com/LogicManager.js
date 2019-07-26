@@ -16,15 +16,16 @@ f = require("./logic/AssetLogic"),
 v = require("./logic/InviteLogic"), 
 y = require("./logic/AbfunLogic"), 
 w = require("./logic/WeiPaiLogic"), 
-LogicManager = function() {};
-LogicManager.prototype.initialize = function() {
+lm = function() {};
+
+lm.prototype.initialize = function() {
     this.config = new s.ConfigLogic(), this.money = new o.MoneyLogic(), this.net = new n.NetLogic(), 
     this.open = new a.OpenLogic(), this.tips = new r.TipsLogic(), this.panel = new l.PanelLogic(), 
     this.sound = new c.SoundLogic(), this.storage = new h.StorageLogic(), this.lottery = new d.LotteryLogic(), 
     this.ald = new u.AldLogic(), this.game = new p.GameLogic(), this.info = new g.InfoLogic(), 
     this.goods = new m.GoodsLogic(), this.asset = new f.AssetLogic(), this.invite = new v.InviteLogic(), 
     this.abFun = new y.AbFunLogic(), this.weiPai = new w.WeiPaiLogic();
-}, LogicManager.prototype.clear = function() {}; 
+}, lm.prototype.clear = function() {}; 
 module.exports = {
-    LogicManager: LogicManager
-} 
+    LogicManager: lm
+}

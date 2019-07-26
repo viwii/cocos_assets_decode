@@ -14,7 +14,7 @@ module.exports = {
 }, n.isArray = function(t) {
     return n.isValidValue(t) && Array.isArray(t);
 }, n.isObject = function(t) {
-    return n.isValidValue(t) && "object" === (void 0 === t ? "undefined" : o(t)) && !Array.isArray(t);
+    return n.isValidValue(t) && "object" === (void 0 === t ? "undefined" : typeof(t)) && !Array.isArray(t);
 }, n.getJson = function(t) {
     if (!n.isString(t)) return null;
     try {
