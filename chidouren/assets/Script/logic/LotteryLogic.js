@@ -1,41 +1,45 @@
-// Learn cc.Class:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] https://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 
-cc.Class({
-    extends: cc.Component,
+var s = function() {
+    this.DAY_MASK_ID = "mask_lottey_dayCount";
+};
+s.prototype.init = function() {
+    this._setRed();
+}, s.prototype.getLastTimes = function() {
+    var t = ss.mask.get(this.DAY_MASK_ID);
+    return Math.max(0, ss.config.lottery.max - t + 1);
+}, s.prototype.getResult = function(t) {
+    for (var e, i = (t + 30) % 360, s = null, o = 0; o < ss.config.lottery.pinList.length; o++) if (ss.config.lottery.pinList[o].min_rotaion <= i && i <= ss.config.lottery.pinList[o].max_rotaion) {
+        e = ss.config.lottery.pinList[o].itemId, s = ss.logic.config.getSheetData(ss.enum.sheet.item, e);
+        break;
+    }
+    return s;
+}, s.prototype.createLotteryRotation = function() {
+    for (var t = ss.config.lottery.itemList, e = t[0].per, i = t.slice(1, t.length), s = ss.randomUtils.getPirze(e, i).id, o = 0; o < ss.config.lottery.pinList.length; o++) if (ss.config.lottery.pinList[o].id == s) return ss.config.lottery.pinList[o].min_rotaion;
+    return null;
+}, s.prototype.processLottery = function(t) {
+    var e = "", i = t.ext;
+    switch (t.type) {
+      case ss.enum.itemType.hugeCoin:
+        e = "金币 +" + i, ss.logic.tips.hint(e), ss.logic.money.simpleAdd(ss.enum.money.coin, i), 
+        ss.logic.panel.showCoin(e, i);
+        break;
 
-    properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
-    },
+      case ss.enum.itemType.hugeDiamond:
+        e = "钻石 +" + i, ss.logic.tips.hint(e), ss.logic.money.simpleAdd(ss.enum.money.diamond, i), 
+        ss.logic.panel.showDiamond(e, i);
+        break;
 
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {},
-
-    start () {
-
-    },
-
-    // update (dt) {},
-});
+      default:
+        console.warn("undefind processLottery:", t);
+    }
+}, s.prototype.saveLotteryTimes = function() {
+    ss.mask.add(this.DAY_MASK_ID), this._setRed();
+}, s.prototype._setRed = function() {
+    var t = this.getLastTimes();
+    cc.systemEvent.emit(ss.event.client.setRed, {
+        type: ss.enum.redType.lottery,
+        num: t
+    });
+}, module.exports = {
+    LotteryLogic: s
+} 

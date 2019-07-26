@@ -1,41 +1,48 @@
-// Learn cc.Class:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] https://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 
-cc.Class({
-    extends: cc.Component,
+var s = function() {};
+s.prototype._isHasFull = function(t, e) {
+    switch (t) {
+      case ss.enum.money.coin:
+        return e <= ss.data.getCoin();
 
-    properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
-    },
-
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {},
-
-    start () {
-
-    },
-
-    // update (dt) {},
-});
+      case ss.enum.money.diamond:
+        return e <= ss.data.getDiamond();
+    }
+    return !1;
+}, s.prototype.isHasFullCoin = function(t) {
+    return this._isHasFull(ss.enum.money.coin, t);
+}, s.prototype.isHasFullDiamond = function(t) {
+    return this._isHasFull(ss.enum.money.diamond, t);
+}, s.prototype.cost = function(t, e) {
+    var i = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : null, s = !(arguments.length > 3 && void 0 !== arguments[3]) || arguments[3], o = {};
+    o[ss.enum.money.coin] = this.isHasFullCoin.bind(this), o[ss.enum.money.diamond] = this.isHasFullDiamond.bind(this);
+    var n = {
+        code: 0,
+        cost: 0
+    }, a = o[t];
+    a && a(e) ? (n.code = ss.enum.code.success, n.cost = e, ss.logic.net.reqAddMoney({
+        moneyType: t,
+        money: -e,
+        isStorage: !1,
+        isEffect: !1,
+        isNow: !0,
+        isIcon: !1
+    })) : (n.code = ss.enum.code.failed, s && this._showLessCost(t)), i && i(n);
+}, s.prototype._showLessCost = function(t) {
+    var e = {};
+    e[ss.enum.money.coin] = "金币不足！", e[ss.enum.money.diamond] = "钻石不足！", ss.logic.tips.hint(e[t]);
+}, s.prototype.add = function(t) {
+    t && t.money && ss.logic.net.reqAddMoney(t);
+}, s.prototype.simpleAdd = function(t, e) {
+    var i = {
+        moneyType: t,
+        money: e,
+        isStorage: !1,
+        isEffect: !1,
+        isNow: !0,
+        isIcon: !1
+    };
+    this.add(i);
+}, module.exports = {
+    MoneyLogic: s
+}

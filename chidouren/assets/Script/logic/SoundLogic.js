@@ -1,41 +1,48 @@
-// Learn cc.Class:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] https://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 
-cc.Class({
-    extends: cc.Component,
-
-    properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
-    },
-
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {},
-
-    start () {
-
-    },
-
-    // update (dt) {},
-});
+var s = function() {
+    this.eatTimeStamp = 0, this.bigEatTimeStamp = 0, this.getGainStamp = 0, this.getCoinStamp = 0, 
+    this.addSpeedTimeStamp = 0, this.bgId = null, cc.systemEvent.on(ss.event.system.AdVideo, this.onVideoRespond.bind(this));
+};
+s.prototype.open = function() {
+    ss.sound.setEnabled(!0);
+}, s.prototype.close = function() {
+    ss.sound.setEnabled(!1);
+}, s.prototype.onVideoRespond = function(t) {
+    var e = t;
+    e.method == ss.enum.advertising.method.show ? e.code == ss.enum.advertising.code.success ? ss.sound.setLockabled(!0) : ss.sound.setLockabled(!1) : e.method == ss.enum.advertising.method.onClose && ss.sound.setLockabled(!1);
+}, s.prototype.setMute = function(t) {
+    var e = t ? 1 : 0;
+    ss.sound.setBgmVolume(e), ss.sound.setSoundVolume(e);
+}, s.prototype.setBgEnabled = function(t) {
+    ss.sound.setBgEnabled(t);
+}, s.prototype.setSoundEnabled = function(t) {
+    ss.sound.setSoundEnabled(t);
+}, s.prototype.playBgMusic = function() {
+    this.bgId != ss.enum.audio.bgMusic && (this.bgId = ss.enum.audio.bgMusic, ss.sound.playMusic(ss.enum.audio.bgMusic));
+}, s.prototype.stopBgMusic = function() {
+    this.bgId = null, ss.sound.stopMusic();
+}, s.prototype.btnClick = function() {
+    ss.sound.playSound(ss.enum.audio.click);
+}, s.prototype.panelClose = function() {
+    ss.sound.playSound(ss.enum.audio.close);
+}, s.prototype.eat = function() {
+    var t = Date.now();
+    t - this.eatTimeStamp < 200 || (this.eatTimeStamp = t, ss.sound.playSound(ss.enum.audio.eat));
+}, s.prototype.bigEat = function() {
+    var t = Date.now();
+    t - this.bigEatTimeStamp < 300 || (this.bigEatTimeStamp = t, ss.sound.playSound(ss.enum.audio.bigEat));
+}, s.prototype.died = function() {
+    ss.sound.playSound(ss.enum.audio.died);
+}, s.prototype.addSpeed = function() {
+    var t = Date.now();
+    t - this.addSpeedTimeStamp < 500 || (this.addSpeedTimeStamp = t, ss.sound.playSound(ss.enum.audio.addSpeed));
+}, s.prototype.result = function() {
+    ss.sound.playSound(ss.enum.audio.result);
+}, s.prototype.playEffect = function(t) {
+    if (ss.logic.open.isAudited()) {
+        var e = ss.enum.audio[t];
+        e && ss.sound.playSound(e);
+    }
+}, module.exports = {
+    SoundLogic: s
+} 

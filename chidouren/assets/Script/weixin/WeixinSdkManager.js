@@ -5,30 +5,30 @@ var /*s = t("./WeiXinSdk"), o = t("./OtherLogin"), n = t("./AldSdk"),*/ a = func
 	this.isOtherLogin = ss.proxy.game.isOther, this.isAldDataEyes = ss.proxy.game.isAldDataEyes;
 };
 a.prototype.initialize = function() {
-	this.isWeiXin && (this.weixinSdk = new s.WeiXinSdk(this.onShow.bind(this), this.onHide.bind(this))), 
-	this.isOtherLogin && (this.otherLogin = new o.OtherLogin(this)), this.isAldDataEyes && (this.aldSdk = new n.AldSdk());
+	// this.isWeiXin && (this.weixinSdk = new s.WeiXinSdk(this.onShow.bind(this), this.onHide.bind(this))), 
+	// this.isOtherLogin && (this.otherLogin = new o.OtherLogin(this)), this.isAldDataEyes && (this.aldSdk = new n.AldSdk());
 }, a.prototype.preview = function(t) {
-	var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;
-	this.isWeiXin && !ss.proxy.noCheck ? (this.checkUpdate(), this.weixinSdk.initialize([ {
-		type: s.WeiXinSdk.AUTHORIZE_TYPE.USER_INFO,
-		isMust: !0
-	} ], function() {
-		console.log("weixinSdk initialize success"), t && t();
-	}, function() {
-		e && e();
-	})) : t && t();
+	// var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;
+	// this.isWeiXin && !ss.proxy.noCheck ? (this.checkUpdate(), this.weixinSdk.initialize([ {
+	// 	type: s.WeiXinSdk.AUTHORIZE_TYPE.USER_INFO,
+	// 	isMust: !0
+	// } ], function() {
+	// 	console.log("weixinSdk initialize success"), t && t();
+	// }, function() {
+	// 	e && e();
+	// })) : t && t();
 }, a.prototype.login = function(t) {
-	var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;
-	if (arguments.length > 2 && void 0 !== arguments[2] && arguments[2], this.isWeiXin && !ss.proxy.noCheck) {
-		var i = this;
-		i.showLoading("正在登陆", !1), i.isOtherLogin ? i.otherLogin.ready(function(o) {
-			console.log("otherLogin.ready:", o), o && o.code == s.WeiXinSdk.RESULT_CODE.OK ? i.getUserInfo(t, e, o.js_code) : i.weixinSdk.login(function(s) {
-				s && s.data && i.getUserInfo(t, e, s.data.code);
-			});
-		}) : i.weixinSdk.login(function(s) {
-			s && s.data && i.getUserInfo(t, e, s.data.code);
-		});
-	} else t && t(null);
+	// var e = arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null;
+	// if (arguments.length > 2 && void 0 !== arguments[2] && arguments[2], this.isWeiXin && !ss.proxy.noCheck) {
+	// 	var i = this;
+	// 	i.showLoading("正在登陆", !1), i.isOtherLogin ? i.otherLogin.ready(function(o) {
+	// 		console.log("otherLogin.ready:", o), o && o.code == s.WeiXinSdk.RESULT_CODE.OK ? i.getUserInfo(t, e, o.js_code) : i.weixinSdk.login(function(s) {
+	// 			s && s.data && i.getUserInfo(t, e, s.data.code);
+	// 		});
+	// 	}) : i.weixinSdk.login(function(s) {
+	// 		s && s.data && i.getUserInfo(t, e, s.data.code);
+	// 	});
+	// } else t && t(null);
 }, a.prototype.onShow = function(t) {
 	console.log("onShow:", t, " query:", JSON.stringify(t.query)), this.checkUpdate();
 }, a.prototype.checkUpdate = function() {

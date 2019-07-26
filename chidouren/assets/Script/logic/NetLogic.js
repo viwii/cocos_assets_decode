@@ -1,41 +1,33 @@
-// Learn cc.Class:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/class.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/reference/attributes.html
-//  - [English] http://docs.cocos2d-x.org/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - [Chinese] https://docs.cocos.com/creator/manual/zh/scripting/life-cycle-callbacks.html
-//  - [English] https://www.cocos2d-x.org/docs/creator/manual/en/scripting/life-cycle-callbacks.html
 
-cc.Class({
-    extends: cc.Component,
-
-    properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
-    },
-
-    // LIFE-CYCLE CALLBACKS:
-
-    // onLoad () {},
-
-    start () {
-
-    },
-
-    // update (dt) {},
-});
+var s = function() {};
+s.prototype.reqGamePlay = function(t) {
+    var e = {};
+    e.type = ss.event.protocol.ReqGamePlay, e.data = t, ss.server.execute(e);
+}, s.prototype.reqGameOver = function(t) {
+    var e = {};
+    e.type = ss.event.protocol.ReqGameOver, e.data = t, ss.server.execute(e);
+}, s.prototype.reqAddMoney = function(t) {
+    var e = {};
+    e.type = ss.event.protocol.ReqAddMoney, e.data = t, ss.server.execute(e);
+}, s.prototype.reqUpdateSign = function(t) {
+    var e = {};
+    e.type = ss.event.protocol.ReqUpdateSign, e.data = t, ss.server.execute(e);
+}, s.prototype.reqSetBuff = function(t) {
+    var e = {};
+    e.type = ss.event.protocol.ReqSetBuff, e.data = t, ss.server.execute(e);
+}, s.prototype.reqSetTask = function(t) {
+    var e = {};
+    e.type = ss.event.protocol.ReqSetTask, e.data = t, ss.server.execute(e);
+}, s.prototype.reqSetMisc = function(t) {
+    var e = {};
+    e.type = ss.event.protocol.ReqSetMisc, e.data = t, ss.server.execute(e);
+}, s.prototype.reqSetGoods = function(t) {
+    var e = {};
+    e.type = ss.event.protocol.ReqSetGoods, e.data = t, ss.server.execute(e);
+}, s.prototype.reqAddScore = function(t) {
+    var e = {};
+    e.type = ss.event.protocol.ReqAddScore, e.data = t, ss.server.execute(e);
+}, 
+module.exports = {
+    NetLogic: s
+}
