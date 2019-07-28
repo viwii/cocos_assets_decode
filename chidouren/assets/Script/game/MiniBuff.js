@@ -7,19 +7,19 @@
         shitNode: cc.Node
     },
     onLoad: function() {
-        // this.life = this.lifeNode.getComponent("BuffItem"); 
-        // this.chocolate = this.chocolateNode.getComponent("BuffItem"); 
-        // this.sweet = this.sweetNode.getComponent("BuffItem"); 
-        // this.shit = this.shitNode.getComponent("BuffItem"); 
-        // this._methods = {}; 
-        // this._methods.add = this._onBuffAdd.bind(this); 
-        // this._methods.update = this._onBuffUpdate.bind(this); 
-        // this._methods.remove = this._onBuffRemove.bind(this); 
-        // this._comps = {}; 
-        // this._comps[ss.enum.gameEgg.chocolate] = this.chocolate; 
-        // this._comps[ss.enum.gameEgg.sweet] = this.sweet;
-        // this._comps[ss.enum.gameEgg.shit] = this.shit; 
-        // this._comps[ss.enum.gameEgg.love] = this.life;
+        this.life = this.lifeNode.getComponent("BuffItem"); 
+        this.chocolate = this.chocolateNode.getComponent("BuffItem"); 
+        this.sweet = this.sweetNode.getComponent("BuffItem"); 
+        this.shit = this.shitNode.getComponent("BuffItem"); 
+        this._methods = {}; 
+        this._methods.add = this._onBuffAdd.bind(this); 
+        this._methods.update = this._onBuffUpdate.bind(this); 
+        this._methods.remove = this._onBuffRemove.bind(this); 
+        this._comps = {}; 
+        this._comps[ss.enum.gameEgg.chocolate] = this.chocolate; 
+        this._comps[ss.enum.gameEgg.sweet] = this.sweet;
+        this._comps[ss.enum.gameEgg.shit] = this.shit; 
+        this._comps[ss.enum.gameEgg.love] = this.life;
     },
     start: function() {
         this.node.active = !1;

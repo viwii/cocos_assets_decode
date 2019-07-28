@@ -60,8 +60,14 @@ cc.Class({
     },
     onLoad: function() {
         var t = this.getComponents(cc.CircleCollider);
-        if (t) for (var e, i = 0; i < t.length; i++) (e = t[i]) && (e.abc = this, this.colliders[e.tag] = e, 
-        e.onDisable = function() {}, e.onEnable = function() {});
+        if (t) 
+            for (var e, i = 0; i < t.length; i++) 
+                (e = t[i]) && (
+                    e.abc = this, 
+                    this.colliders[e.tag] = e, 
+                    e.onDisable = function() {}, 
+                    e.onEnable = function() {}
+                );
         this.nameLab.node.on(cc.Node.EventType.SIZE_CHANGED, this._nameSizeChange, this);
     },
     start: function() {},
@@ -86,7 +92,8 @@ cc.Class({
     },
     addCollider: function() {
         var t = this.getComponents(cc.CircleCollider);
-        if (t) for (var e, i = 0; i < t.length; i++) (e = t[i]) && cc.director.getCollisionManager().addCollider(e);
+        if (t) for (var e, i = 0; i < t.length; i++) 
+        (e = t[i]) && cc.director.getCollisionManager().addCollider(e);
     },
     removeCollider: function() {
         var t = this.getComponents(cc.CircleCollider);
@@ -120,7 +127,7 @@ cc.Class({
             addSpeed: 6,
             duration: 300
         });
-        //a.addClip(ss.logic.asset.getPacmanClip(n.skin), n.skin), 
+        a.addClip(ss.logic.asset.getPacmanClip(n.skin), n.skin), 
         a.play(n.skin);
         var r = ss.config.smart[t.sid];
         this._growR = r.growR, this._baseSpeed = n.speed;
