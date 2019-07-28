@@ -76,8 +76,13 @@ o.prototype.createGhost = function(t) {
 }, 
 o.prototype.createPea = function(t) {
     var e = {};
-    e.id = ++this.uid, e.gid = this.viewing.getRandInnerId(), e.type = ss.enum.roleType.pea, 
-    e.camp = ss.enum.gameCamp.normal, e.sid = 0, e.egg = t, this.peas.create(e, null, !0);
+    e.id = ++this.uid; 
+    e.gid = this.viewing.getRandInnerId(); 
+    e.type = ss.enum.roleType.pea; 
+    e.camp = ss.enum.gameCamp.normal; 
+    e.sid = 0;
+    e.egg = t; 
+    this.peas.create(e, null, !0);
 }, 
 o.prototype.createRadar = function(t) {}, 
 o.prototype.createSnow = function(t) {
