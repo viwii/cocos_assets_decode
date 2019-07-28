@@ -299,27 +299,69 @@
     "_enabled": true,
     "volume": 1,
     "bgVolume": 1,
-    "bgMusic": null,
-    "eat": null,
-    "bigEat": null,
-    "died": null,
-    "addSpeed": null,
-    "click": null,
-    "close": null,
-    "result": null,
-    "dominating": null,
-    "double_kill": null,
-    "fristblood": null,
-    "godlike": null,
-    "holyshit": null,
-    "killing_spree": null,
-    "megakill": null,
-    "monsterkill": null,
-    "rampage": null,
-    "triple_kill": null,
-    "ultrakill": null,
-    "unstoppable": null,
-    "whickedsick": null,
+    "bgMusic": {
+      "__uuid__": "5dd9174a-bfe3-4365-85e9-91e1c8a2145f"
+    },
+    "eat": {
+      "__uuid__": "0877d41c-0b85-4ec7-9c2b-20e4c8cab925"
+    },
+    "bigEat": {
+      "__uuid__": "89740967-3046-4324-8c14-8e56aefba367"
+    },
+    "died": {
+      "__uuid__": "61f08fae-7268-4902-a637-101a2dc9934e"
+    },
+    "addSpeed": {
+      "__uuid__": "71895842-99cd-45c8-920d-bcacaa08c31b"
+    },
+    "click": {
+      "__uuid__": "da8a24df-b390-496d-8c7e-b3a6b28d5a7d"
+    },
+    "close": {
+      "__uuid__": "b2897f65-ca57-494f-a926-7be517faf924"
+    },
+    "result": {
+      "__uuid__": "b2897f65-ca57-494f-a926-7be517faf924"
+    },
+    "dominating": {
+      "__uuid__": "751379af-7d01-4e3b-8461-d269b17fd644"
+    },
+    "double_kill": {
+      "__uuid__": "02c1b1e8-cf40-4cc1-8e14-92c776bae7bc"
+    },
+    "fristblood": {
+      "__uuid__": "ecfb5808-972b-4abd-9dfe-bba48843b152"
+    },
+    "godlike": {
+      "__uuid__": "7a8c05f1-4609-4029-b4c2-aa92397de42f"
+    },
+    "holyshit": {
+      "__uuid__": "afe25b4a-0170-4d10-8a86-16a0d8dc29f8"
+    },
+    "killing_spree": {
+      "__uuid__": "da6a9f5d-c563-428a-9a27-e7ccc5d85d7e"
+    },
+    "megakill": {
+      "__uuid__": "5f13149e-e9dd-43ce-81c8-01155a163f2a"
+    },
+    "monsterkill": {
+      "__uuid__": "283edd41-763a-438c-a697-0dccc13637b1"
+    },
+    "rampage": {
+      "__uuid__": "5b043ff2-3c31-4a68-9568-da856806caa2"
+    },
+    "triple_kill": {
+      "__uuid__": "de2229f0-1cb5-4dd0-a5a9-cd4ba69481cb"
+    },
+    "ultrakill": {
+      "__uuid__": "b586f5b7-b477-4f42-a879-ac6c1fba1897"
+    },
+    "unstoppable": {
+      "__uuid__": "76e1e374-a005-41bf-a292-3d0ea8e9579a"
+    },
+    "whickedsick": {
+      "__uuid__": "f42896cf-8038-4df2-8b00-1683f57dee80"
+    },
     "_id": "14wDPQmu9IUIc9WAb3L1zy"
   },
   {
