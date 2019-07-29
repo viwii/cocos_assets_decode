@@ -4,30 +4,7 @@ var t = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? func
     return t && "function" == typeof Symbol && t.constructor === Symbol && t !== Symbol.prototype ? "symbol" : typeof t;
 };
 
-window.__require = function t(e, i, s) {
-    function o(a, r) {
-        if (!i[a]) {
-            if (!e[a]) {
-                var c = a.split("/");
-                if (c = c[c.length - 1], !e[c]) {
-                    var h = "function" == typeof __require && __require;
-                    if (!r && h) return h(c, !0);
-                    if (n) return n(c, !0);
-                    throw new Error("Cannot find module '" + a + "'");
-                }
-            }
-            var l = i[a] = {
-                exports: {}
-            };
-            e[a][0].call(l.exports, function(t) {
-                return o(e[a][1][t] || t);
-            }, l, l.exports, t, e, i, s);
-        }
-        return i[a].exports;
-    }
-    for (var n = "function" == typeof __require && __require, a = 0; a < s.length; a++) o(s[a]);
-    return o;
-}({
+var xx = {
     AbfunLogic: [ function(t, e, i) {
         cc._RF.push(e, "5ebf2wJFERKfa2+cknMLu/v", "AbfunLogic");
         var s = function() {
@@ -12625,4 +12602,4 @@ window.__require = function t(e, i, s) {
             }
         }), cc._RF.pop();
     }, {} ]
-}, {}, [ "Asset", "Config", "Enum", "Event", "Facade", "Game", "Main", "Panel", "Preview", "Sound", "StartUp", "Tips", "View", "Virtual", "MoveClips", "SpriteFrames", "GetAward", "Hint", "Kill", "PopUp", "BootManager", "CommandManager", "DataManager", "ExtendsManager", "HttpManager", "LogicManager", "MaskManager", "PlatformManager", "RomManager", "ServerManager", "VoManager", "BootBase", "BootConfig", "BootLoads", "GoodsVo", "InfoVo", "MiscVo", "SetsVo", "UnitVo", "AbfunLogic", "AldLogic", "AssetLogic", "ConfigLogic", "GameLogic", "GoodsLogic", "InfoLogic", "InviteLogic", "ItemLogic", "LotteryLogic", "MoneyLogic", "NetLogic", "OpenLogic", "PanelLogic", "SoundLogic", "StorageLogic", "TipsLogic", "WeiPaiLogic", "ListComponent", "ScaleButton", "ScaleNode", "ShakeButton", "SoundButton", "SuperButton", "SuperButton2", "HScrollMiniProgram", "MiniItem", "VScrollMiniProgram", "ShaderHelper", "CustomMaterial", "FluxaySuper", "ShaderHook", "App", "Proxy", "Resize", "State", "CustomManager", "DataService", "SdkService", "ShareService", "StorageService", "SdkConf", "ShareConf", "StorageConf", "HttpConst", "SdkConst", "ShareConst", "CocosSdk", "WechatSdk", "ShareGroup", "Storage", "StorageNet", "Async", "RandomTools", "StringUtils", "TimeTools", "Utils", "WebUtils", "CommonUtils", "DateUtils", "Dictionary", "DirUtils", "Ferrari", "Juggler", "NodePool", "RandomUtils", "TimeUtils", "Timer", "AddSpeed", "Bala", "BuffItem", "Bulu", "Gala", "Ghost", "Hutu", "Joystick", "Mini", "MiniBuff", "MiniRank", "Pacman", "Pea", "Quick", "Radar", "RankItem", "Shadow", "Snow", "Buff", "Cell", "Grid", "Group", "Unit", "Viewing", "Brain", "DirTools", "Outlooking", "Rassling", "SmartA", "SmartB", "SmartC", "Menu", "Model", "DailyView", "DanStar", "DanView", "EduceView", "GoodsItem", "GoodsView", "InviteItem", "InviteView", "LotteryView", "Pin", "MainView", "MoreGame", "OpenView", "RankView", "ResultView", "ReviveView", "SetsView", "StrongView", "TestView", "WeiPaiMiniProgram", "WiPaiMiniItem", "Advertising", "AldSdk", "Leaderboard", "LeaderboardMessage", "MiniProgram", "OtherLogin", "Sub", "WeiXinSdk", "WeixinSdkManager" ]);
+}
