@@ -18,12 +18,12 @@
         cc.systemEvent.on(ss.event.client.addMoney, this.addMoney, this), cc.systemEvent.on(ss.event.system.AdVideo, this.onAdVideo, this);
     },
     show: function() {
-        var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null;
-        this.type = t, this._setDiamondValue(), this._setCoinValue(), this.diamondTip.string = "+" + ss.config.bubble.diamond, 
-        this.coinTip.string = "+" + ss.config.bubble.coin, this.diamondBubble.active = !0, 
-        this.coinBubble.active = ss.logic.open.isAudited(), this.coinNode && (this.coinNode.stopAllActions(), 
-        this.coinNode.setScale(1, 1)), this.diamondNode && (this.diamondNode.stopAllActions(), 
-        this.diamondNode.setScale(1, 1));
+        // var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null;
+        // this.type = t, this._setDiamondValue(), this._setCoinValue(), this.diamondTip.string = "+" + ss.config.bubble.diamond, 
+        // this.coinTip.string = "+" + ss.config.bubble.coin, this.diamondBubble.active = !0, 
+        // this.coinBubble.active = ss.logic.open.isAudited(), this.coinNode && (this.coinNode.stopAllActions(), 
+        // this.coinNode.setScale(1, 1)), this.diamondNode && (this.diamondNode.stopAllActions(), 
+        // this.diamondNode.setScale(1, 1));
     },
     showAddCoinEffect: function() {
         if (this.coinNode && this.coinNode) {
@@ -75,9 +75,9 @@
         }
     },
     _setDiamondValue: function() {
-        this.diamondLab.string = ss.commonUtils.unitToString(ss.data.getDiamond());
+        //this.diamondLab.string = ss.commonUtils.unitToString(ss.data.getDiamond());
     },
     _setCoinValue: function() {
-        this.coinLab.string = ss.commonUtils.unitToString(ss.data.getCoin());
+        //this.coinLab.string = ss.commonUtils.unitToString(ss.data.getCoin());
     }
 }) 

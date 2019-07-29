@@ -183,7 +183,7 @@ r.prototype.getGiveUpScoreData = function() {
     };
 }, 
 r.prototype.getPreData = function(t) {
-    var e = 0, i = !1;
+    var e = 1, i = !1;
     switch (t) {
       case ss.enum.gameMode.solo:
         if (this.tIndex >= this.tLength) {
@@ -333,13 +333,14 @@ r.prototype.callMode = function(t) {
         gameMode: t,
         gameData: e
     };
-    cc.systemEvent.emit(ss.event.client.closeAllView), e.test ? cc.systemEvent.emit(ss.event.client.openView, {
-        type: ss.enum.view.test,
-        params: i
-    }) : e.egg ? cc.systemEvent.emit(ss.event.client.openView, {
-        type: ss.enum.view.strong,
-        params: i
-    }) : ss.logic.net.reqGamePlay(i);
+    // cc.systemEvent.emit(ss.event.client.closeAllView), e.test ? cc.systemEvent.emit(ss.event.client.openView, {
+    //     type: ss.enum.view.test,
+    //     params: i
+    // }) : e.egg ? cc.systemEvent.emit(ss.event.client.openView, {
+    //     type: ss.enum.view.strong,
+    //     params: i
+    // }) : 
+    ss.logic.net.reqGamePlay(i);
 }, 
 r.prototype.callOver = function(t) {
     var e = {

@@ -41,8 +41,8 @@
     },
     "_scale": {
       "__type__": "cc.Vec3",
-      "x": 0.5287760416666667,
-      "y": 0.5287760416666667,
+      "x": 0.5291666666666667,
+      "y": 0.5291666666666667,
       "z": 1
     },
     "_quat": {
@@ -493,7 +493,7 @@
       "__id__": 12
     },
     "_enabled": true,
-    "_N$totalLength": 720,
+    "_N$totalLength": 726,
     "_N$barSprite": {
       "__id__": 14
     },
@@ -595,17 +595,17 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 720,
+      "width": 726,
       "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
-      "x": 0.5,
+      "x": 0,
       "y": 0.5
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -3.5,
+      "x": -362,
       "y": 0,
       "z": 0
     },
@@ -694,8 +694,8 @@
     "_useOriginalSize": false,
     "_string": "加载进度：0%",
     "_N$string": "加载进度：0%",
-    "_fontSize": 40,
-    "_lineHeight": 40,
+    "_fontSize": 30,
+    "_lineHeight": 30,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
@@ -734,8 +734,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 257.81,
-      "height": 40
+      "width": 193.36,
+      "height": 30
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -744,8 +744,8 @@
     },
     "_position": {
       "__type__": "cc.Vec3",
-      "x": -150,
-      "y": 0,
+      "x": 0,
+      "y": -30,
       "z": 0
     },
     "_scale": {

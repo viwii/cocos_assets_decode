@@ -1,7 +1,15 @@
 var s = require("./Grid"), o = function() {
-    this.rect = cc.rect(), this.padding = cc.size(), this.mapSize = cc.size(), this.gridSize = cc.size(), 
-    this.paddingSize = cc.size(), this.grid = new s.Grid(), this.content = null, this._tv = cc.v2(), 
-    this._units = new ss.Dictionary(), this._mapRect = new n(), this._mapLastRect = new n();
+    this.rect = cc.rect(); 
+    this.padding = cc.size(); 
+    this.mapSize = cc.size(); 
+    this.gridSize = cc.size(); 
+    this.paddingSize = cc.size(); 
+    this.grid = new s.Grid(); 
+    this.content = null; 
+    this._tv = cc.v2(); 
+    this._units = new ss.Dictionary(); 
+    this._mapRect = new n(); 
+    this._mapLastRect = new n();
 };
 o.prototype.getCenter = function() {
     return this.grid.center;
@@ -22,8 +30,11 @@ o.prototype.getCenter = function() {
     return e ? e.id : null;
 }, o.prototype.init = function(t) {
     var e = cc.winSize, i = t.inside || cc.size(1, 1);
-    this.content = t.content, this.paddingSize = t.paddingSize || cc.size(), this.rect = t.rect || cc.rect(-e.width / 2, -e.height / 2, e.width, e.height), 
-    this.mapSize = t.mapSize || cc.size(1024, 1024), this.gridSize = t.gridSize || cc.size(256, 256), 
+    this.content = t.content; 
+    this.paddingSize = t.paddingSize || cc.size(); 
+    this.rect = t.rect || cc.rect(-e.width / 2, -e.height / 2, e.width, e.height); 
+    this.mapSize = t.mapSize || cc.size(1024, 1024); 
+    this.gridSize = t.gridSize || cc.size(256, 256); 
     this.grid.init({
         mapSize: this.mapSize,
         gridSize: this.gridSize,

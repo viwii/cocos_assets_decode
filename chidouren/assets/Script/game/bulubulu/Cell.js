@@ -1,6 +1,10 @@
 
 var s = function(t, e, i) {
-    this.id = t, this.inner = e, this.rect = i, this.showing = !1, this.units = new ss.Dictionary();
+    this.id = t;
+    this.inner = e; 
+    this.rect = i;
+    this.showing = !1; 
+    this.units = new ss.Dictionary();
 };
 s.prototype.getRandV2 = function() {
     var t = cc.v2();

@@ -1,17 +1,35 @@
 
 var s = require("./Cell"), o = function() {
-    this.col = 0, this.row = 0, this.data = null, this.center = cc.v2(), this.showList = [], 
-    this.innerList = [], this.outSideList = [], this.cells = new ss.Dictionary(), this.units = new ss.Dictionary(), 
-    this._inside = null, this._halfMapW = 0, this._halfMapH = 0;
+    this.col = 0; 
+    this.row = 0; 
+    this.data = null; 
+    this.center = cc.v2(); 
+    this.showList = []; 
+    this.innerList = []; 
+    this.outSideList = []; 
+    this.cells = new ss.Dictionary(), 
+    this.units = new ss.Dictionary(), 
+    this._inside = null; 
+    this._halfMapW = 0; 
+    this._halfMapH = 0;
 };
 o.prototype.init = function(t) {
     var e, i, o, n, a = t.mapSize || cc.size(1e3, 1e3), r = t.gridSize || cc.size(100, 100), c = Math.ceil(a.width / r.width), h = Math.ceil(a.height / r.height);
     this.col = c, this.row = h, this.data = t, this.center.x = Math.floor(c / 2), this.center.y = Math.floor(h / 2);
     var l = t.inside, d = r.width, u = r.height, p = c * (d / 2), g = h * (u / 2);
     this._halfMapW = p, this._halfMapH = g, this._inside = l;
-    for (var m = 0; m < h; m++) for (var f = 0; f < c; f++) e = 1e4 * f + m, (n = this.hasInner(f, m)) && (this.innerList.push(e), 
-    this.outSideList.push(e)), i = cc.rect(f * d - p, m * u - g, d, u), o = new s.Cell(e, n, i), 
-    this.cells.set(e, o);
+    for (var m = 0; m < h; m++) 
+    for (var f = 0; f < c; f++){ 
+        e = 10000 * f + m; 
+        if(n = this.hasInner(f, m))
+        {
+            this.innerList.push(e), 
+            this.outSideList.push(e)
+        } 
+        i = cc.rect(f * d - p, m * u - g, d, u); 
+        o = new s.Cell(e, n, i);
+        this.cells.set(e, o);
+    }
 }, o.prototype.has = function(t, e) {
     return t >= 0 && t < this.col && e >= 0 && e < this.row;
 }, o.prototype.hasInner = function(t, e) {

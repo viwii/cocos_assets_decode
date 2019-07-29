@@ -16,8 +16,9 @@ var v = require("./logic/InviteLogic");
 var y = require("./logic/AbfunLogic"); 
 var w = require("./logic/WeiPaiLogic");
 
-var _ = function() {};
-_.prototype.initialize = function() {
+var LM = function() {};
+
+LM.prototype.initialize = function() {
 	this.config = new s.ConfigLogic();
 	this.money = new o.MoneyLogic(); 
 	this.net = new n.NetLogic(); 
@@ -36,8 +37,8 @@ _.prototype.initialize = function() {
 	this.abFun = new y.AbFunLogic(); 
 	this.weiPai = new w.WeiPaiLogic();
 }, 
-_.prototype.clear = function() {}
+LM.prototype.clear = function() {}
  
 module.exports = {
-	LogicManager: _
+	LogicManager: LM
 }

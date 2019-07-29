@@ -28,8 +28,12 @@
         cc.systemEvent.on(ss.event.client.setRed, this.setRed, this), cc.systemEvent.on(ss.event.client.setExport, this._showWeiPai, this);
     },
     init: function() {
-        this.menu.show(ss.enum.view.main), this._showUserView(), this.node.active && this._showWXButton(), 
-        this._showForever(), this._showResize(), ss.logic.info.openCallBack = this._showForever.bind(this);
+        this.menu.show(ss.enum.view.main), 
+        this._showUserView(), 
+        this.node.active && this._showWXButton(), 
+        this._showForever(), 
+        this._showResize(), 
+        ss.logic.info.openCallBack = this._showForever.bind(this);
     },
     show: function() {
         arguments.length > 0 && void 0 !== arguments[0] && arguments[0], this.node.active = !0, 
@@ -125,9 +129,9 @@
         }
     },
     _showForever: function() {
-        ss.logic.info.isOpenForever() ? (this.lock.active = !1, this.secondOpen.active = !1, 
-        this.confident.active = !0) : (this.lock.active = !0, this.secondOpen.active = !0, 
-        this.confident.active = !1);
+        // ss.logic.info.isOpenForever() ? (this.lock.active = !1, this.secondOpen.active = !1, 
+        // this.confident.active = !0) : (this.lock.active = !0, this.secondOpen.active = !0, 
+        // this.confident.active = !1);
     },
     _showResize: function() {
         var t;
