@@ -220,12 +220,22 @@ cc.Class({
         }
     },
     toBeGhost: function() {
-        this.data && (this.isGhost || (this.isGhost = !0, this.content.active = !1, this.ghost.active = !0, 
-        this.smart.setIsGhost(!0)));
+        if (this.data) {
+            if (!this.isGhost) {
+                this.isGhost = true; 
+                this.content.active = false; 
+                this.ghost.active = true; 
+                this.smart.setIsGhost(true);
+            }
+        }
     },
     toBePacman: function() {
-        this.data && this.isGhost && (this.isGhost = !1, this.ghost.active = !1, this.content.active = !0, 
-        this.smart.setIsGhost(!1));
+        if (this.data && this.isGhost) {
+            this.isGhost = false; 
+            this.ghost.active = false; 
+            this.content.active = true; 
+            this.smart.setIsGhost(false);
+        };
     },
     revive: function() {
         var t = arguments.length > 0 && void 0 !== arguments[0] ? arguments[0] : null;
@@ -235,21 +245,62 @@ cc.Class({
         this.quick.clear(), this.setLocking(!1);
     },
     clear: function() {
-        this.data && (ss.logic.game.bulu.removeUnit(this.data.id), ss.logic.game.gala.removeSmart(this.data.id), 
-        ss.logic.game.bulu.removeTargetShadow(this.data.id), ss.logic.game.bulu.removeTargetSnow(this.data.id)), 
-        this.isSuper && ss.logic.game.mini.resetBuffData(), this.quick.clear(), this.bala.clear(), 
-        this.data = null, this.params = null, this.playing = !1, this.locking = !1, this.dieding = !1, 
-        this.borning = !1, this.growing = !1, this.isSuper = !1, this.isGhost = !1, this.isEgger = !1, 
-        this.sTimestamp = 0, this.souls.length = 0, this._shadR = 0, this._growR = 1, this._angle = 0, 
-        this._baseSpeed = 0, this._addSpeed = 0, this._growLength = 0, this._bodyLength = 0, 
-        this._viewLength = 0, this._shadLength = 0, this._snowLength = 0, this._attrBala = 0, 
-        this._speedBala = 1, this.colliderTimestamp = 0, this.colliderEnters.length = 0, 
-        this.colliderStays.length = 0, this.colliderExits.length = 0, this.node.active = !0, 
-        this.content.stopAllActions(), this.content.opacity = 255, this.content.setScale(1), 
-        this.mode.stopAllActions(), this.mode.opacity = 255, this.mode.setScale(1), this.ghost.stopAllActions(), 
-        this.ghost.opacity = 255, this.ghost.active = !1, this.buff.stopAllActions(), this.buff.opacity = 255, 
-        this.buff.active = !1, this.glow.active = !1, this.eggs.active = !1, this.egg_3.active = !1, 
-        this.egg_4.active = !1, ss.ferrari.juggler.remove(this), this.removeCollider();
+        if (this.data) {
+            ss.logic.game.bulu.removeUnit(this.data.id); 
+            ss.logic.game.gala.removeSmart(this.data.id); 
+            ss.logic.game.bulu.removeTargetShadow(this.data.id); 
+            ss.logic.game.bulu.removeTargetSnow(this.data.id);
+        };
+        this.isSuper && ss.logic.game.mini.resetBuffData(); 
+        this.quick.clear(); 
+        this.bala.clear(); 
+        this.data = null; 
+        this.params = null; 
+        this.playing = false; 
+        this.locking = false; 
+        this.dieding = false; 
+        this.borning = false; 
+        this.growing = false; 
+        this.isSuper = false; 
+        this.isGhost = false; 
+        this.isEgger = false; 
+        this.sTimestamp = 0; 
+        this.souls.length = 0; 
+        this._shadR = 0; 
+        this._growR = 1; 
+        this._angle = 0; 
+        this._baseSpeed = 0; 
+        this._addSpeed = 0; 
+        this._growLength = 0; 
+        this._bodyLength = 0; 
+        this._viewLength = 0; 
+        this._shadLength = 0; 
+        this._snowLength = 0; 
+        this._attrBala = 0; 
+        this._speedBala = 1; 
+        this.colliderTimestamp = 0; 
+        this.colliderEnters.length = 0; 
+        this.colliderStays.length = 0; 
+        this.colliderExits.length = 0; 
+        this.node.active = true; 
+        this.content.stopAllActions();
+        this.content.opacity = 255; 
+        this.content.setScale(1); 
+        this.mode.stopAllActions(); 
+        this.mode.opacity = 255; 
+        this.mode.setScale(1); 
+        this.ghost.stopAllActions(); 
+        this.ghost.opacity = 255; 
+        this.ghost.active = false;
+        this.buff.stopAllActions(); 
+        this.buff.opacity = 255; 
+        this.buff.active = false; 
+        this.glow.active = false; 
+        this.eggs.active = false;
+        this.egg_3.active = false; 
+        this.egg_4.active = false; 
+        ss.ferrari.juggler.remove(this); 
+        this.removeCollider();
     },
     onUnitActive: function(t, e) {
         if (this.data) {

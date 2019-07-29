@@ -1,7 +1,7 @@
 var s = cc.Class({
     name: "SpriteFrames",
     properties: {
-        frames: [ cc.SpriteFrame ]
+        frames: [cc.SpriteFrame]
     }
 });
 module.exports = {

@@ -43,7 +43,6 @@ unit.prototype.move = function(t) {
 unit.prototype.clear = function() {
     this.id = -1, this.gid = -1, this.cell = null, this.v2 = null, this.isShowing = !1;
 },
- 
 module.exports = {
     Unit: unit
 }
