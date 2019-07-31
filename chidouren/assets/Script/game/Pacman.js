@@ -114,11 +114,25 @@ cc.Class({
             id: this.data.id
         });
         var i = t.pos || this.unit.cell.getRectV2();
-        this.node.setPosition(i), this.node.zIndex = this.isSuper ? 4 : 3, this.unit.move(i), 
-        this.smart.move(i), this.content.active = !0, this.content.opacity = 255, this.content.color = cc.Color.WHITE, 
-        this.content.setScale(1), this.nameLab.string = this.data.name + "", this.nameLab.node.color = this.isSuper ? cc.Color.ORANGE : cc.Color.WHITE, 
+        this.node.setPosition(i), 
+        this.node.zIndex = this.isSuper ? 4 : 3, 
+        this.unit.move(i), 
+        this.smart.move(i), 
+        this.content.active = true, 
+        this.content.opacity = 255, 
+        this.content.color = cc.Color.WHITE, 
+        this.content.setScale(1), 
+        this.ghost.active = false,
+        this.glow.active = false,
+        this.mode.active = false,
+        this.eggs.active = false,
+        this.nameLab.string = this.data.name + "", 
+        this.nameLab.node.color = this.isSuper ? cc.Color.ORANGE : cc.Color.WHITE, 
         this.growLab.node.color = this.isSuper ? cc.Color.ORANGE : cc.Color.WHITE;
-        var s = ss.logic.config.getSheetData(ss.enum.sheet.goods, t.mid), o = s && s.extend_id ? s.extend_id : 20001, n = ss.logic.config.getSheetData(ss.enum.sheet.mode, o), a = this.mode.getComponent(cc.Animation);
+        var s = ss.logic.config.getSheetData(ss.enum.sheet.goods, t.mid), 
+        o = s && s.extend_id ? s.extend_id : 20001, 
+        n = ss.logic.config.getSheetData(ss.enum.sheet.mode, o), 
+        a = this.content.getComponent(cc.Animation);
         n || (n = {
             skin: 0,
             item_id: 20001,
@@ -127,8 +141,8 @@ cc.Class({
             addSpeed: 6,
             duration: 300
         });
-        a.addClip(ss.logic.asset.getPacmanClip(n.skin), n.skin), 
-        a.play(n.skin);
+        a.addClip(ss.logic.asset.getPacmanClip(n.skin), "test"), 
+        a.play("test");
         var r = ss.config.smart[t.sid];
         this._growR = r.growR, this._baseSpeed = n.speed;
         var c = t.grow;

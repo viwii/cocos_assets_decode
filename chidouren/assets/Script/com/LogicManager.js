@@ -19,6 +19,7 @@ w = require("./logic/WeiPaiLogic"),
 
 lm = function() {};
 
+
 lm.prototype.initialize = function() {
     this.config = new s.ConfigLogic(); 
     this.money = new o.MoneyLogic(); 
