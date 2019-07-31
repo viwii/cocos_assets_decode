@@ -37,7 +37,10 @@ var r = function() {
 };
 r.prototype._createAll = function() {
     var t = this.hutu.create(this.tempData);
-    this.hutuData = t, this.bulu.createAll(t), this.gala.createAll(), this._createForever(t);
+    this.hutuData = t; 
+    this.bulu.createAll(t); 
+    this.gala.createAll(); 
+    this._createForever(t);
 }, 
 r.prototype._clearAll = function() {
     this.bulu.clearAll(), this.gala.clearAll(), this.ids.length = 0, this.tEgging = !1, 
