@@ -2,8 +2,7 @@ var s = require("../game/Bulu");
 var o = require("../game/Gala"); 
 var n = require("../game/Hutu"); 
 var a = require("../game/Mini");
-
-var r = function() {
+var logic = function() {
     this.bulu = new s.Bulu(); 
     this.gala = new o.Gala(); 
     this.hutu = new n.Hutu(); 
@@ -35,47 +34,58 @@ var r = function() {
         this._onVideoRespond.bind(this)
     );
 };
-r.prototype._createAll = function() {
+
+logic.prototype._createAll = function() {
     var t = this.hutu.create(this.tempData);
     this.hutuData = t; 
     this.bulu.createAll(t); 
     this.gala.createAll(); 
     this._createForever(t);
-}, 
-r.prototype._clearAll = function() {
+};
+
+logic.prototype._clearAll = function() {
     this.bulu.clearAll(), this.gala.clearAll(), this.ids.length = 0, this.tEgging = !1, 
     this.tLife = 0;
-}, 
-r.prototype._pause = function() {
+};
+
+logic.prototype._pause = function() {
     this.playing && !this.pausing && (this.pausing = !0);
-}, 
-r.prototype._resume = function() {
+};
+
+logic.prototype._resume = function() {
     this.playing && this.pausing && (this.pausing = !1);
-}, 
-r.prototype._onVideoRespond = function(t) {
+};
+
+logic.prototype._onVideoRespond = function(t) {
     var e = t;
     e.method == ss.enum.advertising.method.show && e.code == ss.enum.advertising.code.success ? this.pausing = !0 : this.pausing = !1;
-}, 
-r.prototype._respondKillFun = function() {
+};
+
+logic.prototype._respondKillFun = function() {
     this.mini.setKillData(this.getKillData());
-}, 
-r.prototype.init = function(t) {
+};
+
+logic.prototype.init = function(t) {
     this.bulu.init(t.bulu); 
     this.gala.init(t.gala);
     this.hutu.init(t.hutu, this._respondKillFun.bind(this)); 
     this.mini.init(t.mini);
-}, 
-r.prototype.update = function(t) {
+};
+
+logic.prototype.update = function(t) {
     this.playing && (this.pausing || (this.mini.update(t), this.timestamps += t, this.timestamps >= 1 && (this.timestamps = 0, 
     this.tTime++)));
-}, 
-r.prototype.move = function(t) {
+};
+
+logic.prototype.move = function(t) {
     this.bulu.move(t);
-}, 
-r.prototype.addSpeed = function() {
+};
+
+logic.prototype.addSpeed = function() {
     this.bulu.addSpeed();
-}, 
-r.prototype.isSystemBetter = function() {
+};
+
+logic.prototype.isSystemBetter = function() {
     switch (ss.logic.open.getSystem()) {
       case "android":
         return false;
@@ -85,8 +95,9 @@ r.prototype.isSystemBetter = function() {
         return true;
     }
     return false;
-}, 
-r.prototype.play = function(t) {
+};
+
+logic.prototype.play = function(t) {
     switch (this.gIndex++, this.timestamps = 0, this.tTime = 0, this._clearAll(), this.playing = !0, 
     this.tempData = t, this.gameMode = t.gameMode, this.gameMode) {
       case ss.enum.gameMode.solo:
@@ -97,26 +108,31 @@ r.prototype.play = function(t) {
         this.fIndex++;
     }
     this.mini.reset(), this._createAll(), this.mini.play(this.gameMode), this._createEggData(t);
-}, 
-r.prototype.stop = function() {
+};
+
+logic.prototype.stop = function() {
     switch (this.playing = !1, this.pausing = !1, this._clearAll(), this.mini.clear(), 
     this.gameMode) {
       case ss.enum.gameMode.solo:
       case ss.enum.gameMode.forever:
     }
-}, 
-r.prototype.add = function(t) {
+};
+
+logic.prototype.add = function(t) {
     var e = this.bulu.getScaleXY() >= 1 ? 2 : 1, i = this.ids.indexOf(t);
     return this.ids.length < e && (-1 == i && this.ids.push(t), !0);
-}, 
-r.prototype.sub = function(t) {
+};
+
+logic.prototype.sub = function(t) {
     var e = this.ids.indexOf(t);
     -1 != e && this.ids.splice(e, 1);
-}, 
-r.prototype.getKillData = function() {
+};
+
+logic.prototype.getKillData = function() {
     return this.hutu.getSoulerData();
-}, 
-r.prototype.getScoreData = function(t, e) {
+};
+
+logic.prototype.getScoreData = function(t, e) {
     var i = 0, s = 0, o = 0, n = this.getKillData(), a = 0;
     switch (this.gameMode) {
       case ss.enum.gameMode.solo:
@@ -165,8 +181,9 @@ r.prototype.getScoreData = function(t, e) {
         diamond: s,
         score: o
     };
-}, 
-r.prototype.getGiveUpScoreData = function() {
+};
+
+logic.prototype.getGiveUpScoreData = function() {
     var t = 2, e = 0, i = 0, s = this.getKillData(), o = void 0;
     switch (this.gameMode) {
       case ss.enum.gameMode.solo:
@@ -184,8 +201,9 @@ r.prototype.getGiveUpScoreData = function() {
         diamond: e,
         score: i
     };
-}, 
-r.prototype.getPreData = function(t) {
+}; 
+
+logic.prototype.getPreData = function(t) {
     var e = 1, i = !1;
     switch (t) {
       case ss.enum.gameMode.solo:
@@ -213,31 +231,36 @@ r.prototype.getPreData = function(t) {
         currId: ss.logic.goods.getCurrId(),
         egg: i
     };
-}, 
-r.prototype.resetTest = function() {
+};
+
+logic.prototype.resetTest = function() {
     this.tIndex = 0;
-}, 
-r.prototype.getMiniProgram = function() {
+};
+
+logic.prototype.getMiniProgram = function() {
     if (this.tMiniProgram) return this.tMiniProgram;
     this.tMiniProgram = [];
     for (var t = ss.config.miniProgram.allList, e = ss.config.miniProgram.programs, i = 0, s = t.length; i < s; i++) this.tMiniProgram.push(e[t[i]]);
     return this.tMiniProgram;
-}, 
-r.prototype.getScoreDan = function(t) {
+};
+
+logic.prototype.getScoreDan = function(t) {
     for (var e = ss.config.dan.list, i = 0, s = void 0, o = e.length - 1; o >= 0; o--) if ((s = e[o]) && t >= s.score) {
         i = o;
         break;
     }
     return s = e[i];
-}, 
-r.prototype.getScoreStar = function(t) {
+};
+
+logic.prototype.getScoreStar = function(t) {
     for (var e = ss.config.dan.star, i = 0, s = e.length - 1; s >= 0; s--) if (t >= e[s]) {
         i = s;
         break;
     }
     return i = Math.min(i, 3);
-}, 
-r.prototype.judge = function(t, e) {
+};
+
+logic.prototype.judge = function(t, e) {
     if (!t || !t.getAllLiving()) return !1;
     if (!e || !e.getAllLiving()) return !1;
     switch (t.data.type) {
@@ -271,15 +294,17 @@ r.prototype.judge = function(t, e) {
       default:
         console.error("GameLogic judge undefind roletype:", t.data);
     }
-}, 
-r.prototype.attract = function(t, e) {
+};
+
+logic.prototype.attract = function(t, e) {
     return !(!t || !t.getAllLiving()) && !(!e || !e.getAllLiving()) && !!t.isCanAttract() && (e.onJudgeGrow && e.onJudgeGrow(this._createGrowVo(t.getGrow(), t.getEffect(), t.getEgg(), !1, !1)), 
     void (t.onAttractDied && t.onAttractDied({
         v2: e.node.getPosition(),
         isEffect: e.node.active
     })));
-}, 
-r.prototype._createGrowVo = function(t, e, i, s, o) {
+};
+
+logic.prototype._createGrowVo = function(t, e, i, s, o) {
     return {
         grow: t,
         isEffect: e,
@@ -291,8 +316,9 @@ r.prototype._createGrowVo = function(t, e, i, s, o) {
         winName: arguments.length > 7 && void 0 !== arguments[7] ? arguments[7] : "",
         lostName: arguments.length > 8 && void 0 !== arguments[8] ? arguments[8] : ""
     };
-}, 
-r.prototype.recover = function(t) {
+};
+
+logic.prototype.recover = function(t) {
     var e = !(arguments.length > 1 && void 0 !== arguments[1]) || arguments[1], i = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
     if (t && !(t.id < 0)) {
         var s = ss.commonUtils.clone(t);
@@ -319,8 +345,9 @@ r.prototype.recover = function(t) {
             console.error("GameLogic recover undefind roletype:", t);
         }
     }
-}, 
-r.prototype.revive = function() {
+};
+
+logic.prototype.revive = function() {
     switch (this.supermanData && this.bulu.reviveHero(this.supermanData), this.supermanData = null, 
     this.ids.length = 0, this.gameMode) {
       case ss.enum.gameMode.solo:
@@ -330,8 +357,9 @@ r.prototype.revive = function() {
       case ss.enum.gameMode.forever:
         this.bulu.reviveAll(!0);
     }
-}, 
-r.prototype.callMode = function(t) {
+};
+
+logic.prototype.callMode = function(t) {
     var e = this.getPreData(t), i = {
         gameMode: t,
         gameData: e
@@ -344,8 +372,9 @@ r.prototype.callMode = function(t) {
     //     params: i
     // }) : 
     ss.logic.net.reqGamePlay(i);
-}, 
-r.prototype.callOver = function(t) {
+};
+
+logic.prototype.callOver = function(t) {
     var e = {
         finished: t,
         rankData: arguments.length > 1 && void 0 !== arguments[1] ? arguments[1] : null,
@@ -354,18 +383,22 @@ r.prototype.callOver = function(t) {
         scoreData: arguments.length > 4 && void 0 !== arguments[4] ? arguments[4] : null
     };
     ss.logic.net.reqGameOver(e), this._subForever();
-}, 
-r.prototype.getEgging = function() {
+};
+
+logic.prototype.getEgging = function() {
     return this.tEgging;
-}, 
-r.prototype.getLife = function() {
+};
+
+logic.prototype.getLife = function() {
     return this.tLife;
-}, 
-r.prototype._createForever = function(t) {
+};
+
+logic.prototype._createForever = function(t) {
     this.gameMode == ss.enum.gameMode.forever && (this.tForeverAll = this.tForever = t.pacmanForever, 
     this.mini.setSurviveData(this.tForever));
-}, 
-r.prototype._createEggData = function(t) {
+};
+
+logic.prototype._createEggData = function(t) {
     if (t.gameMode == ss.enum.gameMode.forever) {
         var e = t.gameData;
         this.tEgging = e.egg, this.tLife = e.egg ? 5 : 3, this.mini.setBuffData({
@@ -374,8 +407,9 @@ r.prototype._createEggData = function(t) {
             time: this.tLife
         });
     }
-}, 
-r.prototype._judgeLove = function() {
+};
+
+logic.prototype._judgeLove = function() {
     if (this.gameMode == ss.enum.gameMode.forever) {
         if (!(--this.tLife > 0)) return this.mini.setBuffData({
             method: "remove",
@@ -389,8 +423,9 @@ r.prototype._judgeLove = function() {
         });
     }
     return !0;
-}, 
-r.prototype._judgeRevive = function(t, e, i) {
+};
+
+logic.prototype._judgeRevive = function(t, e, i) {
     switch (this.gameMode) {
       case ss.enum.gameMode.solo:
         e && this.bulu.revivePacman(t);
@@ -403,12 +438,13 @@ r.prototype._judgeRevive = function(t, e, i) {
             e && this.bulu.revivePacman(s);
         } else console.log("击杀了所有对手，吃鸡成功！"), this.callOver(!0, null, null, ss.logic.game.getKillData(), ss.logic.game.getScoreData(null, null));
     }
-}, 
-r.prototype._subForever = function() {
+};
+
+logic.prototype._subForever = function() {
     this.gameMode == ss.enum.gameMode.forever && (this.tForever = Math.max(0, this.tForever - 1), 
     this.mini.setSurviveData(this.tForever));
-}
+};
 
 module.exports = {
-    GameLogic: r
+    GameLogic: logic
 }

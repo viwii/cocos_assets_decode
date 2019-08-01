@@ -3,19 +3,21 @@ var s = function(t, e, i) {
     this.id = t;
     this.inner = e; 
     this.rect = i;
-    this.showing = !1; 
+    this.showing = false; 
     this.units = new ss.Dictionary();
 };
 s.prototype.getRandV2 = function() {
     var t = cc.v2();
-    return t.x = this.rect.x + Math.floor(Math.random() * this.rect.width), t.y = this.rect.y + Math.floor(Math.random() * this.rect.height), 
-    t;
+    t.x = this.rect.x + Math.floor(Math.random() * this.rect.width); 
+    t.y = this.rect.y + Math.floor(Math.random() * this.rect.height); 
+    return t;
 }, s.prototype.getCenterV2 = function() {
     return this.rect.center;
 }, s.prototype.getRectV2 = function() {
     return this.rect.origin;
 }, s.prototype.add = function(t) {
-    this.units.set(t.id, t), t && t.onActiveFx && t.onActiveFx(this.showing, !0);
+    this.units.set(t.id, t); 
+    t && t.onActiveFx && t.onActiveFx(this.showing, !0);
 }, s.prototype.remove = function(t) {
     this.units.remove(t);
 }, s.prototype.show = function() {

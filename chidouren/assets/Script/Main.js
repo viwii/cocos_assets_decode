@@ -33,20 +33,52 @@ cc.Class({
     },
     properties: {},
     onLoad: function() {
-        u.Resize.initialize(!0), this.getComponent(cc.Canvas).designResolution = new cc.Size(u.Resize.width, u.Resize.height), 
-        cc.view.setOrientation(cc.macro.ORIENTATION_LANDSCAPE), d.App.isLoaded || (d.App.isLoaded = !0, 
-        ss.commonUtils = s.CommonUtils, ss.dateUtils = o.DateUtils, ss.randomUtils = c.RandomUtils, 
-        ss.timeUtils = h.TimeUtils, ss.dirUtils = l.DirUtils, ss.Dictionary = n.Dictionary, 
-        ss.NodePool = r.NodePool, ss.Resize = u.Resize, ss.proxy = p.Proxy, ss.event = v.Event, 
-        ss.state = g.State, ss.config = f.Config, ss.enum = y.Enum, ss.facade = new m.Facade(), 
-        ss.ferrari = new a.Ferrari(), ss.rom = new C.RomManager(), ss.data = new S.DataManager(), 
-        ss.vo = new b.VoManager(), ss.mask = new k.MaskManager(), ss.boot = new _.BootManager(), 
-        ss.http = new M.HttpManager(), ss.logic = new T.LogicManager(), ss.custom = new w.CustomManager(), 
-        ss.server = new R.ServerManager(), ss.extends = new L.ExtendsManager(), ss.command = new A.CommandManager(), 
-        ss.platform = new x.PlatformManager(), ss.boot.initialize(), ss.rom.initialize(), 
-        ss.data.initialize(), ss.vo.initialize(), ss.mask.initialize(), ss.http.initialize(), 
-        ss.logic.initialize(), ss.server.initialize(), ss.custom.initialize(), ss.extends.initialize(), 
-        ss.command.initialize(), ss.platform.initialize(), ss.ferrari.start());
+        u.Resize.initialize(!0), 
+        this.getComponent(cc.Canvas).designResolution = new cc.Size(u.Resize.width, u.Resize.height), 
+        cc.view.setOrientation(cc.macro.ORIENTATION_LANDSCAPE); 
+        if (!d.App.isLoaded){
+            d.App.isLoaded = true;
+            ss.commonUtils = s.CommonUtils; 
+            ss.dateUtils = o.DateUtils; 
+            ss.randomUtils = c.RandomUtils; 
+            ss.timeUtils = h.TimeUtils; 
+            ss.dirUtils = l.DirUtils; 
+            ss.Dictionary = n.Dictionary; 
+            ss.NodePool = r.NodePool; 
+            ss.Resize = u.Resize; 
+            ss.proxy = p.Proxy; 
+            ss.event = v.Event; 
+            ss.state = g.State; 
+            ss.config = f.Config; 
+            ss.enum = y.Enum; 
+            ss.facade = new m.Facade(); 
+            ss.ferrari = new a.Ferrari(); 
+            ss.rom = new C.RomManager(); 
+            ss.data = new S.DataManager(); 
+            ss.vo = new b.VoManager(); 
+            ss.mask = new k.MaskManager(); 
+            ss.boot = new _.BootManager(); 
+            ss.http = new M.HttpManager(); 
+            ss.logic = new T.LogicManager(); 
+            ss.custom = new w.CustomManager(); 
+            ss.server = new R.ServerManager(); 
+            ss.extends = new L.ExtendsManager(); 
+            ss.command = new A.CommandManager(); 
+            ss.platform = new x.PlatformManager(); 
+            ss.boot.initialize(); 
+            ss.rom.initialize(); 
+            ss.data.initialize(); 
+            ss.vo.initialize(); 
+            ss.mask.initialize(); 
+            ss.http.initialize(); 
+            ss.logic.initialize(); 
+            ss.server.initialize(); 
+            ss.custom.initialize(); 
+            ss.extends.initialize(); 
+            ss.command.initialize(); 
+            ss.platform.initialize(); 
+            ss.ferrari.start();
+        };
     },
     update: function(t) {
         ss.ferrari && ss.ferrari.update(t);
