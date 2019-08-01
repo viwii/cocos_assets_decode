@@ -65,9 +65,15 @@ o.prototype.createHero = function(t) {
 }, 
 o.prototype.createPacman = function(t) {
     var e = {};
-    e.id = ++this.uid, e.pos = null, e.gid = Math.random() < .2 ? this.viewing.getRandInnerId() : this.viewing.getRandOutsideId(), 
-    e.type = ss.enum.roleType.pacman, e.camp = t.camp, e.sid = t.sid, e.mid = t.mid, 
-    e.name = t.name, this.pacmans.create(e, null, !0);
+    e.id = ++this.uid; 
+    e.pos = null; 
+    e.gid = Math.random() < .2 ? this.viewing.getRandInnerId() : this.viewing.getRandOutsideId(); 
+    e.type = ss.enum.roleType.pacman; 
+    e.camp = t.camp; 
+    e.sid = t.sid; 
+    e.mid = t.mid; 
+    e.name = t.name; 
+    this.pacmans.create(e, null, !0);
 }, 
 o.prototype.createGhost = function(t) {
     var e = {};

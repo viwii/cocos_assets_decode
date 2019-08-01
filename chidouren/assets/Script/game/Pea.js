@@ -23,8 +23,12 @@ cc.Class({
     },
     onLoad: function() {
         var t = this.getComponents(cc.CircleCollider);
-        if (t) for (var e, i = 0; i < t.length; i++) (e = t[i]) && (e.abc = this, this.colliders[e.tag] = e, 
-        e.onDisable = function() {}, e.onEnable = function() {});
+        if (t) 
+            for (var e, i = 0; i < t.length; i++) (e = t[i]) && (
+                e.abc = this, this.colliders[e.tag] = e, 
+                e.onDisable = function() {}, 
+                e.onEnable = function() {}
+            );
     },
     start: function() {},
     update: function(t) {},
