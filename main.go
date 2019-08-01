@@ -15,7 +15,6 @@ import (
 	"strings"
 
 	"github.com/BurntSushi/graphics-go/graphics"
-	simplejson "github.com/bitly/go-simplejson"
 )
 
 type Content struct {
@@ -339,77 +338,80 @@ func parse_file(data interface{}) {
 	}
 }
 
+// func main() {
+// 	spritefameMap := make(map[string]map[string]interface{})
+// 	fileMap := make(map[string][]map[string]interface{})
+// 	structMap := make(map[string]interface{})
+// 	files := getFilelist("./program/res")
+
+// 	uuidScriptMap := make(map[string]string)
+// 	altasMap := make(map[string]string)
+
+// 	strbytes, _ := ReadAll("./program/src/project.js")
+// 	str := string(strbytes)
+
+// 	//处理空格Tab,回车
+// 	//str = TrimStringSpace(str)
+// 	var jsonStrings []string
+// 	for {
+// 		idx := strings.Index(str, "cc._RF.push(e")
+// 		if idx == -1 {
+// 			break
+// 		}
+
+// 		str = str[idx:]
+// 		index := strings.Index(str, ")")
+// 		if idx != -1 {
+// 			jsonStrings = append(jsonStrings, str[:index+2])
+// 			strs := strings.Split(str[:index+2], "\"")
+// 			//fmt.Println(strs[1], strs[3])
+// 			uuidScriptMap[strs[1]] = strs[3]
+
+// 			indexend := strings.Index(str, "cc._RF.pop();")
+// 			writeFile("./out/"+strs[3]+".js", ([]byte)(str[index+2:indexend]))
+// 		}
+
+// 		str = str[index+2:]
+// 	}
+
+// 	//fmt.Println(jsonStrings)
+
+// 	for _, fileName := range files {
+// 		fmt.Println(fileName)
+// 		strbytes, _ := ReadAll(fileName)
+
+// 		root, _ := simplejson.NewJson(strbytes)
+// 		var outAry []map[string]interface{}
+// 		walk(root.Interface(), 1, &outAry, &altasMap)
+// 		structMap[fileName] = root.Interface()
+// 		fileMap[fileName] = outAry
+// 	}
+
+// 	fmt.Println(altasMap)
+
+// 	for _, item := range fileMap {
+// 		for _, mp := range item {
+// 			if mp["__type__"] == "cc.SpriteFrame" {
+// 				if im, ok := mp["_name"]; ok {
+// 					spritefameMap[im.(string)] = mp
+// 				}
+
+// 				if im, ok := mp["content"]; ok {
+// 					cm := im.(map[string]interface{})
+// 					spritefameMap[cm["name"].(string)] = mp
+// 				}
+// 			}
+// 		}
+// 	}
+
+// 	for fileName, item := range fileMap {
+// 		for _, mp := range item {
+// 			if mp["__type__"] == "cc.SceneAsset" {
+// 				parse_file(structMap[fileName])
+// 			}
+// 		}
+// 	}
+// }
 func main() {
-	spritefameMap := make(map[string]map[string]interface{})
-	fileMap := make(map[string][]map[string]interface{})
-	structMap := make(map[string]interface{})
-	files := getFilelist("./program/res")
 
-	uuidScriptMap := make(map[string]string)
-	altasMap := make(map[string]string)
-
-	strbytes, _ := ReadAll("./program/src/project.js")
-	str := string(strbytes)
-
-	//处理空格Tab,回车
-	//str = TrimStringSpace(str)
-	var jsonStrings []string
-	for {
-		idx := strings.Index(str, "cc._RF.push(e")
-		if idx == -1 {
-			break
-		}
-
-		str = str[idx:]
-		index := strings.Index(str, ")")
-		if idx != -1 {
-			jsonStrings = append(jsonStrings, str[:index+2])
-			strs := strings.Split(str[:index+2], "\"")
-			//fmt.Println(strs[1], strs[3])
-			uuidScriptMap[strs[1]] = strs[3]
-
-			indexend := strings.Index(str, "cc._RF.pop();")
-			writeFile("./out/"+strs[3]+".js", ([]byte)(str[index+2:indexend]))
-		}
-
-		str = str[index+2:]
-	}
-
-	//fmt.Println(jsonStrings)
-
-	for _, fileName := range files {
-		fmt.Println(fileName)
-		strbytes, _ := ReadAll(fileName)
-
-		root, _ := simplejson.NewJson(strbytes)
-		var outAry []map[string]interface{}
-		walk(root.Interface(), 1, &outAry, &altasMap)
-		structMap[fileName] = root.Interface()
-		fileMap[fileName] = outAry
-	}
-
-	fmt.Println(altasMap)
-
-	for _, item := range fileMap {
-		for _, mp := range item {
-			if mp["__type__"] == "cc.SpriteFrame" {
-				if im, ok := mp["_name"]; ok {
-					spritefameMap[im.(string)] = mp
-				}
-
-				if im, ok := mp["content"]; ok {
-					cm := im.(map[string]interface{})
-					spritefameMap[cm["name"].(string)] = mp
-				}
-			}
-		}
-	}
-
-	for fileName, item := range fileMap {
-		for _, mp := range item {
-			if mp["__type__"] == "cc.SceneAsset" {
-				parse_file(structMap[fileName])
-			}
-		}
-	}
 }
