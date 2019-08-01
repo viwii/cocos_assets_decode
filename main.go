@@ -449,7 +449,9 @@ func main() {
 
 	for _, str := range lines {
 		if len(str) > 2 && str[1] == '.' && str[0] == '"' && str[len(str)-1] != '"' {
-			fmt.Println(str)
+
+			idx := strings.Index(str[1:], "\"")
+			fmt.Println(str[1 : idx+1])
 		}
 	}
 }
