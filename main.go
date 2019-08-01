@@ -1,11 +1,13 @@
 package main
 
 import (
+	"bufio"
 	"bytes"
 	"encoding/json"
 	"fmt"
 	"image"
 	"image/png"
+	"io"
 	"io/ioutil"
 	"log"
 	"math"
@@ -413,5 +415,41 @@ func parse_file(data interface{}) {
 // 	}
 // }
 func main() {
+	f, err := os.Open("bundle.js")
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
 
+	rd := bufio.NewReader(f)
+
+	var lines []string
+	for {
+		line, err := rd.ReadString('\n') //以'\n'为结束符读入一行
+
+		if err != nil || io.EOF == err {
+			break
+		}
+
+		str := strings.TrimSpace(line)
+		lines = append(lines, str)
+
+		//fmt.Println(strings.TrimSpace(line))
+	}
+
+	// for _, str := range lines {
+	// 	strs := strings.Split(str, ": [")
+	// 	if len(strs) >= 2 {
+	// 		index, err := strconv.Atoi(strs[0])
+	// 		if err == nil {
+	// 			//fmt.Println(index, str)
+	// 		}
+	// 	}
+	// }
+
+	for _, str := range lines {
+		if len(str) > 2 && str[1] == '.' && str[0] == '"' && str[len(str)-1] != '"' {
+			fmt.Println(str)
+		}
+	}
 }
