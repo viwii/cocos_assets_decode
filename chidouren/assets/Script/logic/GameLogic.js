@@ -33,7 +33,8 @@ var logic = function() {
     cc.systemEvent.on(ss.event.system.AdVideo, 
         this._onVideoRespond.bind(this)
     );
-};
+}
+
 
 logic.prototype._createAll = function() {
     var t = this.hutu.create(this.tempData);
@@ -41,49 +42,49 @@ logic.prototype._createAll = function() {
     this.bulu.createAll(t); 
     this.gala.createAll(); 
     this._createForever(t);
-};
+},
 
 logic.prototype._clearAll = function() {
     this.bulu.clearAll(), this.gala.clearAll(), this.ids.length = 0, this.tEgging = !1, 
     this.tLife = 0;
-};
+},
 
 logic.prototype._pause = function() {
     this.playing && !this.pausing && (this.pausing = !0);
-};
+},
 
 logic.prototype._resume = function() {
     this.playing && this.pausing && (this.pausing = !1);
-};
+},
 
 logic.prototype._onVideoRespond = function(t) {
     var e = t;
     e.method == ss.enum.advertising.method.show && e.code == ss.enum.advertising.code.success ? this.pausing = !0 : this.pausing = !1;
-};
+},
 
 logic.prototype._respondKillFun = function() {
     this.mini.setKillData(this.getKillData());
-};
+},
 
 logic.prototype.init = function(t) {
     this.bulu.init(t.bulu); 
     this.gala.init(t.gala);
     this.hutu.init(t.hutu, this._respondKillFun.bind(this)); 
     this.mini.init(t.mini);
-};
+},
 
 logic.prototype.update = function(t) {
     this.playing && (this.pausing || (this.mini.update(t), this.timestamps += t, this.timestamps >= 1 && (this.timestamps = 0, 
     this.tTime++)));
-};
+},
 
 logic.prototype.move = function(t) {
     this.bulu.move(t);
-};
+},
 
 logic.prototype.addSpeed = function() {
     this.bulu.addSpeed();
-};
+},
 
 logic.prototype.isSystemBetter = function() {
     switch (ss.logic.open.getSystem()) {
@@ -95,7 +96,7 @@ logic.prototype.isSystemBetter = function() {
         return true;
     }
     return false;
-};
+},
 
 logic.prototype.play = function(t) {
     switch (this.gIndex++, this.timestamps = 0, this.tTime = 0, this._clearAll(), this.playing = !0, 
@@ -108,7 +109,7 @@ logic.prototype.play = function(t) {
         this.fIndex++;
     }
     this.mini.reset(), this._createAll(), this.mini.play(this.gameMode), this._createEggData(t);
-};
+},
 
 logic.prototype.stop = function() {
     switch (this.playing = !1, this.pausing = !1, this._clearAll(), this.mini.clear(), 
@@ -116,21 +117,21 @@ logic.prototype.stop = function() {
       case ss.enum.gameMode.solo:
       case ss.enum.gameMode.forever:
     }
-};
+},
 
 logic.prototype.add = function(t) {
     var e = this.bulu.getScaleXY() >= 1 ? 2 : 1, i = this.ids.indexOf(t);
     return this.ids.length < e && (-1 == i && this.ids.push(t), !0);
-};
+},
 
 logic.prototype.sub = function(t) {
     var e = this.ids.indexOf(t);
     -1 != e && this.ids.splice(e, 1);
-};
+},
 
 logic.prototype.getKillData = function() {
     return this.hutu.getSoulerData();
-};
+},
 
 logic.prototype.getScoreData = function(t, e) {
     var i = 0, s = 0, o = 0, n = this.getKillData(), a = 0;
@@ -181,7 +182,7 @@ logic.prototype.getScoreData = function(t, e) {
         diamond: s,
         score: o
     };
-};
+},
 
 logic.prototype.getGiveUpScoreData = function() {
     var t = 2, e = 0, i = 0, s = this.getKillData(), o = void 0;
@@ -201,7 +202,7 @@ logic.prototype.getGiveUpScoreData = function() {
         diamond: e,
         score: i
     };
-}; 
+}, 
 
 logic.prototype.getPreData = function(t) {
     var e = 1, i = !1;
@@ -231,18 +232,18 @@ logic.prototype.getPreData = function(t) {
         currId: ss.logic.goods.getCurrId(),
         egg: i
     };
-};
+},
 
 logic.prototype.resetTest = function() {
     this.tIndex = 0;
-};
+},
 
 logic.prototype.getMiniProgram = function() {
     if (this.tMiniProgram) return this.tMiniProgram;
     this.tMiniProgram = [];
     for (var t = ss.config.miniProgram.allList, e = ss.config.miniProgram.programs, i = 0, s = t.length; i < s; i++) this.tMiniProgram.push(e[t[i]]);
     return this.tMiniProgram;
-};
+},
 
 logic.prototype.getScoreDan = function(t) {
     for (var e = ss.config.dan.list, i = 0, s = void 0, o = e.length - 1; o >= 0; o--) if ((s = e[o]) && t >= s.score) {
@@ -250,7 +251,7 @@ logic.prototype.getScoreDan = function(t) {
         break;
     }
     return s = e[i];
-};
+},
 
 logic.prototype.getScoreStar = function(t) {
     for (var e = ss.config.dan.star, i = 0, s = e.length - 1; s >= 0; s--) if (t >= e[s]) {
@@ -258,7 +259,7 @@ logic.prototype.getScoreStar = function(t) {
         break;
     }
     return i = Math.min(i, 3);
-};
+},
 
 logic.prototype.judge = function(t, e) {
     if (!t || !t.getAllLiving()) return !1;
@@ -294,7 +295,7 @@ logic.prototype.judge = function(t, e) {
       default:
         console.error("GameLogic judge undefind roletype:", t.data);
     }
-};
+},
 
 logic.prototype.attract = function(t, e) {
     return !(!t || !t.getAllLiving()) && !(!e || !e.getAllLiving()) && !!t.isCanAttract() && (e.onJudgeGrow && e.onJudgeGrow(this._createGrowVo(t.getGrow(), t.getEffect(), t.getEgg(), !1, !1)), 
@@ -302,7 +303,7 @@ logic.prototype.attract = function(t, e) {
         v2: e.node.getPosition(),
         isEffect: e.node.active
     })));
-};
+},
 
 logic.prototype._createGrowVo = function(t, e, i, s, o) {
     return {
@@ -316,7 +317,7 @@ logic.prototype._createGrowVo = function(t, e, i, s, o) {
         winName: arguments.length > 7 && void 0 !== arguments[7] ? arguments[7] : "",
         lostName: arguments.length > 8 && void 0 !== arguments[8] ? arguments[8] : ""
     };
-};
+},
 
 logic.prototype.recover = function(t) {
     var e = !(arguments.length > 1 && void 0 !== arguments[1]) || arguments[1], i = arguments.length > 2 && void 0 !== arguments[2] && arguments[2];
@@ -345,7 +346,7 @@ logic.prototype.recover = function(t) {
             console.error("GameLogic recover undefind roletype:", t);
         }
     }
-};
+},
 
 logic.prototype.revive = function() {
     switch (this.supermanData && this.bulu.reviveHero(this.supermanData), this.supermanData = null, 
@@ -357,7 +358,7 @@ logic.prototype.revive = function() {
       case ss.enum.gameMode.forever:
         this.bulu.reviveAll(!0);
     }
-};
+},
 
 logic.prototype.callMode = function(t) {
     var e = this.getPreData(t), i = {
@@ -372,7 +373,7 @@ logic.prototype.callMode = function(t) {
     //     params: i
     // }) : 
     ss.logic.net.reqGamePlay(i);
-};
+},
 
 logic.prototype.callOver = function(t) {
     var e = {
@@ -383,20 +384,20 @@ logic.prototype.callOver = function(t) {
         scoreData: arguments.length > 4 && void 0 !== arguments[4] ? arguments[4] : null
     };
     ss.logic.net.reqGameOver(e), this._subForever();
-};
+},
 
 logic.prototype.getEgging = function() {
     return this.tEgging;
-};
+},
 
 logic.prototype.getLife = function() {
     return this.tLife;
-};
+},
 
 logic.prototype._createForever = function(t) {
     this.gameMode == ss.enum.gameMode.forever && (this.tForeverAll = this.tForever = t.pacmanForever, 
     this.mini.setSurviveData(this.tForever));
-};
+},
 
 logic.prototype._createEggData = function(t) {
     if (t.gameMode == ss.enum.gameMode.forever) {
@@ -407,7 +408,7 @@ logic.prototype._createEggData = function(t) {
             time: this.tLife
         });
     }
-};
+},
 
 logic.prototype._judgeLove = function() {
     if (this.gameMode == ss.enum.gameMode.forever) {
@@ -423,7 +424,7 @@ logic.prototype._judgeLove = function() {
         });
     }
     return !0;
-};
+},
 
 logic.prototype._judgeRevive = function(t, e, i) {
     switch (this.gameMode) {
@@ -438,7 +439,7 @@ logic.prototype._judgeRevive = function(t, e, i) {
             e && this.bulu.revivePacman(s);
         } else console.log("击杀了所有对手，吃鸡成功！"), this.callOver(!0, null, null, ss.logic.game.getKillData(), ss.logic.game.getScoreData(null, null));
     }
-};
+},
 
 logic.prototype._subForever = function() {
     this.gameMode == ss.enum.gameMode.forever && (this.tForever = Math.max(0, this.tForever - 1), 

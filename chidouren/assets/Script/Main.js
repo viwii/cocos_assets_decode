@@ -22,10 +22,11 @@ var k = require("./com/MaskManager")
 var C = require("./com/RomManager") 
 var L = require("./com/ExtendsManager") 
 var R = require("./com/ServerManager") 
-var T = require("./com/LogicManager") 
+var T = require("./com/LogicManager")
 var x = require("./com/PlatformManager") 
 var A = require("./com/CommandManager") 
 var M = require("./com/HttpManager")
+
 cc.Class({
     extends: cc.Component,
     editor: {

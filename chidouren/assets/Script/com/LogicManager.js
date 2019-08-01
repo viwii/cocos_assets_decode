@@ -1,24 +1,23 @@
 
-var s = require("./logic/ConfigLogic"), 
-o = require("./logic/MoneyLogic"), 
-n = require("./logic/NetLogic"), 
-a = require("./logic/OpenLogic"), 
-r = require("./logic/TipsLogic"), 
-c = require("./logic/SoundLogic"), 
-h = require("./logic/StorageLogic"),
-l = require("./logic/PanelLogic"), 
-d = require("./logic/LotteryLogic"), 
-u = require("./logic/AldLogic"), 
-p = require("./logic/GameLogic"), 
-g = require("./logic/InfoLogic"), 
-m = require("./logic/GoodsLogic"), 
-f = require("./logic/AssetLogic"), 
-v = require("./logic/InviteLogic"), 
-y = require("./logic/AbfunLogic"), 
-w = require("./logic/WeiPaiLogic"), 
+var s = require("./logic/ConfigLogic"); 
+var o = require("./logic/MoneyLogic"); 
+var n = require("./logic/NetLogic"); 
+var a = require("./logic/OpenLogic"); 
+var r = require("./logic/TipsLogic"); 
+var c = require("./logic/SoundLogic"); 
+var h = require("./logic/StorageLogic");
+var l = require("./logic/PanelLogic"); 
+var d = require("./logic/LotteryLogic"); 
+var u = require("./logic/AldLogic"); 
+var p = require("./logic/GameLogic"); 
+var g = require("./logic/InfoLogic"); 
+var m = require("./logic/GoodsLogic"); 
+var f = require("./logic/AssetLogic"); 
+var v = require("./logic/InviteLogic"); 
+var y = require("./logic/AbfunLogic"); 
+var w = require("./logic/WeiPaiLogic"); 
 
-lm = function() {};
-
+var lm = function() {};
 
 lm.prototype.initialize = function() {
     this.config = new s.ConfigLogic(); 
@@ -38,7 +37,10 @@ lm.prototype.initialize = function() {
     this.invite = new v.InviteLogic(); 
     this.abFun = new y.AbFunLogic(); 
     this.weiPai = new w.WeiPaiLogic();
-}, lm.prototype.clear = function() {}; 
+};
+
+lm.prototype.clear = function() {}; 
+
 module.exports = {
     LogicManager: lm
 }
