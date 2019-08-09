@@ -262,36 +262,61 @@ logic.prototype.getScoreStar = function(t) {
 },
 
 logic.prototype.judge = function(t, e) {
-    if (!t || !t.getAllLiving()) return !1;
-    if (!e || !e.getAllLiving()) return !1;
+
+    if (!t || !t.getAllLiving()) return false;
+    if (!e || !e.getAllLiving()) return false;
+
     switch (t.data.type) {
       case ss.enum.roleType.superman:
       case ss.enum.roleType.pacman:
-        if (!e.getAllBorning() || !t.getAllBorning()) return;
-        var i = e.data.camp, s = t.data.camp;
+        if (!e.getAllBorning() || !t.getAllBorning()) 
+          return;
+        
+        var i = e.data.camp; 
+        var s = t.data.camp;
         if (i > ss.enum.gameCamp.normal && i == s) return;
-        var o = e.getAllGhosting(), n = t.getAllGhosting();
+        
+        var o = e.getAllGhosting();
+        var n = t.getAllGhosting();
+
         if (o && n) return;
-        var a = e.getGrow(), r = t.getGrow();
-        o ? (e.onJudgeGrow && e.onJudgeGrow(this._createGrowVo(r, !0, 0, !0, !0, e.data.id, t.data.id, e.data.name, t.data.name)), 
-        t.onJudgeDied && t.onJudgeDied()) : n ? (t.onJudgeGrow && t.onJudgeGrow(this._createGrowVo(a, !0, 0, !0, !0, t.data.id, e.data.id, t.data.name, e.data.name)), 
-        e.onJudgeDied && e.onJudgeDied()) : a > r ? (e.onJudgeGrow && e.onJudgeGrow(this._createGrowVo(r, !0, 0, !0, !0, e.data.id, t.data.id, e.data.name, t.data.name)), 
-        t.onJudgeDied && t.onJudgeDied()) : a < r ? (t.onJudgeGrow && t.onJudgeGrow(this._createGrowVo(a, !0, 0, !0, !0, t.data.id, e.data.id, t.data.name, e.data.name)), 
-        e.onJudgeDied && e.onJudgeDied()) : a == r && (e.onJudgeDied && e.onJudgeDied(), 
-        t.onJudgeDied && t.onJudgeDied());
+
+        var a = e.getGrow(); 
+        var r = t.getGrow();
+        
+        if (o){
+          e.onJudgeGrow && e.onJudgeGrow(this._createGrowVo(r, true, 0, true, true, e.data.id, t.data.id, e.data.name, t.data.name)); 
+          t.onJudgeDied && t.onJudgeDied();
+        }else if(n){
+            t.onJudgeGrow && t.onJudgeGrow(this._createGrowVo(a, true, 0, true, true, t.data.id, e.data.id, t.data.name, e.data.name)); 
+            e.onJudgeDied && e.onJudgeDied();
+          } else if (a > r) {
+            e.onJudgeGrow && e.onJudgeGrow(this._createGrowVo(r, true, 0, true, true, e.data.id, t.data.id, e.data.name, t.data.name)); 
+            t.onJudgeDied && t.onJudgeDied();
+          } else if (a < r) {
+              t.onJudgeGrow && t.onJudgeGrow(this._createGrowVo(a, true, 0, true, true, t.data.id, e.data.id, t.data.name, e.data.name)); 
+              e.onJudgeDied && e.onJudgeDied();
+           } else if (a == r) {
+                e.onJudgeDied && e.onJudgeDied(), 
+                t.onJudgeDied && t.onJudgeDied()
+           }
+
         break;
 
       case ss.enum.roleType.ghost:
         if (!e.getAllBorning()) return;
+
         if (e.getAllGhosting()) return;
+
         e.onJudgeDied && e.onJudgeDied();
+
         break;
 
       case ss.enum.roleType.pea:
-        e.onJudgeGrow && e.onJudgeGrow(this._createGrowVo(t.getGrow(), t.getEffect(), t.getEgg(), !1, !1)), 
+        e.onJudgeGrow && e.onJudgeGrow(this._createGrowVo(t.getGrow(), t.getEffect(), t.getEgg(), false, false));
+
         t.onJudgeDied && t.onJudgeDied();
         break;
-
       default:
         console.error("GameLogic judge undefind roletype:", t.data);
     }

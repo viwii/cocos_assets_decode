@@ -405,7 +405,14 @@ cc.Class({
     onCollisionEnter: function(t, e) {
         if (this.data && !this.dieding) {
             var i = t.abc;
-            i && i.data && (e.tag == ss.enum.tag.view && t.tag == ss.enum.tag.body ? this.smart.addViewTarget(i.data.id) : e.tag == ss.enum.tag.body && t.tag == ss.enum.tag.body && ss.logic.game.judge(i, this));
+            if (i && i.data) {
+                if (e.tag == ss.enum.tag.view && t.tag == ss.enum.tag.body) 
+                {
+                    this.smart.addViewTarget(i.data.id)
+                } else if(e.tag == ss.enum.tag.body && t.tag == ss.enum.tag.body){
+                    ss.logic.game.judge(i, this)
+                }             
+            };
         }
     },
     _onCollisionEnter: function(t, e) {

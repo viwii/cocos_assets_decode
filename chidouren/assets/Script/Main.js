@@ -27,6 +27,7 @@ var x = require("./com/PlatformManager")
 var A = require("./com/CommandManager") 
 var M = require("./com/HttpManager")
 
+
 cc.Class({
     extends: cc.Component,
     editor: {
