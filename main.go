@@ -15,6 +15,7 @@ import (
 	"path/filepath"
 	"reflect"
 	"strings"
+	"unicode"
 
 	"github.com/BurntSushi/graphics-go/graphics"
 )
@@ -340,8 +341,219 @@ func parse_file(data interface{}) {
 	}
 }
 
+func checkFileIsExist(filename string) bool {
+	var exist = true
+	if _, err := os.Stat(filename); os.IsNotExist(err) {
+		exist = false
+	}
+	return exist
+}
+
+func handle_laya(input string, output string) {
+	f, err := os.Open(input)
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+
+	var strs []string
+	rd := bufio.NewReader(f)
+	for {
+		line, err := rd.ReadString('\n') //以'\n'为结束符读入一行
+
+		if err != nil || io.EOF == err {
+			break
+		}
+
+		if -1 == strings.IndexByte(line, ':') {
+			fmt.Println(line)
+			strs = append(strs, line)
+			continue
+		}
+
+		var data []byte
+		flag := 0
+		for i := 0; i < len(line); i++ {
+			if flag == 0 {
+				if !unicode.IsSpace(int32(line[i])) {
+					data = append(data, '"')
+					data = append(data, line[i])
+					flag++
+				} else {
+					data = append(data, line[i])
+				}
+			} else if flag == 1 {
+				if line[i] == ':' {
+					data = append(data, '"')
+					data = append(data, line[i:]...)
+					break
+				} else {
+					data = append(data, line[i])
+				}
+			}
+
+		}
+
+		strs = append(strs, string(data))
+	}
+
+	var fout *os.File
+	var err1 error
+	if checkFileIsExist(output) { //如果文件存在
+		fout, err1 = os.OpenFile(output, os.O_APPEND, 0666) //打开文件
+		fmt.Println("文件存在", err1)
+	} else {
+		fout, err1 = os.Create(output) //创建文件
+		fmt.Println("文件不存在", err1)
+	}
+
+	for _, str := range strs {
+		fout.WriteString(str)
+	}
+
+	fout.Close()
+}
+
+func save_laya(outFile string, context string) {
+	var strs []string
+	for {
+		//line, err := rd.ReadString('\n') //以'\n'为结束符读入一行
+		idx := strings.Index(context, "\n")
+		if idx == -1 {
+			break
+		}
+
+		line := context[idx:]
+		context = context[:idx]
+		if -1 == strings.IndexByte(line, ':') {
+			fmt.Println(line)
+			strs = append(strs, line)
+			continue
+		}
+
+		var data []byte
+		flag := 0
+		for i := 0; i < len(line); i++ {
+			if flag == 0 {
+				if !unicode.IsSpace(int32(line[i])) {
+					data = append(data, '"')
+					data = append(data, line[i])
+					flag++
+				} else {
+					data = append(data, line[i])
+				}
+			} else if flag == 1 {
+				if line[i] == ':' {
+					data = append(data, '"')
+					data = append(data, line[i:]...)
+					break
+				} else {
+					data = append(data, line[i])
+				}
+			}
+
+		}
+
+		strs = append(strs, string(data))
+	}
+
+	var fout *os.File
+	var err1 error
+	if checkFileIsExist(outFile) { //如果文件存在
+		fout, err1 = os.OpenFile(outFile, os.O_APPEND, 0666) //打开文件
+		fmt.Println("文件存在", err1)
+	} else {
+		fout, err1 = os.Create(outFile) //创建文件
+		fmt.Println("文件不存在", err1)
+	}
+
+	for _, str := range strs {
+		fout.WriteString(str)
+	}
+	fout.WriteString("}")
+	fout.Close()
+}
+
+func main() {
+	//handle_laya("./PcLoginScene.scene", "./PcLoginScene.json")
+	data, err := ReadAll("./input/bundle.js")
+	if err != nil {
+		fmt.Println("ReadAll error", err)
+		return
+	}
+
+	var files []string
+
+	str := string(data)
+	for {
+		idx := strings.Index(str, "REG(")
+		if idx == -1 {
+			break
+		}
+
+		str = str[idx+5:]
+		fileName := ""
+		edx := strings.IndexByte(str, '"')
+		if -1 != edx {
+			fileName = str[:edx]
+		}
+		str = str[edx:]
+
+		files = append(files, fileName)
+		// fIndex := strings.Index(str, ".uiView")
+
+		// str = str[fIndex+10:]
+
+		// eIndex := strings.Index(str, ";")
+		// context := str[:eIndex]
+		// fmt.Println("context", context)
+		// str = str[eIndex:]
+	}
+
+	strCtx := string(data)
+	FileMap := make(map[string]string)
+	for {
+		idx := strings.Index(strCtx, "uiView = {")
+		if idx == -1 {
+			break
+		}
+
+		fileName := ""
+		for i := idx; i > 0; i-- {
+
+			if unicode.IsSpace(int32(strCtx[i])) {
+				fileName = strCtx[i+1 : idx-1]
+				break
+			}
+		}
+
+		if len(strCtx) > 9 {
+			strCtx = strCtx[idx+9:]
+			eIndex := strings.Index(strCtx, ";")
+			//fmt.Println(strCtx[:eIndex])
+			FileMap[fileName] = strCtx[:eIndex-1]
+			strCtx = strCtx[eIndex:]
+		}
+
+	}
+
+	NewFileMap := make(map[string]string)
+	for keyStr, value := range FileMap {
+		for _, path := range files {
+			fmt.Println(keyStr, path)
+			//if strings.EndWith(path, keyStr)
+			if len(path) > len(keyStr) && path[len(path)-len(keyStr):] == keyStr {
+				//NewFileMap[path] = value
+				save_laya(path, value)
+			}
+		}
+	}
+
+	fmt.Println(NewFileMap)
+}
+
 // func main() {
-// 	spritefameMap := make(map[string]map[string]interface{})
+// 	//spritefameMap := make(map[string]map[string]interface{})
 // 	fileMap := make(map[string][]map[string]interface{})
 // 	structMap := make(map[string]interface{})
 // 	files := getFilelist("./program/res")
@@ -356,11 +568,13 @@ func parse_file(data interface{}) {
 // 	//str = TrimStringSpace(str)
 // 	var jsonStrings []string
 // 	for {
-// 		idx := strings.Index(str, "cc._RF.push(e")
+// 		fmt.Println("--------------end1")
+// 		idx := strings.Index(str, "cc._RF.push(t")
 // 		if idx == -1 {
+
 // 			break
 // 		}
-
+// 		fmt.Println("--------------end")
 // 		str = str[idx:]
 // 		index := strings.Index(str, ")")
 // 		if idx != -1 {
@@ -389,69 +603,70 @@ func parse_file(data interface{}) {
 // 		fileMap[fileName] = outAry
 // 	}
 
-// 	fmt.Println(altasMap)
+// 	// fmt.Println(altasMap)
 
-// 	for _, item := range fileMap {
-// 		for _, mp := range item {
-// 			if mp["__type__"] == "cc.SpriteFrame" {
-// 				if im, ok := mp["_name"]; ok {
-// 					spritefameMap[im.(string)] = mp
-// 				}
+// 	// for _, item := range fileMap {
+// 	// 	for _, mp := range item {
+// 	// 		if mp["__type__"] == "cc.SpriteFrame" {
+// 	// 			if im, ok := mp["_name"]; ok {
+// 	// 				spritefameMap[im.(string)] = mp
+// 	// 			}
 
-// 				if im, ok := mp["content"]; ok {
-// 					cm := im.(map[string]interface{})
-// 					spritefameMap[cm["name"].(string)] = mp
-// 				}
-// 			}
+// 	// 			if im, ok := mp["content"]; ok {
+// 	// 				cm := im.(map[string]interface{})
+// 	// 				spritefameMap[cm["name"].(string)] = mp
+// 	// 			}
+// 	// 		}
+// 	// 	}
+// 	// }
+
+// 	// for fileName, item := range fileMap {
+// 	// 	for _, mp := range item {
+// 	// 		if mp["__type__"] == "cc.SceneAsset" {
+// 	// 			parse_file(structMap[fileName])
+// 	// 		}
+// 	// 	}
+// 	// }
+// }
+
+// func main() {
+// 	f, err := os.Open("bundle.js")
+// 	if err != nil {
+// 		panic(err)
+// 	}
+// 	defer f.Close()
+
+// 	rd := bufio.NewReader(f)
+
+// 	var lines []string
+// 	for {
+// 		line, err := rd.ReadString('\n') //以'\n'为结束符读入一行
+
+// 		if err != nil || io.EOF == err {
+// 			break
 // 		}
+
+// 		str := strings.TrimSpace(line)
+// 		lines = append(lines, str)
+
+// 		//fmt.Println(strings.TrimSpace(line))
 // 	}
 
-// 	for fileName, item := range fileMap {
-// 		for _, mp := range item {
-// 			if mp["__type__"] == "cc.SceneAsset" {
-// 				parse_file(structMap[fileName])
-// 			}
+// 	// for _, str := range lines {
+// 	// 	strs := strings.Split(str, ": [")
+// 	// 	if len(strs) >= 2 {
+// 	// 		index, err := strconv.Atoi(strs[0])
+// 	// 		if err == nil {
+// 	// 			//fmt.Println(index, str)
+// 	// 		}
+// 	// 	}
+// 	// }
+
+// 	for _, str := range lines {
+// 		if len(str) > 2 && str[1] == '.' && str[0] == '"' && str[len(str)-1] != '"' {
+
+// 			idx := strings.Index(str[1:], "\"")
+// 			fmt.Println(str[1 : idx+1])
 // 		}
 // 	}
 // }
-func main() {
-	f, err := os.Open("bundle.js")
-	if err != nil {
-		panic(err)
-	}
-	defer f.Close()
-
-	rd := bufio.NewReader(f)
-
-	var lines []string
-	for {
-		line, err := rd.ReadString('\n') //以'\n'为结束符读入一行
-
-		if err != nil || io.EOF == err {
-			break
-		}
-
-		str := strings.TrimSpace(line)
-		lines = append(lines, str)
-
-		//fmt.Println(strings.TrimSpace(line))
-	}
-
-	// for _, str := range lines {
-	// 	strs := strings.Split(str, ": [")
-	// 	if len(strs) >= 2 {
-	// 		index, err := strconv.Atoi(strs[0])
-	// 		if err == nil {
-	// 			//fmt.Println(index, str)
-	// 		}
-	// 	}
-	// }
-
-	for _, str := range lines {
-		if len(str) > 2 && str[1] == '.' && str[0] == '"' && str[len(str)-1] != '"' {
-
-			idx := strings.Index(str[1:], "\"")
-			fmt.Println(str[1 : idx+1])
-		}
-	}
-}
