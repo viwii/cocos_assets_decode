@@ -417,22 +417,34 @@ func handle_laya(input string, output string) {
 func save_laya(outFile string, context string) {
 	var strs []string
 	for {
-		//line, err := rd.ReadString('\n') //以'\n'为结束符读入一行
-		idx := strings.Index(context, "\n")
+
+		idx := -1
+		for i := 0; i < len(context); i++ {
+			if context[i] == '\n' {
+				idx = i
+				break
+			}
+		}
+
 		if idx == -1 {
 			break
 		}
 
-		line := context[idx:]
-		context = context[:idx]
+		line := context[:idx+1]
 		if -1 == strings.IndexByte(line, ':') {
-			fmt.Println(line)
 			strs = append(strs, line)
+			if idx < len(context)-1 {
+				context = context[idx+1:]
+			} else {
+				break
+			}
+
 			continue
 		}
 
 		var data []byte
 		flag := 0
+		lastSpace := false
 		for i := 0; i < len(line); i++ {
 			if flag == 0 {
 				if !unicode.IsSpace(int32(line[i])) {
@@ -445,29 +457,59 @@ func save_laya(outFile string, context string) {
 			} else if flag == 1 {
 				if line[i] == ':' {
 					data = append(data, '"')
-					data = append(data, line[i:]...)
-					break
+					data = append(data, line[i])
+					flag++
 				} else {
 					data = append(data, line[i])
 				}
-			}
+			} else if flag == 2 {
+				if lastSpace && line[i] == '.' {
+					data = append(data, '0')
+					data = append(data, line[i:]...)
+					lastSpace = false
+					break
+				} else if unicode.IsSpace(int32(line[i])) {
+					lastSpace = true
+				} else {
+					lastSpace = false
+				}
 
+				data = append(data, line[i])
+			}
 		}
 
 		strs = append(strs, string(data))
+
+		if idx < len(context)-1 {
+			context = context[idx+1:]
+		} else {
+			break
+		}
+
 	}
 
 	var fout *os.File
-	var err1 error
+	//var err1 error
 	if checkFileIsExist(outFile) { //如果文件存在
-		fout, err1 = os.OpenFile(outFile, os.O_APPEND, 0666) //打开文件
-		fmt.Println("文件存在", err1)
+		fout, _ = os.OpenFile(outFile, os.O_TRUNC, 0666) //打开文件
+		//fmt.Println("文件存在", err1)
 	} else {
-		fout, err1 = os.Create(outFile) //创建文件
-		fmt.Println("文件不存在", err1)
+		fout, _ = os.Create(outFile) //创建文件
+		//fmt.Println("文件不存在", err1)
 	}
-
+	
 	for _, str := range strs {
+		i := 0
+		for ; i < 5 && i < len(str); i++ {
+			if str[i] != '\t' {
+				//fmt.Println(i)
+				break
+			}
+		}
+
+		str = str[i:]
+		
+
 		fout.WriteString(str)
 	}
 	fout.WriteString("}")
@@ -537,19 +579,31 @@ func main() {
 
 	}
 
-	NewFileMap := make(map[string]string)
+	//NewFileMap := make(map[string]string)
 	for keyStr, value := range FileMap {
 		for _, path := range files {
-			fmt.Println(keyStr, path)
+			//fmt.Println(keyStr, path)
 			//if strings.EndWith(path, keyStr)
 			if len(path) > len(keyStr) && path[len(path)-len(keyStr):] == keyStr {
 				//NewFileMap[path] = value
+				strs := strings.Split(path, ".")
+				pt := "./"
+				for i := 0; i < len(strs)-1; i++ {
+					pt += strs[i] + "/"
+				}
+				_, err := os.Stat(pt)
+				if os.IsNotExist(err) {
+					os.MkdirAll(pt, os.ModePerm)
+				}
+
+				path = strings.Replace(path, ".", "/", -1)
+				//fmt.Println(value)
 				save_laya(path, value)
 			}
 		}
 	}
 
-	fmt.Println(NewFileMap)
+	//fmt.Println(NewFileMap)
 }
 
 // func main() {
