@@ -18,6 +18,7 @@ import (
 	"unicode"
 
 	"github.com/BurntSushi/graphics-go/graphics"
+	"github.com/bitly/go-simplejson"
 )
 
 type Content struct {
@@ -62,6 +63,26 @@ func getFilelist(path string) []string {
 		if f.IsDir() {
 			return nil
 		}
+		files = append(files, path)
+
+		return nil
+	})
+	if err != nil {
+		fmt.Printf("filepath.Walk() returned %v\n", err)
+	}
+
+	return files
+}
+
+func getJsonFilelist(path string) []string {
+	var files []string
+	err := filepath.Walk(path, func(path string, f os.FileInfo, err error) error {
+		if f == nil {
+			return err
+		}
+		if f.IsDir() {
+			return nil
+		}
 		strLen := len(path)
 		if strLen > 5 && path[strLen-5:] == ".json" {
 			files = append(files, path)
@@ -95,7 +116,7 @@ func saveImage(path string, img image.Image) (err error) {
 	// 以PNG格式保存文件
 	err = png.Encode(imgfile, img)
 	if err != nil {
-		log.Fatal(err)
+		//log.Fatal("path", path, "---", img, err)
 	}
 	return
 }
@@ -106,7 +127,7 @@ func getImage() {
 
 	StrMap := make(map[string][]Content)
 
-	files := getFilelist("./program")
+	files := getJsonFilelist("./program")
 	var jsonStrings []string
 	for _, fileName := range files {
 		strbytes, _ := ReadAll(fileName)
@@ -139,7 +160,7 @@ func getImage() {
 			fmt.Println("err: ", err)
 		}
 
-		log.Println(p1.ContentData.Name, p1.ContentData.Texture)
+		//log.Println(p1.ContentData.Name, p1.ContentData.Texture)
 
 		ctd := p1.ContentData
 		if ctd.Rotated == 1 {
@@ -158,6 +179,7 @@ func getImage() {
 	}
 
 	assets := getFilelist("./raw-assets")
+
 	var picFiles []string
 	for _, name := range assets {
 		if len(name) > 4 && (name[len(name)-4:] == ".png") {
@@ -170,31 +192,46 @@ func getImage() {
 	}
 
 	FileMap := make(map[string]string)
-	for keyStr, _ := range StrMap {
-		for _, fileName := range picFiles {
+	// for keyStr, _ := range StrMap {
+	// 	for _, fileName := range picFiles {
+	// 		if strings.Index(fileName[5:], "-") != -1 {
+	// 			//fmt.Println(keyStr, fileName)
+	// 			if keyStr[:2] == fileName[11:13] {
 
-			if keyStr[:2] == fileName[11:13] {
-				FileMap[keyStr] = fileName
-			}
-		}
-	}
+	// 				FileMap[keyStr] = fileName
+	// 			}
+	// 		} else {
+	// 			fmt.Println(keyStr, fileName)
+	// 			if strings.Index(fileName, keyStr) != -1 {
+	// 				FileMap[keyStr] = fileName
+	// 			}
+	// 		}
+
+	// 	}
+	// }
+	FileMap["1c64c38eb"] = "raw-assets\\1c\\1c64c38eb.png"
+	FileMap["1caf9f2e1"] = "raw-assets\\1c\\1caf9f2e1.png"
+
+	fmt.Println("---end")
 
 	ImageMap := make(map[string]image.Image)
 
 	for keyStr, imgItem := range FileMap {
 		game1, err := os.Open(imgItem)
 		if err != nil {
-			fmt.Println(err)
+			fmt.Println("3", err)
 		}
 		defer game1.Close()
 
 		gameImg, _, err := image.Decode(game1) //解码
 		if err != nil {
-			fmt.Println(err)
+			fmt.Println("2", err)
 		}
 
 		ImageMap[keyStr] = gameImg
 	}
+
+	//fmt.Println(ImageMap, StrMap)
 
 	for keyStr, itemAry := range StrMap {
 		switch ImageMap[keyStr].(type) {
@@ -207,7 +244,7 @@ func getImage() {
 					dst := image.NewRGBA(image.Rect(0, 0, info.Rect[3], info.Rect[2]))
 					err := graphics.Rotate(dst, subImg, &graphics.RotateOptions{3 * math.Pi / 2})
 					if err != nil {
-						fmt.Println(err)
+						fmt.Println("1", err)
 					} else {
 						fmt.Println("./images/" + info.Name + ".png")
 						saveImage("./images/"+info.Name+".png", dst)
@@ -228,9 +265,9 @@ func getImage() {
 					dst := image.NewRGBA(image.Rect(0, 0, info.Rect[3], info.Rect[2]))
 					err := graphics.Rotate(dst, subImg, &graphics.RotateOptions{3 * math.Pi / 2})
 					if err != nil {
-						fmt.Println(err)
+						fmt.Println("4", err)
 					} else {
-						fmt.Println("./images/" + info.Name + ".png")
+						fmt.Println("./images/" + info.Name + ".png" + "  " + keyStr)
 						saveImage("./images/"+info.Name+".png", dst)
 					}
 
@@ -497,7 +534,7 @@ func save_laya(outFile string, context string) {
 		fout, _ = os.Create(outFile) //创建文件
 		//fmt.Println("文件不存在", err1)
 	}
-	
+
 	for _, str := range strs {
 		i := 0
 		for ; i < 5 && i < len(str); i++ {
@@ -508,7 +545,6 @@ func save_laya(outFile string, context string) {
 		}
 
 		str = str[i:]
-		
 
 		fout.WriteString(str)
 	}
@@ -517,6 +553,13 @@ func save_laya(outFile string, context string) {
 }
 
 func main() {
+	//getImage()
+	//parse_cocos_plist("./plist/Icon/Icon", "./plist/Icon/out/")
+	parse_texturepack_json("./ball/Popup", "./ball/Popup/")
+}
+
+//laya脚本处理
+func _main() {
 	//handle_laya("./PcLoginScene.scene", "./PcLoginScene.json")
 	data, err := ReadAll("./input/bundle.js")
 	if err != nil {
@@ -724,3 +767,228 @@ func main() {
 // 		}
 // 	}
 // }
+
+func parse_cocos_plist(filepath string, savepath string) {
+
+	//end := strings.Trim(, unicode.IsSpace)
+
+	StrMap := make(map[string][]Content)
+
+	files := []string{filepath + ".json"}
+	var jsonStrings []string
+	for _, fileName := range files {
+		strbytes, _ := ReadAll(fileName)
+		str := string(strbytes)
+
+		//处理空格Tab,回车
+		str = TrimStringSpace(str)
+
+		for {
+			idx := strings.Index(str, "{\"__type__\":\"cc.SpriteFrame\"")
+			if idx == -1 {
+				break
+			}
+
+			str = str[idx:]
+			index := strings.Index(str, "}}")
+			if idx != -1 {
+				jsonStrings = append(jsonStrings, str[:index+2])
+			}
+
+			str = str[index+2:]
+		}
+	}
+
+	for _, strItem := range jsonStrings {
+
+		var p1 Item
+		err := json.Unmarshal([]byte(strItem), &p1) // 貌似这种解析方法需要提前知道 json 结构
+		if err != nil {
+			fmt.Println("err: ", err)
+		}
+
+		//log.Println(p1.ContentData.Name, p1.ContentData.Texture)
+
+		ctd := p1.ContentData
+		if ctd.Rotated == 1 {
+			ex := ctd.Rect[2]
+			ctd.Rect[2] = ctd.Rect[3]
+			ctd.Rect[3] = ex
+		}
+
+		if ary, ok := StrMap[ctd.Texture]; ok {
+			StrMap[ctd.Texture] = append(ary, ctd)
+		} else {
+			ary = []Content{ctd}
+			StrMap[ctd.Texture] = ary
+		}
+
+	}
+
+	fmt.Println(StrMap)
+
+	game1, err := os.Open(filepath + ".png")
+	if err != nil {
+		fmt.Println("3", err)
+	}
+	defer game1.Close()
+
+	gameImg, _, err := image.Decode(game1) //解码
+	if err != nil {
+		fmt.Println("2", err)
+	}
+
+	for keyStr, itemAry := range StrMap {
+		switch gameImg.(type) {
+		case *image.NRGBA:
+			grgbImg := gameImg.(*image.NRGBA)
+			for _, info := range itemAry {
+				subImg := grgbImg.SubImage(image.Rect(info.Rect[0], info.Rect[1], info.Rect[0]+info.Rect[2], info.Rect[1]+info.Rect[3]))
+
+				if info.Rotated == 1 {
+					dst := image.NewRGBA(image.Rect(0, 0, info.Rect[3], info.Rect[2]))
+					err := graphics.Rotate(dst, subImg, &graphics.RotateOptions{3 * math.Pi / 2})
+					if err != nil {
+						fmt.Println("1", err)
+					} else {
+						fmt.Println(savepath + info.Name + ".png")
+						saveImage(savepath+info.Name+".png", dst)
+					}
+
+				} else {
+					saveImage(savepath+info.Name+".png", subImg)
+				}
+
+			}
+
+		case *image.Paletted:
+			grgbImg := gameImg.(*image.Paletted)
+			for _, info := range itemAry {
+				subImg := grgbImg.SubImage(image.Rect(info.Rect[0], info.Rect[1], info.Rect[0]+info.Rect[2], info.Rect[1]+info.Rect[3]))
+
+				if info.Rotated == 1 {
+					dst := image.NewRGBA(image.Rect(0, 0, info.Rect[3], info.Rect[2]))
+					err := graphics.Rotate(dst, subImg, &graphics.RotateOptions{3 * math.Pi / 2})
+					if err != nil {
+						fmt.Println("4", err)
+					} else {
+						fmt.Println(savepath + info.Name + ".png" + "  " + keyStr)
+						saveImage(savepath+info.Name+".png", dst)
+					}
+
+				} else {
+					saveImage(savepath+info.Name+".png", subImg)
+				}
+			}
+		}
+	}
+}
+
+//
+// type Content struct {
+// 	Name         string    `json:"Name"`
+// 	Texture      string    `json:"texture"`
+// 	Rect         []int     `json:"rect"`
+// 	Offset       []float64 `json:"offset"`
+// 	OriginalSize []float64 `json:"originalSize"`
+// 	CapInsets    []float64 `json:"capInsets"`
+// 	Rotated      int       `json:"rotated"`
+// }
+func parse_texturepack_json(filepath string, savepath string) {
+	strbytes, _ := ReadAll(filepath + ".json")
+
+	res, err := simplejson.NewJson([]byte(strbytes))
+
+	if err != nil {
+		fmt.Printf("%v\n", err)
+		return
+	}
+
+	//获取json字符串中的 result 下的 timeline 下的 rows 数组
+	resMap, _ := res.Get("frames").Map()
+
+	var ContendAry []Content
+	for keyStr, value := range resMap {
+		var ct Content
+		ct.Name = keyStr
+		ct.Texture = keyStr
+
+		valMap := value.(map[string]interface{})
+		rectMap := valMap["frame"].(map[string]interface{})
+
+		x, _ := rectMap["x"].(json.Number).Int64()
+		y, _ := rectMap["y"].(json.Number).Int64()
+		w, _ := rectMap["w"].(json.Number).Int64()
+		h, _ := rectMap["h"].(json.Number).Int64()
+		ct.Rect = append(ct.Rect, int(x))
+		ct.Rect = append(ct.Rect, int(y))
+		ct.Rect = append(ct.Rect, int(w))
+		ct.Rect = append(ct.Rect, int(h))
+
+		//if valMap["rotated"].(bool) {
+		ct.Rotated = 0
+		//}
+
+		if ct.Rotated == 1 {
+			ex := ct.Rect[2]
+			ct.Rect[2] = ct.Rect[3]
+			ct.Rect[3] = ex
+		}
+
+		ContendAry = append(ContendAry, ct)
+	}
+
+	fmt.Println("-------------------------")
+
+	game1, err := os.Open(filepath + ".png")
+	if err != nil {
+		fmt.Println("3", err)
+	}
+	defer game1.Close()
+
+	gameImg, _, err := image.Decode(game1) //解码
+	if err != nil {
+		fmt.Println("2", err)
+	}
+
+	for _, info := range ContendAry {
+		switch gameImg.(type) {
+		case *image.NRGBA:
+			grgbImg := gameImg.(*image.NRGBA)
+			subImg := grgbImg.SubImage(image.Rect(info.Rect[0], info.Rect[1], info.Rect[0]+info.Rect[2], info.Rect[1]+info.Rect[3]))
+
+			if info.Rotated == 1 {
+				dst := image.NewRGBA(image.Rect(0, 0, info.Rect[3], info.Rect[2]))
+				err := graphics.Rotate(dst, subImg, &graphics.RotateOptions{3 * math.Pi / 2})
+				if err != nil {
+					fmt.Println("1", err)
+				} else {
+					fmt.Println(savepath + info.Name + ".png")
+					saveImage(savepath+info.Name+".png", dst)
+				}
+
+			} else {
+				saveImage(savepath+info.Name+".png", subImg)
+			}
+		case *image.Paletted:
+
+			grgbImg := gameImg.(*image.Paletted)
+			subImg := grgbImg.SubImage(image.Rect(info.Rect[0], info.Rect[1], info.Rect[0]+info.Rect[2], info.Rect[1]+info.Rect[3]))
+
+			if info.Rotated == 1 {
+				dst := image.NewRGBA(image.Rect(0, 0, info.Rect[3], info.Rect[2]))
+				err := graphics.Rotate(dst, subImg, &graphics.RotateOptions{3 * math.Pi / 2})
+				if err != nil {
+					fmt.Println("4", err)
+				} else {
+					saveImage(savepath+info.Name+".png", dst)
+				}
+
+			} else {
+				saveImage(savepath+info.Name+".png", subImg)
+			}
+
+		}
+	}
+
+}
