@@ -74,6 +74,29 @@ func getFilelist(path string) []string {
 	return files
 }
 
+
+
+//调用os.MkdirAll递归创建文件夹
+func createPath(filePath string)  error  {
+	if !isExist(filePath) {
+		err := os.MkdirAll(filePath,os.ModePerm)
+		return err
+	}
+	return nil
+}
+ 
+// 判断所给路径文件/文件夹是否存在(返回true是存在)
+func isExist(path string) bool {
+	_, err := os.Stat(path)    //os.Stat获取文件信息
+	if err != nil {
+		if os.IsExist(err) {
+			return true
+		}
+		return false
+	}
+	return true
+}
+
 func getJsonFilelist(path string) []string {
 	var files []string
 	err := filepath.Walk(path, func(path string, f os.FileInfo, err error) error {
@@ -555,7 +578,11 @@ func save_laya(outFile string, context string) {
 func main() {
 	//getImage()
 	//parse_cocos_plist("./plist/Icon/Icon", "./plist/Icon/out/")
-	parse_texturepack_json("./ball/Popup", "./ball/Popup/")
+
+	fmt.Println("Parameters:", os.Args[1])
+
+	parse_texturepack_json(os.Args[1], os.Args[1]+"/")
+
 }
 
 //laya脚本处理
@@ -895,6 +922,8 @@ func parse_cocos_plist(filepath string, savepath string) {
 // 	Rotated      int       `json:"rotated"`
 // }
 func parse_texturepack_json(filepath string, savepath string) {
+	createPath(savepath)
+
 	strbytes, _ := ReadAll(filepath + ".json")
 
 	res, err := simplejson.NewJson([]byte(strbytes))
@@ -964,11 +993,11 @@ func parse_texturepack_json(filepath string, savepath string) {
 					fmt.Println("1", err)
 				} else {
 					fmt.Println(savepath + info.Name + ".png")
-					saveImage(savepath+info.Name+".png", dst)
+					saveImage(savepath+info.Name, dst)
 				}
 
 			} else {
-				saveImage(savepath+info.Name+".png", subImg)
+				saveImage(savepath+info.Name, subImg)
 			}
 		case *image.Paletted:
 
@@ -981,11 +1010,11 @@ func parse_texturepack_json(filepath string, savepath string) {
 				if err != nil {
 					fmt.Println("4", err)
 				} else {
-					saveImage(savepath+info.Name+".png", dst)
+					saveImage(savepath+info.Name, dst)
 				}
 
 			} else {
-				saveImage(savepath+info.Name+".png", subImg)
+				saveImage(savepath+info.Name, subImg)
 			}
 
 		}
