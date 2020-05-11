@@ -74,20 +74,18 @@ func getFilelist(path string) []string {
 	return files
 }
 
-
-
 //调用os.MkdirAll递归创建文件夹
-func createPath(filePath string)  error  {
+func createPath(filePath string) error {
 	if !isExist(filePath) {
-		err := os.MkdirAll(filePath,os.ModePerm)
+		err := os.MkdirAll(filePath, os.ModePerm)
 		return err
 	}
 	return nil
 }
- 
+
 // 判断所给路径文件/文件夹是否存在(返回true是存在)
 func isExist(path string) bool {
-	_, err := os.Stat(path)    //os.Stat获取文件信息
+	_, err := os.Stat(path) //os.Stat获取文件信息
 	if err != nil {
 		if os.IsExist(err) {
 			return true
@@ -150,7 +148,7 @@ func getImage() {
 
 	StrMap := make(map[string][]Content)
 
-	files := getJsonFilelist("./program")
+	files := getJsonFilelist("./gamecaches")
 	var jsonStrings []string
 	for _, fileName := range files {
 		strbytes, _ := ReadAll(fileName)
@@ -214,11 +212,13 @@ func getImage() {
 		}
 	}
 
+	//fmt.Println(StrMap)
+
 	FileMap := make(map[string]string)
 	// for keyStr, _ := range StrMap {
 	// 	for _, fileName := range picFiles {
 	// 		if strings.Index(fileName[5:], "-") != -1 {
-	// 			//fmt.Println(keyStr, fileName)
+	// 			fmt.Println(keyStr, fileName)
 	// 			if keyStr[:2] == fileName[11:13] {
 
 	// 				FileMap[keyStr] = fileName
@@ -232,9 +232,20 @@ func getImage() {
 
 	// 	}
 	// }
-	FileMap["1c64c38eb"] = "raw-assets\\1c\\1c64c38eb.png"
-	FileMap["1caf9f2e1"] = "raw-assets\\1c\\1caf9f2e1.png"
-
+	//FileMap["1c64c38eb"] = "raw-assets\\1c\\1c64c38eb.png"
+	//FileMap["02delMVqdBD70a/HSD99FK"] = "raw-assets\\res-raw-assets-1e-1ef04113c.566c2.png"
+	FileMap["1322cc1aa"] = "raw-assets\\res-raw-assets-13-1322cc1aa.754a8.png"
+	FileMap["14521b872"] = "raw-assets\\res-raw-assets-14-14521b872.c93cd.png"
+	FileMap["166026c0a"] = "raw-assets\\res-raw-assets-16-166026c0a.c1818.png"
+	FileMap["178ad14a1"] = "raw-assets\\res-raw-assets-17-178ad14a1.47eab.png"
+	FileMap["17bb09aea"] = "raw-assets\\res-raw-assets-17-17bb09aea.c1d62.png"
+	FileMap["19f00dc8a"] = "raw-assets\\res-raw-assets-19-19f00dc8a.d8ef7.png"
+	FileMap["1a5aa04de"] = "raw-assets\\res-raw-assets-1a-1a5aa04de.61551.png"
+	FileMap["1b0cd85c7"] = "raw-assets\\res-raw-assets-1b-1b0cd85c7.b345e.png"
+	FileMap["1bcbb97d1"] = "raw-assets\\res-raw-assets-1b-1bcbb97d1.ec391.png"
+	FileMap["1d6236e6d"] = "raw-assets\\res-raw-assets-1d-1d6236e6d.3db36.png"
+	FileMap["1dd96add7"] = "raw-assets\\res-raw-assets-1d-1dd96add7.74f35.png"
+	FileMap["1ef04113c"] = "raw-assets\\res-raw-assets-1e-1ef04113c.566c2.png"
 	fmt.Println("---end")
 
 	ImageMap := make(map[string]image.Image)
@@ -579,7 +590,7 @@ func main() {
 	//getImage()
 	//parse_cocos_plist("./plist/Icon/Icon", "./plist/Icon/out/")
 
-	fmt.Println("Parameters:", os.Args[1])
+	//fmt.Println("Parameters:", os.Args[1])
 
 	parse_texturepack_json(os.Args[1], os.Args[1]+"/")
 
@@ -878,12 +889,12 @@ func parse_cocos_plist(filepath string, savepath string) {
 					if err != nil {
 						fmt.Println("1", err)
 					} else {
-						fmt.Println(savepath + info.Name + ".png")
-						saveImage(savepath+info.Name+".png", dst)
+						fmt.Println(savepath + info.Name)
+						saveImage(savepath+info.Name, dst)
 					}
 
 				} else {
-					saveImage(savepath+info.Name+".png", subImg)
+					saveImage(savepath+info.Name, subImg)
 				}
 
 			}
@@ -900,11 +911,11 @@ func parse_cocos_plist(filepath string, savepath string) {
 						fmt.Println("4", err)
 					} else {
 						fmt.Println(savepath + info.Name + ".png" + "  " + keyStr)
-						saveImage(savepath+info.Name+".png", dst)
+						saveImage(savepath+info.Name, dst)
 					}
 
 				} else {
-					saveImage(savepath+info.Name+".png", subImg)
+					saveImage(savepath+info.Name, subImg)
 				}
 			}
 		}
@@ -1015,6 +1026,107 @@ func parse_texturepack_json(filepath string, savepath string) {
 
 			} else {
 				saveImage(savepath+info.Name, subImg)
+			}
+
+		}
+	}
+
+}
+
+func parse_texturepack_json1(filepath string, savepath string) {
+	createPath(savepath)
+
+	strbytes, _ := ReadAll(filepath + ".json")
+
+	res, err := simplejson.NewJson([]byte(strbytes))
+
+	if err != nil {
+		fmt.Printf("%v\n", err)
+		return
+	}
+
+	//获取json字符串中的 result 下的 timeline 下的 rows 数组
+	resMap, _ := res.Get("frames").Map()
+
+	var ContendAry []Content
+	for keyStr, value := range resMap {
+		var ct Content
+		ct.Name = keyStr + ".png"
+		ct.Texture = keyStr + ".png"
+
+		rectMap := value.(map[string]interface{})
+		//rectMap := valMap["frame"].(map[string]interface{})
+
+		x, _ := rectMap["x"].(json.Number).Int64()
+		y, _ := rectMap["y"].(json.Number).Int64()
+		w, _ := rectMap["w"].(json.Number).Int64()
+		h, _ := rectMap["h"].(json.Number).Int64()
+		ct.Rect = append(ct.Rect, int(x))
+		ct.Rect = append(ct.Rect, int(y))
+		ct.Rect = append(ct.Rect, int(w))
+		ct.Rect = append(ct.Rect, int(h))
+
+		//if valMap["rotated"].(bool) {
+		ct.Rotated = 0
+		//}
+
+		if ct.Rotated == 1 {
+			ex := ct.Rect[2]
+			ct.Rect[2] = ct.Rect[3]
+			ct.Rect[3] = ex
+		}
+
+		ContendAry = append(ContendAry, ct)
+	}
+
+	fmt.Println("-------------------------")
+
+	game1, err := os.Open(filepath + ".png")
+	if err != nil {
+		fmt.Println("3", err)
+	}
+	defer game1.Close()
+
+	gameImg, _, err := image.Decode(game1) //解码
+	if err != nil {
+		fmt.Println("2", err)
+	}
+
+	for _, info := range ContendAry {
+		switch gameImg.(type) {
+		case *image.NRGBA:
+			grgbImg := gameImg.(*image.NRGBA)
+			subImg := grgbImg.SubImage(image.Rect(info.Rect[0], info.Rect[1], info.Rect[0]+info.Rect[2], info.Rect[1]+info.Rect[3]))
+
+			if info.Rotated == 1 {
+				dst := image.NewRGBA(image.Rect(0, 0, info.Rect[3], info.Rect[2]))
+				err := graphics.Rotate(dst, subImg, &graphics.RotateOptions{3 * math.Pi / 2})
+				if err != nil {
+					fmt.Println("1", err)
+				} else {
+					fmt.Println(savepath + info.Name + ".png")
+					saveImage(savepath+strings.Replace(info.Name, "_", ".", 1), dst)
+				}
+
+			} else {
+				saveImage(savepath+strings.Replace(info.Name, "_", ".", 1), subImg)
+			}
+		case *image.Paletted:
+
+			grgbImg := gameImg.(*image.Paletted)
+			subImg := grgbImg.SubImage(image.Rect(info.Rect[0], info.Rect[1], info.Rect[0]+info.Rect[2], info.Rect[1]+info.Rect[3]))
+
+			if info.Rotated == 1 {
+				dst := image.NewRGBA(image.Rect(0, 0, info.Rect[3], info.Rect[2]))
+				err := graphics.Rotate(dst, subImg, &graphics.RotateOptions{3 * math.Pi / 2})
+				if err != nil {
+					fmt.Println("4", err)
+				} else {
+					saveImage(savepath+strings.Replace(info.Name, "_", ".", 1), dst)
+				}
+
+			} else {
+				saveImage(savepath+strings.Replace(info.Name, "_", ".", 1), subImg)
 			}
 
 		}
