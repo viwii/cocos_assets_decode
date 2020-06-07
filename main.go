@@ -29,6 +29,7 @@ type Content struct {
 	OriginalSize []float64 `json:"originalSize"`
 	CapInsets    []float64 `json:"capInsets"`
 	Rotated      int       `json:"rotated"`
+	Idx          int64
 }
 
 type Item struct {
@@ -586,13 +587,13 @@ func save_laya(outFile string, context string) {
 	fout.Close()
 }
 
-func main() {
+func __main() {
 	//getImage()
 	//parse_cocos_plist("./plist/Icon/Icon", "./plist/Icon/out/")
 
 	//fmt.Println("Parameters:", os.Args[1])
 
-	parse_texturepack_json(os.Args[1], os.Args[1]+"/")
+	//parse_texturepack_json(os.Args[1], os.Args[1]+"/")
 
 }
 
@@ -1132,4 +1133,128 @@ func parse_texturepack_json1(filepath string, savepath string) {
 		}
 	}
 
+}
+
+func parse_laya_atlas_json(filepath string, savepath string) {
+	createPath(savepath)
+
+	strbytes, _ := ReadAll(filepath + ".atlas")
+
+	res, err := simplejson.NewJson([]byte(strbytes))
+
+	if err != nil {
+		fmt.Printf("%v\n", err)
+		return
+	}
+
+	//获取json字符串中的 result 下的 timeline 下的 rows 数组
+	resMap, _ := res.Get("frames").Map()
+
+	var ContendAry []Content
+	for keyStr, value := range resMap {
+		var ct Content
+		ct.Name = keyStr
+		ct.Texture = keyStr
+
+		valMap := value.(map[string]interface{})
+		rectMap := valMap["frame"].(map[string]interface{})
+
+		x, _ := rectMap["x"].(json.Number).Int64()
+		y, _ := rectMap["y"].(json.Number).Int64()
+		w, _ := rectMap["w"].(json.Number).Int64()
+		h, _ := rectMap["h"].(json.Number).Int64()
+		idx, _ := rectMap["idx"].(json.Number).Int64()
+		ct.Rect = append(ct.Rect, int(x))
+		ct.Rect = append(ct.Rect, int(y))
+		ct.Rect = append(ct.Rect, int(w))
+		ct.Rect = append(ct.Rect, int(h))
+		ct.Idx = idx
+		//if valMap["rotated"].(bool) {
+		ct.Rotated = 0
+		//}
+
+		if ct.Rotated == 1 {
+			ex := ct.Rect[2]
+			ct.Rect[2] = ct.Rect[3]
+			ct.Rect[3] = ex
+		}
+
+		ContendAry = append(ContendAry, ct)
+	}
+
+	fmt.Println("-------------------------")
+
+	game1, err := os.Open(filepath + ".png")
+	if err != nil {
+		fmt.Println("3", err)
+	}
+	defer game1.Close()
+
+	gameImg1, _, err := image.Decode(game1) //解码
+	if err != nil {
+		fmt.Println("2", err)
+	}
+
+	game2, err := os.Open(filepath + "1.png")
+	if err != nil {
+		fmt.Println("3", err)
+	}
+	defer game2.Close()
+
+	gameImg2, _, err := image.Decode(game2) //解码
+	if err != nil {
+		fmt.Println("2", err)
+	}
+
+	for _, info := range ContendAry {
+		gameImg := gameImg1
+		if info.Idx != 0 {
+			gameImg = gameImg2
+		}
+
+		switch gameImg.(type) {
+		case *image.NRGBA:
+			grgbImg := gameImg.(*image.NRGBA)
+			subImg := grgbImg.SubImage(image.Rect(info.Rect[0], info.Rect[1], info.Rect[0]+info.Rect[2], info.Rect[1]+info.Rect[3]))
+
+			if info.Rotated == 1 {
+				dst := image.NewRGBA(image.Rect(0, 0, info.Rect[3], info.Rect[2]))
+				err := graphics.Rotate(dst, subImg, &graphics.RotateOptions{3 * math.Pi / 2})
+				if err != nil {
+					fmt.Println("1", err)
+				} else {
+					fmt.Println(savepath + info.Name + ".png")
+					saveImage(savepath+strings.Replace(info.Name, ".", ".", 1), dst)
+				}
+
+			} else {
+				saveImage(savepath+strings.Replace(info.Name, ".", ".", 1), subImg)
+			}
+		case *image.Paletted:
+
+			grgbImg := gameImg.(*image.Paletted)
+			subImg := grgbImg.SubImage(image.Rect(info.Rect[0], info.Rect[1], info.Rect[0]+info.Rect[2], info.Rect[1]+info.Rect[3]))
+
+			if info.Rotated == 1 {
+				dst := image.NewRGBA(image.Rect(0, 0, info.Rect[3], info.Rect[2]))
+				err := graphics.Rotate(dst, subImg, &graphics.RotateOptions{3 * math.Pi / 2})
+				if err != nil {
+					fmt.Println("4", err)
+				} else {
+					saveImage(savepath+strings.Replace(info.Name, ".", ".", 1), dst)
+				}
+
+			} else {
+				saveImage(savepath+strings.Replace(info.Name, ".", ".", 1), subImg)
+			}
+		default:
+			fmt.Println("-------")
+
+		}
+	}
+
+}
+
+func main() {
+	parse_laya_atlas_json(os.Args[1], os.Args[1]+"/")
 }
